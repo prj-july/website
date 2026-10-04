@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&family=Barlow+Semi+Condensed:wght@500;600&family=Figtree:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono&display=swap">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/site.css">
@@ -67,6 +67,7 @@
     </a>
     <nav class="nav" aria-label="Sections">
       <a href="#how">How it works</a>
+      <a href="#app">App</a>
       <a href="#status">Status</a>
       <a href="#downloads">Downloads</a>
       <a href="#privacy">Privacy</a>
@@ -92,7 +93,7 @@
         </div>
         <div class="hero-note">
           <span class="jo-pill"><span class="jo-pill-dot" aria-hidden="true"></span>Community project · early release</span>
-          <span class="small muted">Status as of <time datetime="2026-09-28">28 September 2026</time></span>
+          <span class="small muted">Status as of <time datetime="2026-10-03">3 October 2026</time></span>
         </div>
       </div>
 
@@ -237,8 +238,8 @@
         <li class="jo-step">
           <span class="jo-step-num" aria-hidden="true">3</span>
           <div class="jo-step-body">
-            <h3 class="jo-step-title">The phone app is adjusted once</h3>
-            <p class="jo-step-text">A companion app connects to the oven's address on your network and trusts your home's own security certificate.</p>
+            <h3 class="jo-step-title">Your phone uses the Project July app</h3>
+            <p class="jo-step-text">The free <a href="#app">Project July app</a> for iPhone and Android connects to the oven's address on your home network, using your home's own security certificate. Home Assistant works too.</p>
           </div>
         </li>
         <li class="jo-step">
@@ -275,8 +276,78 @@
   </div>
 </section>
 
+<!-- ============================ The app ============================ -->
+<section id="app">
+  <div class="wrap">
+    <div class="app-grid">
+      <div class="prose">
+        <div class="section-head">
+          <p class="eyebrow">The Project July app</p>
+          <h2>Your oven, on your phone</h2>
+          <p class="lead">A free app for iPhone and Android. It talks straight to your oven over your home Wi-Fi, with no account and no cloud.</p>
+        </div>
+        <ul class="checklist">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Preheat, change the temperature and stop a cook</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Timers, with +1, +5 and +10 minutes while one runs</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>The live camera, right beside the temperature</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Pair once, by typing a code on the oven</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Light and dark, in a look that matches the Home Assistant card</li>
+        </ul>
+        <div class="tags">
+          <span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>In testing</span>
+          <span class="jo-pill jo-pill-cooking"><span class="jo-pill-dot" aria-hidden="true"></span>iPhone and Android</span>
+          <span class="jo-pill jo-pill-cooking"><span class="jo-pill-dot" aria-hidden="true"></span>Free</span>
+        </div>
+        <p class="muted">The app is being tested on real ovens. It will be listed under <a href="#downloads">Downloads</a>, with its checksum, when it’s ready.</p>
+        <p class="muted">Use Home Assistant? The <a href="https://github.com/prj-july/ha-june-oven">June Oven integration</a> brings the same controls and a matching dashboard card to your dashboards.</p>
+      </div>
+
+      <figure class="app-figure">
+        <div class="pj-phone" role="img" aria-label="Illustration of the Project July app: Kitchen oven preheating, 312 degrees on the way to 400, with the live camera beside the temperature and a red Stop button.">
+          <div class="pj-screen">
+            <div class="pj-top">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
+              <span>Project July</span>
+            </div>
+            <div class="pj-card">
+              <div class="pj-head">
+                <span class="pj-name">Kitchen oven</span>
+                <span class="pj-stop"><i></i>Stop</span>
+              </div>
+              <div class="pj-run">
+                <div>
+                  <div class="pj-num">312<span>°</span></div>
+                  <div class="pj-st">
+                    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17V3.8M4.6 9.2 10 3.8l5.4 5.4"/></svg>
+                    <b>Preheating</b><span>· to 400°</span>
+                  </div>
+                  <div class="pj-bar"><i></i></div>
+                </div>
+                <div class="pj-cam">
+                  <picture>
+                    <source srcset="assets/camera-live.jpg" media="(prefers-reduced-motion: reduce)">
+                    <img src="assets/camera-live.webp" width="640" height="480" alt="" loading="lazy">
+                  </picture>
+                  <span class="pj-live">LIVE</span>
+                </div>
+              </div>
+              <p class="pj-a">Roast at 400°</p>
+              <p class="pj-b">The oven lets you know when it’s hot.</p>
+            </div>
+            <div class="pj-card pj-temp">
+              <span class="pj-label">Target temperature</span>
+              <div class="pj-stepper"><span>−</span><b>400°</b><span>+</span></div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="figure-cap">Illustration of the app, with the same real camera recording</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ Compatibility / Status ============================ -->
-<section id="status">
+<section class="tint" id="status">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Compatibility &amp; status</p>
@@ -293,10 +364,14 @@
             <tr><td class="file-name">Local pairing</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Fully local, with no June servers. Pair as many devices as you like.</td></tr>
             <tr><td class="file-name">Control</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Preheat, set temperature, cancel.</td></tr>
             <tr><td class="file-name">Live camera</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">About 15 frames a second, up from 1 with June's app. The fisheye is corrected.</td></tr>
+            <tr><td class="file-name">Phone app</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>In testing</span></td><td data-label="Notes" class="muted">The <a href="#app">Project July app</a> for iPhone and Android.</td></tr>
+            <tr><td class="file-name">Home Assistant</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Integration and dashboard card, <a href="https://github.com/prj-july/ha-june-oven">on GitHub</a>.</td></tr>
             <tr><td class="file-name">MJPEG stream</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">For Home Assistant and other camera viewers.</td></tr>
             <tr><td class="file-name">Camera while cooking</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Records only during a cook, plus an optional manual view.</td></tr>
             <tr><td class="file-name">Disk and log limits</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Storage use is capped and old logs are rotated out.</td></tr>
-            <tr><td class="file-name">Per-home certificates</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>In progress</span></td><td data-label="Notes" class="muted">Each home gets its own security keys.</td></tr>
+            <tr><td class="file-name">Per-home certificates</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Each home gets its own security keys. Phone and Home Assistant pairing verified on 3 October.</td></tr>
+            <tr><td class="file-name">Recipes and presets</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">June's preset library is back on the oven, so Proof and Slow Cook work again.</td></tr>
+            <tr><td class="file-name">Find the oven by name</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Reach it at a name like <span class="mono">june.local</span>, picked during install.</td></tr>
             <tr><td class="file-name">One-touch installer</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>In progress</span></td><td data-label="Notes" class="muted">For now, setup follows a written guide.</td></tr>
           </tbody>
         </table>
@@ -315,11 +390,33 @@
         </div>
         <div>
           <h3 style="font-size:20px;line-height:28px;font-family:var(--font-sans);margin-bottom:var(--space-4)">Latest updates</h3>
+          <!-- Add a new dated line at the top each time something is verified. -->
           <ol class="updates" reversed>
-            <!-- TODO: confirm this entry, then add a new dated line each time something is verified. -->
-            <li><time datetime="2026-09-28">2026-09-28</time><span>Working on the 2nd-gen June Oven. The 1st gen should work but is untested. The 3rd gen is blocked by hardware limits.</span></li>
-            <li><time datetime="2026-09-26">2026-09-26</time><span>Verified on oven 2: pairing, control and live camera.</span></li>
+            <li>
+              <time datetime="2026-10-03">3 Oct 2026</time>
+              <b>Your own keys, and the recipes are back</b>
+              <ul>
+                <li>Phones and Home Assistant now pair using your home's own security certificate, and it holds after a restart.</li>
+                <li>June's recipes and presets are back on the oven. Proof and Slow Cook work again.</li>
+                <li>Find your oven by name, like <span class="mono">june.local</span>. You choose the name during install.</li>
+                <li>A clearer installer: progress for every step, simple drive pickers, and logs kept for troubleshooting.</li>
+                <li>The Project July app gets a new look to match the Home Assistant card.</li>
+              </ul>
+            </li>
+            <li><time datetime="2026-10-01">1–2 Oct</time><b>Double-checking</b><span>Watched the local server in daily use and checked every oven backup, down to one false alarm.</span></li>
+            <li><time datetime="2026-09-29">29–30 Sep</time><b>Install, back up, repeat</b><span>Installed, backed up and restored again and again until the steps were dependable.</span></li>
+            <li><time datetime="2026-09-28">28 Sep</time><b>Ready for the installer</b><span>The local server is packaged, each home’s certificates are made automatically, and the first complete oven backups are done.</span></li>
+            <li><time datetime="2026-09-27">27 Sep</time><b>Home Assistant and a phone app</b><span>Home Assistant connects straight to the oven on your network, with a dashboard card the next day. The first Project July app for iPhone and Android pairs, controls and shows the camera.</span></li>
           </ol>
+          <details class="updates-more">
+            <summary>Earlier updates</summary>
+            <ol class="updates" reversed start="4">
+            <li><time datetime="2026-09-26">26 Sep</time><b>A much better camera</b><span>From one picture a second to about fifteen, with the fisheye straightened out. The first USB installer boots. Verified on oven 2: pairing, control and live camera.</span></li>
+            <li><time datetime="2026-09-24">24–25 Sep</time><b>A way in</b><span>Tools to reach the oven’s system safely over USB.</span></li>
+            <li><time datetime="2026-09-21">21–23 Sep</time><b>The oven listens</b><span>An oven paired with a local server and took commands, with no June servers. We also saved June’s recipe and preset content before the cloud goes away: 909 files, each one checksummed.</span></li>
+            <li><time datetime="2026-09-12">12–19 Sep</time><b>Kickoff</b><span>We set out to learn how the June app and oven talk to each other, and wrote the first technical guide.</span></li>
+            </ol>
+          </details>
         </div>
       </div>
     </div>
@@ -327,7 +424,7 @@
 </section>
 
 <!-- ============================ Downloads / Instructions ============================ -->
-<section class="tint" id="downloads">
+<section id="downloads">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Downloads &amp; instructions</p>
@@ -394,28 +491,28 @@
               <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
             </tr>
             <tr>
-              <td class="file-name">Companion app (APK)</td>
-              <td data-label="What it's for" class="muted">Android app that controls the oven on your network.</td>
+              <td><a class="file-name" href="#app">Project July app</a></td>
+              <td data-label="What it's for" class="muted">For iPhone and Android. Controls the oven over your home Wi-Fi.</td>
               <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
             </tr>
             <tr>
-              <td class="file-name">JCM app (APK)</td>
-              <td data-label="What it's for" class="muted">Second Android package used during setup.</td>
-              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+              <td><a class="file-name" href="https://github.com/prj-july/ha-june-oven">Home Assistant integration</a></td>
+              <td data-label="What it's for" class="muted">Optional. Adds the oven and a dashboard card to Home Assistant. Install it through HACS.</td>
+              <td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Available</span></td>
             </tr>
             <tr>
               <td class="file-name mono">june-local</td>
-              <td data-label="What it's for" class="muted">The local server that runs on the oven.</td>
+              <td data-label="What it's for" class="muted">The local server that runs on the oven. Included in the installer.</td>
               <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
             </tr>
             <tr>
               <td class="file-name mono">june-camerad</td>
-              <td data-label="What it's for" class="muted">The camera program that streams stills locally.</td>
+              <td data-label="What it's for" class="muted">The camera program that streams stills locally. Included in the installer.</td>
               <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
             </tr>
             <tr>
               <td class="file-name">Certificate scripts</td>
-              <td data-label="What it's for" class="muted">Make your home's own security certificate.</td>
+              <td data-label="What it's for" class="muted">Make your home's own security certificate. Included in the installer.</td>
               <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
             </tr>
           </tbody>
@@ -427,7 +524,7 @@
 </section>
 
 <!-- ============================ Security & Privacy ============================ -->
-<section id="privacy">
+<section class="tint" id="privacy">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Security &amp; privacy</p>
@@ -464,7 +561,7 @@
 </section>
 
 <!-- ============================ FAQ ============================ -->
-<section class="tint" id="faq">
+<section id="faq">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Questions</p>
@@ -507,7 +604,7 @@
       </details>
       <details>
         <summary>Does it work with Home Assistant?</summary>
-        <p class="answer">Yes. The oven shows up with its status and temperature, and the live camera is available as a standard MJPEG stream.</p>
+        <p class="answer">Yes. The <a href="https://github.com/prj-july/ha-june-oven">June Oven integration for Home Assistant</a> adds the oven with its status, temperature and cook controls, plus a dashboard card styled after the oven's own glass screen. Install it through HACS. The live camera is also available as a standard MJPEG stream.</p>
       </details>
       <details>
         <summary>Is this made by June?</summary>
@@ -518,7 +615,7 @@
 </section>
 
 <!-- ============================ Contact / GitHub ============================ -->
-<section id="contact">
+<section class="tint" id="contact">
   <div class="wrap">
     <div class="contact-grid">
       <div class="prose">
@@ -530,6 +627,7 @@
       </div>
       <ul class="link-list">
         <li><a href="mailto:hello@project-july.org"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>hello@project-july.org<small>Questions and help</small></span></a></li>
+        <li><a href="https://github.com/prj-july/ha-june-oven"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg><span>Home Assistant integration<small>Integration and dashboard card, on GitHub</small></span></a></li>
         <li><div class="soon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span>Source code and build scripts<small>Published with the first release</small></span></div></li>
         <li><div class="soon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg><span>Issue tracker<small>Opens with the first release</small></span></div></li>
       </ul>    </div>

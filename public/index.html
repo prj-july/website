@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project July — keep your June oven working</title>
+<meta name="description" content="A community project that keeps June ovens working after the June cloud shuts down, by running a small local server on the oven itself. No cloud, no subscription, private by default.">
+<meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://project-july.org/">
+<link rel="icon" href="assets/project-july-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Link previews (Open Graph, used by iMessage, Slack, WhatsApp, Facebook, LinkedIn, Discord) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Project July">
+<meta property="og:url" content="https://project-july.org/">
+<meta property="og:title" content="Project July — keep your June oven working">
+<meta property="og:description" content="A community project that keeps June ovens working after the June cloud shuts down. No cloud, no subscription, private by default.">
+<meta property="og:image" content="https://project-july.org/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Project July: Keep your June oven working after the cloud goes away. No cloud. No subscription. Private by default.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<!-- Icon sprite. The first six are the design-system set; the rest are drawn to match
+     (24px grid, 1.75 stroke, round caps). Use with <svg class="icon"><use href="#i-name"/></svg>. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-mark" viewBox="0 0 64 64" fill="currentColor"><path fill-rule="evenodd" d="M11 12H53A7 7 0 0 1 60 19V41A7 7 0 0 1 53 48H11A7 7 0 0 1 4 41V19A7 7 0 0 1 11 12ZM13.25 16.5H50.75A1.25 1.25 0 0 1 52 17.75V17.75A1.25 1.25 0 0 1 50.75 19H13.25A1.25 1.25 0 0 1 12 17.75V17.75A1.25 1.25 0 0 1 13.25 16.5ZM13.5 23H50.5A3.5 3.5 0 0 1 54 26.5V39.5A3.5 3.5 0 0 1 50.5 43H13.5A3.5 3.5 0 0 1 10 39.5V26.5A3.5 3.5 0 0 1 13.5 23Z"/><path d="M46.25 28.5H50.25A1.25 1.25 0 0 1 51.5 29.75V39.25A1.25 1.25 0 0 1 50.25 40.5H46.25A1.25 1.25 0 0 1 45 39.25V29.75A1.25 1.25 0 0 1 46.25 28.5ZM10.5 48H16.5A1.5 1.5 0 0 1 18 49.5V50A1.5 1.5 0 0 1 16.5 51.5H10.5A1.5 1.5 0 0 1 9 50V49.5A1.5 1.5 0 0 1 10.5 48ZM47.5 48H53.5A1.5 1.5 0 0 1 55 49.5V50A1.5 1.5 0 0 1 53.5 51.5H47.5A1.5 1.5 0 0 1 46 50V49.5A1.5 1.5 0 0 1 47.5 48Z"/></symbol>
+    <symbol id="i-oven" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 8.5h17"/><path d="M7 6h2"/><path d="M13 6h4"/><rect x="7" y="11.5" width="10" height="6.5" rx="1.5"/></symbol>
+    <symbol id="i-thermometer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.5V5a2.5 2.5 0 0 0-5 0v9.5a4 4 0 1 0 5 0Z"/><path d="M11.5 15.5a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5a2 2 0 0 1 2-2h1.2l1.1-1.7a1 1 0 0 1 .84-.46h6.72a1 1 0 0 1 .84.46l1.1 1.7h1.2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z"/><circle cx="12" cy="12.5" r="3.5"/></symbol>
+    <symbol id="i-house" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5"/><path d="M5.5 9.5V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 20v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10.5a11 11 0 0 1 14 0"/><path d="M7.5 13.5a7 7 0 0 1 9 0"/><path d="M10 16.5a3 3 0 0 1 4 0"/><path d="M12 19.5a.6.6 0 1 0 .01 0Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.4 2.4 4.6-4.8"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="3" width="11" height="18" rx="2.5"/><path d="M10.5 17.5h3"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="6" rx="1.5"/><rect x="4" y="13.5" width="16" height="6" rx="1.5"/><path d="M7.5 7.5h.01"/><path d="M7.5 16.5h.01"/><path d="M11 7.5h5.5"/><path d="M11 16.5h5.5"/></symbol>
+    <symbol id="i-cloud-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 8.3A4.5 4.5 0 0 0 7 17.5h10.5"/><path d="M11 6.3A5.5 5.5 0 0 1 17.8 11 3.3 3.3 0 0 1 20.3 15.8"/><path d="M4 4l16 16"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.6 7 9 4.1-1.4 7-4.8 7-9V6Z"/><path d="m9 12 2.2 2.2L15.2 10"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15.5" r="3.5"/><path d="m10.5 13 8-8"/><path d="m16 7.5 2.5 2.5"/><path d="m13.5 10 2 2"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m8.5 8-4 4 4 4"/><path d="m15.5 8 4 4-4 4"/><path d="m13.5 5.5-3 13"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v11a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5Z"/><path d="M14 3.5V8h4.5"/><path d="M8.5 12.5h7"/><path d="M8.5 16h5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-9l-4.5 3.5v-3.5H5A1.5 1.5 0 0 1 3.5 15V7A1.5 1.5 0 0 1 5 5.5Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Project July, home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span>Project July</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#status">Status</a>
+      <a href="#downloads">Downloads</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================ Home / Overview ============================ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">For June Oven owners · 2nd gen today</p>
+        <h1>Keep your oven working after the cloud goes away.</h1>
+        <p class="lead">When June's servers shut down, your oven can no longer be paired, controlled, or show its camera. Project July puts a small replacement server on the oven itself, so it keeps working on your home network. No subscription, and nothing sent over the internet.</p>
+        <div class="hero-actions">
+          <a class="jo-btn jo-btn-primary" href="#status">See what works today</a>
+          <a class="jo-btn jo-btn-secondary" href="#how">How it works</a>
+        </div>
+        <div class="hero-note">
+          <span class="jo-pill"><span class="jo-pill-dot" aria-hidden="true"></span>Community project · early release</span>
+          <span class="small muted">Status as of <time datetime="2026-09-28">28 September 2026</time></span>
+        </div>
+      </div>
+
+      <figure class="hero-figure" style="margin:0">
+        <div class="jo-oven" role="img" aria-label="Illustration of the oven card: Kitchen oven, preheating, 312 degrees of a 350 degree target. The camera view is a real recording from inside a June oven, with the heating elements glowing orange in the dark.">
+          <div class="jo-oven-head">
+            <h3 class="jo-oven-name">Kitchen oven</h3>
+            <span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Preheating</span>
+          </div>
+          <div class="jo-oven-cam">
+            <picture>
+              <source srcset="assets/camera-live.jpg" media="(prefers-reduced-motion: reduce)">
+              <img src="assets/camera-live.webp" width="640" height="480" alt="">
+            </picture>
+          </div>
+          <div class="jo-oven-readout">
+            <div class="jo-oven-temp">312<sup>°F</sup></div>
+            <div class="jo-oven-target">Target <b>350°</b></div>
+          </div>
+        </div>
+        <!-- TODO: swap for a real screenshot / short clip of the phone controlling the oven. -->
+        <figcaption class="figure-cap small muted">Illustration of the oven card, with a real 5-second camera recording from a June oven preheating</figcaption>
+      </figure>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-cloud-off"/></svg></div>
+        <div><h4>No cloud</h4><p>The oven answers its own requests. There's no June server and no one else's server either.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-oven"/></svg></div>
+        <div><h4>Keep your oven</h4><p>Preheat, temperature, timers, cook programs, and the live camera keep working.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg></div>
+        <div><h4>Private by default</h4><p>Everything stays on your home network, camera included.</p></div>
+      </div>
+    </div>
+
+    <div class="diagram" role="img" aria-label="Diagram: inside your home network, your June Oven connects to a local server running on the oven itself, which connects over home Wi-Fi to your phone and Home Assistant. The June cloud is crossed out; it is not needed.">
+      <!-- Wide layout -->
+      <svg class="d-wide" viewBox="0 0 920 360" aria-hidden="true">
+        <path class="dg-cloud" d="M435 76H488A16 16 0 0 0 490 44A24 24 0 0 0 444 40A18 18 0 0 0 435 76Z"/>
+        <line class="dg-cross" x1="428" y1="26" x2="494" y2="86"/>
+        <text class="dg-t" x="520" y="50">June cloud</text>
+        <text class="dg-s" x="520" y="70">Not needed anymore</text>
+
+        <rect class="dg-home" x="16" y="106" width="888" height="240" rx="20"/>
+        <text class="dg-l" x="40" y="138">YOUR HOME NETWORK</text>
+
+        <rect class="dg-box" x="40" y="162" width="220" height="150" rx="14"/>
+        <use href="#i-oven" x="130" y="182" width="40" height="40" style="color:var(--ink)"/>
+        <text class="dg-t" x="150" y="252" text-anchor="middle">Your June Oven</text>
+        <text class="dg-s" x="150" y="276" text-anchor="middle">Same oven, same buttons</text>
+
+        <rect class="dg-server" x="350" y="162" width="220" height="150" rx="14"/>
+        <use href="#i-server" x="440" y="182" width="40" height="40" style="color:var(--ember)"/>
+        <text class="dg-t" x="460" y="252" text-anchor="middle">Local server</text>
+        <text class="dg-s" x="460" y="276" text-anchor="middle">Runs on the oven itself</text>
+
+        <rect class="dg-box" x="660" y="162" width="220" height="150" rx="14"/>
+        <use href="#i-phone" x="750" y="182" width="40" height="40" style="color:var(--ink)"/>
+        <text class="dg-t" x="770" y="252" text-anchor="middle">Phone &amp; Home Assistant</text>
+        <text class="dg-s" x="770" y="276" text-anchor="middle">Full oven control</text>
+        <text class="dg-s" x="770" y="294" text-anchor="middle">and live camera</text>
+
+        <line class="dg-line" x1="276" y1="237" x2="334" y2="237"/>
+        <polygon class="dg-arrow" points="268,237 279,231 279,243"/>
+        <polygon class="dg-arrow" points="342,237 331,231 331,243"/>
+
+        <line class="dg-line" x1="586" y1="237" x2="644" y2="237"/>
+        <polygon class="dg-arrow" points="578,237 589,231 589,243"/>
+        <polygon class="dg-arrow" points="652,237 641,231 641,243"/>
+        <text class="dg-s" x="615" y="222" text-anchor="middle">Wi-Fi</text>
+      </svg>
+
+      <!-- Tall layout for phones -->
+      <svg class="d-tall" viewBox="0 0 340 704" aria-hidden="true">
+        <path class="dg-cloud" d="M115 76H168A16 16 0 0 0 170 44A24 24 0 0 0 124 40A18 18 0 0 0 115 76Z"/>
+        <line class="dg-cross" x1="108" y1="26" x2="174" y2="86"/>
+        <text class="dg-t" x="196" y="50">June cloud</text>
+        <text class="dg-s" x="196" y="70">Not needed</text>
+
+        <rect class="dg-home" x="10" y="106" width="320" height="588" rx="20"/>
+        <text class="dg-l" x="30" y="138">YOUR HOME NETWORK</text>
+
+        <rect class="dg-box" x="50" y="160" width="240" height="130" rx="14"/>
+        <use href="#i-oven" x="150" y="176" width="40" height="40" style="color:var(--ink)"/>
+        <text class="dg-t" x="170" y="244" text-anchor="middle">Your June Oven</text>
+        <text class="dg-s" x="170" y="268" text-anchor="middle">Same oven, same buttons</text>
+
+        <rect class="dg-server" x="50" y="350" width="240" height="130" rx="14"/>
+        <use href="#i-server" x="150" y="366" width="40" height="40" style="color:var(--ember)"/>
+        <text class="dg-t" x="170" y="434" text-anchor="middle">Local server</text>
+        <text class="dg-s" x="170" y="458" text-anchor="middle">Runs on the oven itself</text>
+
+        <rect class="dg-box" x="50" y="540" width="240" height="130" rx="14"/>
+        <use href="#i-phone" x="150" y="556" width="40" height="40" style="color:var(--ink)"/>
+        <text class="dg-t" x="170" y="620" text-anchor="middle">Phone &amp; Home Assistant</text>
+        <text class="dg-s" x="170" y="642" text-anchor="middle">Full oven control</text>
+        <text class="dg-s" x="170" y="660" text-anchor="middle">and live camera</text>
+
+        <line class="dg-line" x1="170" y1="306" x2="170" y2="334"/>
+        <polygon class="dg-arrow" points="170,298 164,309 176,309"/>
+        <polygon class="dg-arrow" points="170,342 164,331 176,331"/>
+
+        <line class="dg-line" x1="170" y1="496" x2="170" y2="524"/>
+        <polygon class="dg-arrow" points="170,488 164,499 176,499"/>
+        <polygon class="dg-arrow" points="170,532 164,521 176,521"/>
+        <text class="dg-s" x="186" y="515">Wi-Fi</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ How it works ============================ -->
+<section class="tint" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>The oven becomes its own cloud</h2>
+      <p class="lead">Your oven and phone expect to talk to June's servers. Project July answers in the same way, from inside your home. You set it up once.</p>
+    </div>
+
+    <div class="how-grid">
+      <ol class="steps">
+        <li class="jo-step">
+          <span class="jo-step-num" aria-hidden="true">1</span>
+          <div class="jo-step-body">
+            <h3 class="jo-step-title">A small server runs on the oven</h3>
+            <p class="jo-step-text">We install one small program on the oven. It answers the same requests the June cloud used to, so the oven and phone carry on as before.</p>
+          </div>
+        </li>
+        <li class="jo-step">
+          <span class="jo-step-num" aria-hidden="true">2</span>
+          <div class="jo-step-body">
+            <h3 class="jo-step-title">The oven points at itself</h3>
+            <p class="jo-step-text">The oven's network settings are changed so its “cloud” address leads back to the oven, not to June's servers.</p>
+          </div>
+        </li>
+        <li class="jo-step">
+          <span class="jo-step-num" aria-hidden="true">3</span>
+          <div class="jo-step-body">
+            <h3 class="jo-step-title">The phone app is adjusted once</h3>
+            <p class="jo-step-text">A companion app connects to the oven's address on your network and trusts your home's own security certificate.</p>
+          </div>
+        </li>
+        <li class="jo-step">
+          <span class="jo-step-num" aria-hidden="true">4</span>
+          <div class="jo-step-body">
+            <h3 class="jo-step-title">The live camera stays local</h3>
+            <p class="jo-step-text">A camera program takes still pictures and streams them to your phone and Home Assistant. No video leaves your home.</p>
+          </div>
+        </li>
+        <li class="jo-step">
+          <span class="jo-step-num" aria-hidden="true">5</span>
+          <div class="jo-step-body">
+            <h3 class="jo-step-title">Pairing stays at home</h3>
+            <p class="jo-step-text">The oven and phone keep, or re-create, the secure pairing they already had. You can pair as many new phones and tablets as you like, and pairing happens entirely on your home network. Only your phones can control your oven.</p>
+          </div>
+        </li>
+      </ol>
+
+      <aside class="result-card" aria-labelledby="result-title">
+        <h3 id="result-title">What you end up with</h3>
+        <ul class="checklist">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Preheat and temperature changes</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Timers and cook programs</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Live camera on your phone</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Home Assistant support</li>
+        </ul>
+        <div class="tags">
+          <span class="jo-pill jo-pill-cooking"><span class="jo-pill-dot" aria-hidden="true"></span>One-time setup</span>
+          <span class="jo-pill jo-pill-cooking"><span class="jo-pill-dot" aria-hidden="true"></span>Home network only</span>
+          <span class="jo-pill jo-pill-cooking"><span class="jo-pill-dot" aria-hidden="true"></span>No subscription</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Compatibility / Status ============================ -->
+<section id="status">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Compatibility &amp; status</p>
+      <h2>What works today</h2>
+      <p class="lead">This is an early project. Here is exactly what has been tested, and what is still being built.</p>
+    </div>
+
+    <div class="status-grid">
+      <div class="table-wrap">
+        <table class="stack">
+          <caption class="sr-only" style="position:absolute;left:-9999px">Feature status</caption>
+          <thead><tr><th scope="col">Feature</th><th scope="col">Status</th><th scope="col">Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="file-name">Local pairing</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Fully local, with no June servers. Pair as many devices as you like.</td></tr>
+            <tr><td class="file-name">Control</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Preheat, set temperature, cancel.</td></tr>
+            <tr><td class="file-name">Live camera</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">About 15 frames a second, up from 1 with June's app. The fisheye is corrected.</td></tr>
+            <tr><td class="file-name">MJPEG stream</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">For Home Assistant and other camera viewers.</td></tr>
+            <tr><td class="file-name">Camera while cooking</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Records only during a cook, plus an optional manual view.</td></tr>
+            <tr><td class="file-name">Disk and log limits</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Storage use is capped and old logs are rotated out.</td></tr>
+            <tr><td class="file-name">Per-home certificates</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>In progress</span></td><td data-label="Notes" class="muted">Each home gets its own security keys.</td></tr>
+            <tr><td class="file-name">One-touch installer</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>In progress</span></td><td data-label="Notes" class="muted">For now, setup follows a written guide.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-8)">
+        <div class="card">
+          <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-oven"/></svg><h3>Supported ovens</h3></div>
+          <ul class="compat">
+            <li><span><strong>June Oven, 2nd gen</strong><small>Tested and working</small></span><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></li>
+            <li><span><strong>June Oven, 1st gen</strong><small>Should work, not tested yet</small></span><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Untested</span></li>
+            <li><span><strong>June Oven, 3rd gen</strong><small>Blocked by hardware limits</small></span><span class="jo-pill jo-pill-fault"><span class="jo-pill-dot" aria-hidden="true"></span>Blocked</span></li>
+          </ul>
+          <!-- TODO: list the tested firmware version(s). -->
+          <p class="small">Have a 1st-gen oven and happy to help test? <a href="#contact">Get in touch</a>.</p>
+        </div>
+        <div>
+          <h3 style="font-size:20px;line-height:28px;font-family:var(--font-sans);margin-bottom:var(--space-4)">Latest updates</h3>
+          <ol class="updates" reversed>
+            <!-- TODO: confirm this entry, then add a new dated line each time something is verified. -->
+            <li><time datetime="2026-09-28">2026-09-28</time><span>Working on the 2nd-gen June Oven. The 1st gen should work but is untested. The 3rd gen is blocked by hardware limits.</span></li>
+            <li><time datetime="2026-09-26">2026-09-26</time><span>Verified on oven 2: pairing, control and live camera.</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Downloads / Instructions ============================ -->
+<section class="tint" id="downloads">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Downloads &amp; instructions</p>
+      <h2>Set it up once</h2>
+      <p class="lead">The guides and files will be linked here soon, once verification and more testing are complete. Here's what to expect.</p>
+    </div>
+
+    <div class="dl-grid">
+      <div class="walkthrough" id="walkthrough">
+        <div class="wt-frame">
+          <iframe src="setup/player.html" title="3D walkthrough of the oven setup" loading="lazy" allow="fullscreen"></iframe>
+        </div>
+        <p class="small muted">Every step on a 3D model of the June oven, including the micro-USB plug. It plays when you scroll to it. Drag to look around, or <a href="setup/">open it full screen</a>.</p>
+      </div>
+
+      <div class="dl-notes">
+        <div class="jo-notice jo-notice-info">
+          <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+          <div class="jo-notice-body">
+            <p class="jo-notice-title">Before you begin</p>
+            <ul class="checklist jo-notice-text" style="margin-top:var(--space-2)">
+              <li>A micro-USB cable that carries data (not a charge-only cable)</li>
+              <li>A laptop</li>
+              <li>A USB stick to start the laptop from (<a href="setup/#usb-stick">how to prepare it</a>)</li>
+              <li>A screwdriver</li>
+              <li>About one hour</li>
+            </ul>
+          </div>
+        </div>
+        <div class="jo-notice">
+          <span class="jo-notice-mark" style="color:var(--ember)"><svg aria-hidden="true"><use href="#i-oven"/></svg></span>
+          <div class="jo-notice-body">
+            <p class="jo-notice-title">What setup looks like</p>
+            <ol class="mini-steps jo-notice-text">
+              <li><span>Unplug the oven, lay it on its side and take out 7 screws.</span></li>
+              <li><span>Plug in the micro-USB cable.</span></li>
+              <li><span>Start your laptop from the USB stick and choose <strong>Install</strong>.</span></li>
+              <li><span>Hold the <strong>SW2</strong> button while you plug the oven back in, then press <strong>OK</strong>.</span></li>
+            </ol>
+            <p class="small muted">The oven is unplugged while you open it. Once it’s plugged back in, touch only SW2 and the micro-USB cable. <a href="#walkthrough">Watch it in 3D</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="stack">
+          <thead><tr><th scope="col">File</th><th scope="col">What it's for</th><th scope="col">Availability</th></tr></thead>
+          <tbody>
+            <!-- When a file is ready: upload it to the R2 downloads bucket, link the name,
+                 and replace the pill with its SHA-256 in <code class="checksum">. -->
+            <tr>
+              <td><a class="file-name" href="setup/">Install guide</a></td>
+              <td data-label="What it's for" class="muted">Start here. Every step, with a 3D walkthrough.</td>
+              <td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Available</span></td>
+            </tr>
+            <tr>
+              <td class="file-name">Installer USB image</td>
+              <td data-label="What it's for" class="muted">Copy it onto a USB stick and start your laptop from it.</td>
+              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+            </tr>
+            <tr>
+              <td class="file-name">On-oven runbook</td>
+              <td data-label="What it's for" class="muted">Reference for what runs on the oven, and how to check it.</td>
+              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+            </tr>
+            <tr>
+              <td class="file-name">Companion app (APK)</td>
+              <td data-label="What it's for" class="muted">Android app that controls the oven on your network.</td>
+              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+            </tr>
+            <tr>
+              <td class="file-name">JCM app (APK)</td>
+              <td data-label="What it's for" class="muted">Second Android package used during setup.</td>
+              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+            </tr>
+            <tr>
+              <td class="file-name mono">june-local</td>
+              <td data-label="What it's for" class="muted">The local server that runs on the oven.</td>
+              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+            </tr>
+            <tr>
+              <td class="file-name mono">june-camerad</td>
+              <td data-label="What it's for" class="muted">The camera program that streams stills locally.</td>
+              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+            </tr>
+            <tr>
+              <td class="file-name">Certificate scripts</td>
+              <td data-label="What it's for" class="muted">Make your home's own security certificate.</td>
+              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">Every file will be listed with its SHA-256 checksum, so you can check that your download is exactly what we published.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Security & Privacy ============================ -->
+<section id="privacy">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Security &amp; privacy</p>
+      <h2>Your kitchen stays in your home</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-cloud-off"/></svg><h3>No cloud</h3></div>
+        <p>The oven and your phone talk only to each other on your home network. Nothing is sent to June, to us, or to anyone else.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><h3>The camera never leaves home</h3></div>
+        <p>Camera pictures are streamed only on your local network, and only while you're cooking unless you open the manual view.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Your keys, your oven</h3></div>
+        <p>The oven and phone use the same secure pairing as before, so only your phones can control your oven. Pairing a new device happens entirely at home. Per-home certificates are on the way.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><h3>Open source</h3></div>
+        <p>The code and build scripts will be published with the first release. You, or someone you trust, will be able to check exactly what runs on the oven.</p>
+      </div>
+    </div>
+    <div class="honest">
+      <div class="jo-notice jo-notice-warning" role="note">
+        <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <div class="jo-notice-body">
+          <p class="jo-notice-title">Where things stand</p>
+          <p class="jo-notice-text">Project July is an early community project. It isn't made or supported by June or Weber. Setup is a one-time job: seven screws, one micro-USB cable and one button. Per-home certificates are still being finished. Downloads and source code will follow once testing is complete. We'll keep the status list above up to date.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="tint" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Questions</p>
+      <h2>Frequently asked</h2>
+    </div>
+    <!-- TODO: the answer marked DRAFT needs checking by whoever knows the oven best. -->
+    <div class="faq">
+      <details>
+        <summary>Which June ovens does it work with?</summary>
+        <p class="answer">The 2nd-gen June Oven is tested and working. The 1st gen should work but hasn't been tested yet. If you have one and would like to help test, <a href="#contact">get in touch</a>. The 3rd gen is blocked by hardware limits. <a href="#status">See the compatibility list</a>.</p>
+      </details>
+      <details>
+        <summary>Do I need to buy a server or leave a computer on?</summary>
+        <p class="answer">No. The server runs on the oven itself. You only need a laptop once, during setup.</p>
+      </details>
+      <details>
+        <summary>Is there a subscription?</summary>
+        <p class="answer">No. There's nothing to pay and nothing to renew.</p>
+      </details>
+      <details>
+        <summary>Does it need the internet?</summary>
+        <p class="answer">No. Everything runs on your home network. Your phone needs to be on your home Wi-Fi to control the oven.</p>
+      </details>
+      <details>
+        <summary>Can I add another phone or tablet?</summary>
+        <p class="answer">Yes, as many as you like. Pairing a new device happens entirely on your home network, with no account and no cloud.</p>
+      </details>
+      <details>
+        <!-- DRAFT -->
+        <summary>Will I lose my recipes?</summary>
+        <p class="answer">Cook programs and controls you use from the phone keep working locally. Anything that only ever lived on June's servers can't be brought back by this project.</p>
+      </details>
+      <details>
+        <summary>What happens after a factory reset?</summary>
+        <p class="answer">That depends on how you set it up. With the standard setup, a factory reset removes Project July and the oven goes back to how it came. With the reset-proof setup, the oven keeps its local control after a reset. You might need to pair your phone again.</p>
+      </details>
+      <details>
+        <summary>Can I undo it?</summary>
+        <p class="answer">Yes. With the standard setup, a factory reset removes everything Project July added and puts the oven back the way it came. If you'd rather keep local control no matter what, choose the reset-proof setup. Then a factory reset won't take your local control away.</p>
+      </details>
+      <details>
+        <summary>Does it work with Home Assistant?</summary>
+        <p class="answer">Yes. The oven shows up with its status and temperature, and the live camera is available as a standard MJPEG stream.</p>
+      </details>
+      <details>
+        <summary>Is this made by June?</summary>
+        <p class="answer">No. Project July is an independent community project by June owners. It isn't affiliated with or endorsed by June or Weber.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Contact / GitHub ============================ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="prose">
+        <p class="eyebrow">Who's doing this</p>
+        <h2>Built by owners, for owners</h2>
+        <!-- TODO: make this personal: who you are, and how you came to build this. -->
+        <p class="lead">We own June ovens too. The hardware still works well, and it seemed wrong for good ovens to lose their features because a server was switched off.</p>
+        <p class="muted">Project July is a volunteer, community project. There are no sponsors and nothing to sell. If you have a question, feel free to email us. We'll help where we can.</p>
+      </div>
+      <ul class="link-list">
+        <li><a href="mailto:hello@project-july.org"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>hello@project-july.org<small>Questions and help</small></span></a></li>
+        <li><div class="soon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span>Source code and build scripts<small>Published with the first release</small></span></div></li>
+        <li><div class="soon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg><span>Issue tracker<small>Opens with the first release</small></span></div></li>
+      </ul>    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Project July, back to top">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span>Project July</span>
+    </a>
+    <p class="small muted">An independent community project. Not affiliated with, endorsed by, or supported by June or Weber. “June” is used only to describe which ovens this works with.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setup walkthrough — Project July</title>
+<meta name="description" content="Watch every step of the Project July setup on a 3D June oven: lay it on its side, take out seven screws, plug in the micro-USB cable and click Install.">
+<meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://project-july.org/setup/">
+<link rel="icon" href="../assets/project-july-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+<!-- Link previews (Open Graph, used by iMessage, Slack, WhatsApp, Facebook, LinkedIn, Discord) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Project July">
+<meta property="og:url" content="https://project-july.org/setup/">
+<meta property="og:title" content="Project July setup, step by step in 3D">
+<meta property="og:description" content="Lay the oven on its side, take out seven screws, plug in the micro-USB cable and click Install. Watch it on a 3D June oven.">
+<meta property="og:image" content="https://project-july.org/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Project July: Keep your June oven working after the cloud goes away. No cloud. No subscription. Private by default.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<!-- Icon sprite. The first six are the design-system set; the rest are drawn to match
+     (24px grid, 1.75 stroke, round caps). Use with <svg class="icon"><use href="#i-name"/></svg>. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-mark" viewBox="0 0 64 64" fill="currentColor"><path fill-rule="evenodd" d="M11 12H53A7 7 0 0 1 60 19V41A7 7 0 0 1 53 48H11A7 7 0 0 1 4 41V19A7 7 0 0 1 11 12ZM13.25 16.5H50.75A1.25 1.25 0 0 1 52 17.75V17.75A1.25 1.25 0 0 1 50.75 19H13.25A1.25 1.25 0 0 1 12 17.75V17.75A1.25 1.25 0 0 1 13.25 16.5ZM13.5 23H50.5A3.5 3.5 0 0 1 54 26.5V39.5A3.5 3.5 0 0 1 50.5 43H13.5A3.5 3.5 0 0 1 10 39.5V26.5A3.5 3.5 0 0 1 13.5 23Z"/><path d="M46.25 28.5H50.25A1.25 1.25 0 0 1 51.5 29.75V39.25A1.25 1.25 0 0 1 50.25 40.5H46.25A1.25 1.25 0 0 1 45 39.25V29.75A1.25 1.25 0 0 1 46.25 28.5ZM10.5 48H16.5A1.5 1.5 0 0 1 18 49.5V50A1.5 1.5 0 0 1 16.5 51.5H10.5A1.5 1.5 0 0 1 9 50V49.5A1.5 1.5 0 0 1 10.5 48ZM47.5 48H53.5A1.5 1.5 0 0 1 55 49.5V50A1.5 1.5 0 0 1 53.5 51.5H47.5A1.5 1.5 0 0 1 46 50V49.5A1.5 1.5 0 0 1 47.5 48Z"/></symbol>
+    <symbol id="i-oven" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 8.5h17"/><path d="M7 6h2"/><path d="M13 6h4"/><rect x="7" y="11.5" width="10" height="6.5" rx="1.5"/></symbol>
+    <symbol id="i-thermometer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.5V5a2.5 2.5 0 0 0-5 0v9.5a4 4 0 1 0 5 0Z"/><path d="M11.5 15.5a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5a2 2 0 0 1 2-2h1.2l1.1-1.7a1 1 0 0 1 .84-.46h6.72a1 1 0 0 1 .84.46l1.1 1.7h1.2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z"/><circle cx="12" cy="12.5" r="3.5"/></symbol>
+    <symbol id="i-house" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5"/><path d="M5.5 9.5V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 20v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10.5a11 11 0 0 1 14 0"/><path d="M7.5 13.5a7 7 0 0 1 9 0"/><path d="M10 16.5a3 3 0 0 1 4 0"/><path d="M12 19.5a.6.6 0 1 0 .01 0Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.4 2.4 4.6-4.8"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="3" width="11" height="18" rx="2.5"/><path d="M10.5 17.5h3"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="6" rx="1.5"/><rect x="4" y="13.5" width="16" height="6" rx="1.5"/><path d="M7.5 7.5h.01"/><path d="M7.5 16.5h.01"/><path d="M11 7.5h5.5"/><path d="M11 16.5h5.5"/></symbol>
+    <symbol id="i-cloud-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 8.3A4.5 4.5 0 0 0 7 17.5h10.5"/><path d="M11 6.3A5.5 5.5 0 0 1 17.8 11 3.3 3.3 0 0 1 20.3 15.8"/><path d="M4 4l16 16"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.6 7 9 4.1-1.4 7-4.8 7-9V6Z"/><path d="m9 12 2.2 2.2L15.2 10"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15.5" r="3.5"/><path d="m10.5 13 8-8"/><path d="m16 7.5 2.5 2.5"/><path d="m13.5 10 2 2"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m8.5 8-4 4 4 4"/><path d="m15.5 8 4 4-4 4"/><path d="m13.5 5.5-3 13"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v11a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5Z"/><path d="M14 3.5V8h4.5"/><path d="M8.5 12.5h7"/><path d="M8.5 16h5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-9l-4.5 3.5v-3.5H5A1.5 1.5 0 0 1 3.5 15V7A1.5 1.5 0 0 1 5 5.5Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../#top" aria-label="Project July, home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span>Project July</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="../#how">How it works</a>
+      <a href="../#status">Status</a>
+      <a href="../#downloads">Downloads</a>
+      <a href="../#privacy">Privacy</a>
+      <a href="../#faq">FAQ</a>
+      <a href="../#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="setup-hero">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Setup walkthrough</p>
+      <h1 class="setup-title">Watch the setup, step by step</h1>
+      <p class="lead">Four steps on a 3D model of the June oven. Press play, pick any step, or drag to look around.</p>
+      <p class="muted">Right now Project July works on the 2nd-gen June Oven. The 1st gen should work but is untested, and the 3rd gen is blocked by hardware limits. <a href="../#status">See compatibility</a>.</p>
+    </div>
+    <div class="setup-player">
+      <iframe src="player.html" title="3D walkthrough of the oven setup" allow="fullscreen"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="tint" id="usb-stick">
+  <div class="wrap setup-grid">
+    <div>
+      <h2 style="margin-bottom:var(--space-6)">Before you start: the USB stick</h2>
+      <ol class="steps">
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Download the installer image</h3><p class="jo-step-text">It will be linked on the <a href="../#downloads">home page</a> once testing is complete, with its checksum.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Copy it onto the USB stick</h3><p class="jo-step-text">Use a free tool such as balenaEtcher, which runs on Windows, Mac and Linux. This erases whatever is on the stick.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from it</h3><p class="jo-step-text">Plug the stick in, switch the laptop on and press its boot-menu key straight away. It's often F12, F11, F9 or Esc, and usually shown briefly on screen. Then pick the USB stick. On an Intel Mac, hold Option while it starts. Macs with Apple chips (M1 and later) can't start from this stick.</p></div></li>
+      </ol>
+      <p class="muted" style="margin-top:var(--space-6)">The laptop's own system and files are left alone. Take the stick out and restart to go back to normal.</p>
+    </div>
+    <div class="jo-notice jo-notice-info">
+      <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+      <div class="jo-notice-body">
+        <p class="jo-notice-title">What you need</p>
+        <ul class="checklist jo-notice-text" style="margin-top:var(--space-2)">
+          <li>A micro-USB cable that carries data (not a charge-only cable)</li>
+          <li>A laptop</li>
+          <li>A USB stick, prepared as described here</li>
+          <li>A screwdriver</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap setup-grid">
+    <div>
+      <h2 style="margin-bottom:var(--space-6)">The four steps</h2>
+      <ol class="steps">
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Unplug the oven, lay it on its side and take out the 7 screws</h3><p class="jo-step-text">Unplug it from the wall first. Lay it down on its left side, bottom plate facing you, and take out the seven screws: four in the corners, one in the middle and two on the cord housing. Lift the plate off and rest its edge on the shelf. The power cord stays attached to the plate.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Plug in the micro-USB cable</h3><p class="jo-step-text">The port is on the edge of the board. Hold the plug with its flat side facing out, ease it in straight and press gently until it clicks.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from the USB stick and choose Install</h3><p class="jo-step-text">Plug the other end of the cable into the laptop and <a href="#usb-stick">start it from the USB stick</a>. At the Debian boot menu, press Enter. In the June Local installer, pick “Install June Local” and press Enter. It then asks you to put the oven in recovery mode.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Hold SW2 while you plug the oven back in, then press OK</h3><p class="jo-step-text">Find <strong>SW2</strong>: the silver switch with a blue cap, next to the heatsink. Press and hold it, plug the oven back into the wall, and keep holding for about 10 seconds. Let go, press OK on the laptop, and the installer does the rest.</p></div></li>
+      </ol>
+    </div>
+    <div class="jo-notice jo-notice-warning" role="note">
+      <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+      <div class="jo-notice-body">
+        <p class="jo-notice-title">Mains power</p>
+        <p class="jo-notice-text">Unplug the oven before you open it. You only plug it back in while holding SW2, and from then on parts inside carry mains power. Touch only SW2 and the micro-USB cable, and keep fingers and tools away from everything else on the boards and wires.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Project July, back to top">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span>Project July</span>
+    </a>
+    <p class="small muted">An independent community project. Not affiliated with, endorsed by, or supported by June or Weber. “June” is used only to describe which ovens this works with.</p>
+  </div>
+</footer>
+
+</body>
+</html>

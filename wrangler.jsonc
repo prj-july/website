@@ -1,0 +1,21 @@
+// Project July website: a static site served by Workers Static Assets (no Worker script).
+// Deploy with `npx wrangler deploy`; preview locally with `npx wrangler dev`.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "project-july",
+  "compatibility_date": "2026-09-26",
+
+  // Only public/ is published.
+  "assets": {
+    "directory": "./public"
+  },
+
+  // Attaches project-july.org on deploy (the zone must be active on Cloudflare).
+  "routes": [
+    { "pattern": "project-july.org", "custom_domain": true }
+  ]
+
+  // Downloads (APKs, binaries, guides) will live in a separate R2 bucket served on its own
+  // custom domain (e.g. downloads.project-july.org), so the site needs no R2 binding.
+  // Individual site assets are capped at 25 MiB, which is why large files don't go here.
+}

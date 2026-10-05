@@ -34,6 +34,14 @@ three.js r128 is served from `public/setup/vendor/` (MIT licence included) rathe
 The images shown while the home page player loads are `public/setup/poster-light.webp` and `poster-dark.webp`,
 rendered from `player.html?poster` with headless Chrome at 1280×720.
 
+## July Oven card guide
+
+`public/card/` is a walkthrough of the Home Assistant dashboard card, at `/card/`, linked from the
+App section and the Home Assistant FAQ. It is styled after the card's own dark glass rather than
+the site's design system. Its screenshots and GIFs are rendered from the card's test page in
+`prj-july/ha-june-oven` (`tests/card/index.html`); the same guide, in Markdown, is in that repo's
+`docs/card-guide/`.
+
 ## Videos
 
 `tools/record-video.js` records the walkthrough to MP4 for sharing (Reddit, chat). It drives

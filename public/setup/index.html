@@ -85,6 +85,15 @@
       <p class="lead">Four steps on a 3D model of the June oven. Press play, pick any step, or drag to look around.</p>
       <p class="muted">Right now Project July works on the 2nd-gen June Oven. The 1st gen should work but is untested, and the 3rd gen is blocked by hardware limits. <a href="../#status">See compatibility</a>.</p>
     </div>
+    <div class="jo-notice early-access" role="note" aria-label="Early access">
+      <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+      <div class="jo-notice-body">
+        <p class="jo-notice-title"><span class="early-tag">Early access · version 0.5</span> Not for everyone yet</p>
+        <p class="jo-notice-text">Project July is in early access. We're reviewing feedback from the first testers and fixing what they find. If you're less comfortable with technical steps, please hold off until more people have tested it.</p>
+        <p class="jo-notice-text"><strong>Whoever you are, make a backup first.</strong> It takes 15 to 30 minutes, and the installer can restore the oven from it if anything goes wrong. <a href="../installer/#backup">How to back up and restore</a></p>
+      </div>
+    </div>
+
     <div class="setup-player">
       <iframe src="player.html" title="3D walkthrough of the oven setup" allow="fullscreen"></iframe>
     </div>
@@ -96,11 +105,11 @@
     <div>
       <h2 style="margin-bottom:var(--space-6)">Before you start: the USB stick</h2>
       <ol class="steps">
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Download the installer image</h3><p class="jo-step-text">It will be linked on the <a href="../#downloads">home page</a> once testing is complete, with its checksum.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Copy it onto the USB stick</h3><p class="jo-step-text">Use a free tool such as balenaEtcher, which runs on Windows, Mac and Linux. This erases whatever is on the stick.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from it</h3><p class="jo-step-text">Plug the stick in, switch the laptop on and press its boot-menu key straight away. It's often F12, F11, F9 or Esc, and usually shown briefly on screen. Then pick the USB stick. On an Intel Mac, hold Option while it starts. Macs with Apple chips (M1 and later) can't start from this stick.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Download the installer image</h3><p class="jo-step-text">It will be linked on the <a href="../#downloads">home page</a> once testing is complete. Check its <a href="../installer/#download">SHA-256 checksum</a> before you use it.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Put Ventoy on the stick and copy the image to it</h3><p class="jo-step-text">Ventoy is a free tool for Windows and Linux. Installing it erases whatever is on the stick. Then copy the image onto the large drive called <strong>Ventoy</strong>, and keep that name: the installer saves its logs and backups there. <a href="../installer/#ventoy">Step-by-step guide</a></p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from it</h3><p class="jo-step-text">Plug the stick in, switch the laptop on and press its boot-menu key straight away. It's often F12, F11, F9 or Esc, and usually shown briefly on screen. Then pick the USB stick. If Secure Boot stops it, see <a href="../installer/#boot">starting the laptop</a>. On an Intel Mac, hold Option while it starts. Macs with Apple chips (M1 and later) can't start from this stick.</p></div></li>
       </ol>
-      <p class="muted" style="margin-top:var(--space-6)">The laptop's own system and files are left alone. Take the stick out and restart to go back to normal.</p>
+      <p class="muted" style="margin-top:var(--space-6)">The laptop's own system and files are left alone. Take the stick out and restart to go back to normal. The <a href="../installer/">installer guide</a> shows every screen.</p>
     </div>
     <div class="jo-notice jo-notice-info">
       <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
@@ -124,8 +133,8 @@
       <ol class="steps">
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Unplug the oven, lay it on its side and take out the 7 screws</h3><p class="jo-step-text">Unplug it from the wall first. Lay it down on its left side, bottom plate facing you, and take out the seven screws: four in the corners, one in the middle and two on the cord housing. Lift the plate off and rest its edge on the shelf. The power cord stays attached to the plate.</p></div></li>
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Plug in the micro-USB cable</h3><p class="jo-step-text">The port is on the edge of the board. Hold the plug with its flat side facing out, ease it in straight and press gently until it clicks.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from the USB stick and choose Install</h3><p class="jo-step-text">Plug the other end of the cable into the laptop and <a href="#usb-stick">start it from the USB stick</a>. At the Debian boot menu, press Enter. In the June Local installer, pick “Install June Local” and press Enter. It then asks you to put the oven in recovery mode.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Hold SW2 while you plug the oven back in, then press OK</h3><p class="jo-step-text">Find <strong>SW2</strong>: the silver switch with a blue cap, next to the heatsink. Press and hold it, plug the oven back into the wall, and keep holding for about 10 seconds. Let go, press OK on the laptop, and the installer does the rest.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from the USB stick and choose Install</h3><p class="jo-step-text">Plug the other end of the cable into the laptop and <a href="#usb-stick">start it from the USB stick</a>. Ventoy and the June Local menu start the installer by themselves. Pick <strong>Install June Local</strong>, then <strong>Next: connect the oven</strong>. It then asks you to put the oven in recovery mode.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Hold SW2 while you plug the oven back in, then press Install</h3><p class="jo-step-text">Find <strong>SW2</strong>: the silver switch with a blue cap, next to the heatsink. Press and hold it, plug the oven back into the wall, and keep holding for about 10 seconds. When the laptop says the oven is found, let go and press <strong>Install June Local</strong>. The installer does the rest in about two minutes.</p></div></li>
       </ol>
     </div>
     <div class="jo-notice jo-notice-warning" role="note">

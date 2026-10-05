@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>USB installer guide — Project July</title>
+<meta name="description" content="Make the Project July USB stick with Ventoy, verify the installer image, and use the June Local installer to back up, install and restore your June oven.">
+<meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://project-july.org/installer/">
+<link rel="icon" href="../assets/project-july-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+<!-- Link previews (Open Graph, used by iMessage, Slack, WhatsApp, Facebook, LinkedIn, Discord) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Project July">
+<meta property="og:url" content="https://project-july.org/installer/">
+<meta property="og:title" content="Project July installer guide: the USB stick and every screen">
+<meta property="og:description" content="Put Ventoy on a USB stick, copy the June Local installer onto it, and back up, install or restore your June oven.">
+<meta property="og:image" content="https://project-july.org/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Project July: Keep your June oven working after the cloud goes away. No cloud. No subscription. Private by default.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+
+<!-- Icon sprite. The first six are the design-system set; the rest are drawn to match
+     (24px grid, 1.75 stroke, round caps). Use with <svg class="icon"><use href="#i-name"/></svg>. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-mark" viewBox="0 0 64 64" fill="currentColor"><path fill-rule="evenodd" d="M11 12H53A7 7 0 0 1 60 19V41A7 7 0 0 1 53 48H11A7 7 0 0 1 4 41V19A7 7 0 0 1 11 12ZM13.25 16.5H50.75A1.25 1.25 0 0 1 52 17.75V17.75A1.25 1.25 0 0 1 50.75 19H13.25A1.25 1.25 0 0 1 12 17.75V17.75A1.25 1.25 0 0 1 13.25 16.5ZM13.5 23H50.5A3.5 3.5 0 0 1 54 26.5V39.5A3.5 3.5 0 0 1 50.5 43H13.5A3.5 3.5 0 0 1 10 39.5V26.5A3.5 3.5 0 0 1 13.5 23Z"/><path d="M46.25 28.5H50.25A1.25 1.25 0 0 1 51.5 29.75V39.25A1.25 1.25 0 0 1 50.25 40.5H46.25A1.25 1.25 0 0 1 45 39.25V29.75A1.25 1.25 0 0 1 46.25 28.5ZM10.5 48H16.5A1.5 1.5 0 0 1 18 49.5V50A1.5 1.5 0 0 1 16.5 51.5H10.5A1.5 1.5 0 0 1 9 50V49.5A1.5 1.5 0 0 1 10.5 48ZM47.5 48H53.5A1.5 1.5 0 0 1 55 49.5V50A1.5 1.5 0 0 1 53.5 51.5H47.5A1.5 1.5 0 0 1 46 50V49.5A1.5 1.5 0 0 1 47.5 48Z"/></symbol>
+    <symbol id="i-oven" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 8.5h17"/><path d="M7 6h2"/><path d="M13 6h4"/><rect x="7" y="11.5" width="10" height="6.5" rx="1.5"/></symbol>
+    <symbol id="i-thermometer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.5V5a2.5 2.5 0 0 0-5 0v9.5a4 4 0 1 0 5 0Z"/><path d="M11.5 15.5a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5a2 2 0 0 1 2-2h1.2l1.1-1.7a1 1 0 0 1 .84-.46h6.72a1 1 0 0 1 .84.46l1.1 1.7h1.2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z"/><circle cx="12" cy="12.5" r="3.5"/></symbol>
+    <symbol id="i-house" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5"/><path d="M5.5 9.5V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 20v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10.5a11 11 0 0 1 14 0"/><path d="M7.5 13.5a7 7 0 0 1 9 0"/><path d="M10 16.5a3 3 0 0 1 4 0"/><path d="M12 19.5a.6.6 0 1 0 .01 0Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.4 2.4 4.6-4.8"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="3" width="11" height="18" rx="2.5"/><path d="M10.5 17.5h3"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="6" rx="1.5"/><rect x="4" y="13.5" width="16" height="6" rx="1.5"/><path d="M7.5 7.5h.01"/><path d="M7.5 16.5h.01"/><path d="M11 7.5h5.5"/><path d="M11 16.5h5.5"/></symbol>
+    <symbol id="i-cloud-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 8.3A4.5 4.5 0 0 0 7 17.5h10.5"/><path d="M11 6.3A5.5 5.5 0 0 1 17.8 11 3.3 3.3 0 0 1 20.3 15.8"/><path d="M4 4l16 16"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.6 7 9 4.1-1.4 7-4.8 7-9V6Z"/><path d="m9 12 2.2 2.2L15.2 10"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15.5" r="3.5"/><path d="m10.5 13 8-8"/><path d="m16 7.5 2.5 2.5"/><path d="m13.5 10 2 2"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m8.5 8-4 4 4 4"/><path d="m15.5 8 4 4-4 4"/><path d="m13.5 5.5-3 13"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v11a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5Z"/><path d="M14 3.5V8h4.5"/><path d="M8.5 12.5h7"/><path d="M8.5 16h5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5h14a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-9l-4.5 3.5v-3.5H5A1.5 1.5 0 0 1 3.5 15V7A1.5 1.5 0 0 1 5 5.5Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../#top" aria-label="Project July, home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span>Project July</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="../#how">How it works</a>
+      <a href="../#status">Status</a>
+      <a href="../#downloads">Downloads</a>
+      <a href="../#privacy">Privacy</a>
+      <a href="../#faq">FAQ</a>
+      <a href="../#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="setup-hero">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Installer guide</p>
+      <h1 class="setup-title">Make the USB stick and run the installer</h1>
+      <p class="lead">The installer runs on a laptop, started from a USB stick. This page shows how to make that stick with Ventoy, and what each screen of the installer looks like.</p>
+      <p class="muted">Opening the oven and finding SW2 is covered in the <a href="../setup/">3D setup walkthrough</a>.</p>
+    </div>
+
+    <div class="jo-notice early-access" role="note" aria-label="Early access">
+      <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+      <div class="jo-notice-body">
+        <p class="jo-notice-title"><span class="early-tag">Early access · version 0.5</span> Not for everyone yet</p>
+        <p class="jo-notice-text">Project July is in early access. We're reviewing feedback from the first testers and fixing what they find. If you're less comfortable with technical steps, please hold off until more people have tested it.</p>
+        <p class="jo-notice-text"><strong>Whoever you are, make a backup first.</strong> It takes 15 to 30 minutes, and the installer can restore the oven from it if anything goes wrong. <a href="#backup">How to back up and restore</a></p>
+      </div>
+    </div>
+
+    <div class="ig-warnings">
+      <div class="jo-notice jo-notice-warning" role="note">
+        <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <div class="jo-notice-body">
+          <p class="jo-notice-title">Installing Ventoy erases the USB stick</p>
+          <p class="jo-notice-text">Everything on the stick is deleted. Copy off anything you want to keep, and check twice that you've picked the stick and not another drive.</p>
+        </div>
+      </div>
+      <div class="jo-notice jo-notice-warning" role="note">
+        <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <div class="jo-notice-body">
+          <p class="jo-notice-title">The installer rewrites the oven's storage</p>
+          <p class="jo-notice-text">Installing or restoring writes to the oven's built-in storage (its eMMC). Make a <a href="#backup">backup</a> first so you can always put the oven back the way it was.</p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="ig-toc" aria-label="On this page">
+      <p class="eyebrow">On this page</p>
+      <ol>
+        <li><a href="#download">Download and verify</a></li>
+        <li><a href="#ventoy">Put Ventoy on the stick</a></li>
+        <li><a href="#copy">Copy the installer and settings</a></li>
+        <li><a href="#boot">Start the laptop from the stick</a></li>
+        <li><a href="#home">The installer's home screen</a></li>
+        <li><a href="#recovery">Put the oven in recovery mode</a></li>
+        <li><a href="#install">Install June Local</a></li>
+        <li><a href="#backup">Back up and restore</a></li>
+        <li><a href="#phone">Use your phone</a></li>
+        <li><a href="#trouble">If something goes wrong</a></li>
+        <li><a href="#inside">What's inside</a></li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section class="tint" id="download">
+  <div class="wrap setup-grid">
+    <div class="ig-flow">
+      <p class="eyebrow">Step 1</p>
+      <h2>Download and verify</h2>
+      <p>You need two downloads:</p>
+      <ul class="ig-list">
+        <li><strong>Ventoy</strong>, a free tool that turns a USB stick into a boot menu. Get it from the official site, <a href="https://www.ventoy.net">ventoy.net</a>.</li>
+        <li><strong>The installer image</strong>, <code>june-local-live.iso</code> (about 1.1 GB). It will be linked under <a href="../#downloads">Downloads</a> once testing is complete.</li>
+      </ul>
+      <p>Before you use the image, check that it's exactly the file we published. Work out its SHA-256 checksum and compare it with the one shown here. If they differ, download it again.</p>
+      <div class="ig-os">
+        <div>
+          <h3 class="ig-h4">Windows (PowerShell)</h3>
+          <pre class="ig-code"><code>Get-FileHash .\june-local-live.iso -Algorithm SHA256</code></pre>
+        </div>
+        <div>
+          <h3 class="ig-h4">Linux</h3>
+          <pre class="ig-code"><code>sha256sum june-local-live.iso</code></pre>
+        </div>
+      </div>
+    </div>
+    <div class="jo-notice jo-notice-info ig-release">
+      <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+      <div class="jo-notice-body">
+        <p class="jo-notice-title">Current build</p>
+        <!-- Update on every release: build ID, date and SHA-256 of june-local-live.iso. -->
+        <dl class="ig-dl jo-notice-text">
+          <dt>File</dt><dd><code>june-local-live.iso</code></dd>
+          <dt>Build</dt><dd><code>20261005-0159-d8748b01</code></dd>
+          <dt>Date</dt><dd>5 October 2026</dd>
+          <dt>SHA-256</dt><dd><code class="checksum">9c74943fa2acf4f62ca1f0c0ebd66803c21ac7bce7d87fe0bfb15ad419bed76f</code></dd>
+        </dl>
+        <p class="small muted">The checksum changes with every build. Always compare against this page, not a copy someone sent you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ventoy">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Step 2</p>
+      <h2>Put Ventoy on the stick</h2>
+      <p class="lead">Use a stick of at least 32 GB. Pick 64 GB if you want the oven backup on the same stick. USB 3 makes the backup much faster.</p>
+    </div>
+    <div class="ig-os ig-os-wide">
+      <div class="card">
+        <h3 class="ig-h3">On Windows</h3>
+        <ol class="mini-steps">
+          <li><span>Unzip the Ventoy download and run <code>Ventoy2Disk.exe</code> as Administrator.</span></li>
+          <li><span>Pick your USB stick under <strong>Device</strong>. Check the name and size twice. Leave <strong>Show all devices</strong> off.</span></li>
+          <li><span>Open <strong>Option › Partition Style</strong> and choose <strong>MBR</strong>.</span></li>
+          <li><span>If the laptop uses Secure Boot, turn on <strong>Option › Secure Boot Support</strong>.</span></li>
+          <li><span>Click <strong>Install</strong> and confirm both warnings. This erases the stick.</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3 class="ig-h3">On Linux</h3>
+        <ol class="mini-steps">
+          <li><span>Install the tools Ventoy needs (Debian and Ubuntu shown):</span></li>
+        </ol>
+        <pre class="ig-code"><code>sudo apt install dosfstools exfatprogs</code></pre>
+        <ol class="mini-steps" style="counter-reset: step 1">
+          <li><span>Unpack the Ventoy download and find your stick. Use the whole disk, like <code>/dev/sdX</code>, never a partition like <code>/dev/sdX1</code>:</span></li>
+        </ol>
+        <pre class="ig-code"><code>lsblk -o NAME,SIZE,MODEL,TRAN,MOUNTPOINTS</code></pre>
+        <ol class="mini-steps" style="counter-reset: step 2">
+          <li><span>Install Ventoy. This erases the stick. Add <code>-s</code> for Secure Boot support.</span></li>
+        </ol>
+        <pre class="ig-code"><code>sudo sh Ventoy2Disk.sh -i /dev/sdX</code></pre>
+      </div>
+    </div>
+
+    <h3 class="ig-sub">The finished stick</h3>
+    <p class="muted ig-measure">Ventoy splits the stick into two parts. Leave the small one alone. The large one is where everything for Project July goes, and the installer finds it by its name, <strong>Ventoy</strong>.</p>
+    <figure class="ig-stick" aria-label="Partition layout of the finished USB stick">
+      <div class="ig-part ig-part-efi">
+        <b>VTOYEFI</b>
+        <span>32 MB · FAT</span>
+        <span>Don't touch</span>
+      </div>
+      <div class="ig-part ig-part-data">
+        <b>Ventoy</b>
+        <span>exFAT · the rest of the stick</span>
+        <span>Keep this name</span>
+      </div>
+    </figure>
+    <ul class="checklist ig-rules">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Keep the name “Ventoy”.</strong> The installer looks for it to save logs, certificates and backups.</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>exFAT or NTFS, never FAT32.</strong> An oven backup is one file of about 7.3 GB, and FAT32 can't hold files over 4 GB. Ventoy's default, exFAT, is right.</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Leave about 8 GB free</strong> if the backup will go on this stick.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="tint" id="copy">
+  <div class="wrap setup-grid">
+    <div class="ig-flow">
+      <p class="eyebrow">Step 3</p>
+      <h2>Copy the installer and settings</h2>
+      <ol class="mini-steps">
+        <li><span>Open the large <strong>Ventoy</strong> drive and copy <code>june-local-live.iso</code> to the top level, not into a folder.</span></li>
+        <li><span>Make a folder called <code>ventoy</code> there, and in it a text file called <code>ventoy.json</code> with this in it:</span></li>
+      </ol>
+      <pre class="ig-code"><code>{
+  "control": [
+    { "VTOY_DEFAULT_MENU_MODE": "0" },
+    { "VTOY_FILT_DOT_UNDERSCORE_FILE": "1" },
+    { "VTOY_MENU_TIMEOUT": "3" },
+    { "VTOY_DEFAULT_IMAGE": "/june-local-live.iso" }
+  ]
+}</code></pre>
+      <p class="muted">This makes Ventoy start the installer by itself after 3 seconds, and hides the hidden files a Mac leaves behind. It's optional: without it, you pick the image from Ventoy's menu yourself.</p>
+      <ol class="mini-steps" style="counter-reset: step 2">
+        <li><span>Eject the stick safely before you unplug it.</span></li>
+      </ol>
+    </div>
+    <figure class="ig-tree-wrap">
+      <figcaption class="ig-h4">On the Ventoy drive</figcaption>
+      <ul class="ig-tree">
+        <li><code>june-local-live.iso</code><span>the installer</span></li>
+        <li><code>ventoy/</code>
+          <ul><li><code>ventoy.json</code><span>start it by itself</span></li></ul>
+        </li>
+        <li class="ig-later"><code>june-logs/</code><span>added by the installer: a log of every job</span></li>
+        <li class="ig-later"><code>june-certs/</code><span>added by “Install with your own CA”</span></li>
+        <li class="ig-later"><code>june-backups/</code><span>oven backups, if you save them here</span></li>
+      </ul>
+      <p class="small muted">The last three appear once you've used the installer.</p>
+    </figure>
+  </div>
+</section>
+
+<section id="boot">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Step 4</p>
+      <h2>Start the laptop from the stick</h2>
+      <p class="lead">Use the laptop that will run the installer, not the oven. Its own system and files are left alone: take the stick out and restart to go back to normal.</p>
+    </div>
+    <div class="setup-grid">
+      <ol class="steps">
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Open the boot menu</h3><p class="jo-step-text">Plug the stick in, switch the laptop on and press its boot-menu key straight away. It's often F12, F11, F9, F2 or Esc, and usually shown briefly on screen. Pick the USB stick. If it's listed twice, pick the one marked UEFI. On an Intel Mac, hold Option while it starts. Macs with Apple chips (M1 and later) can't start from this stick.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Get past Secure Boot, if it stops you</h3><p class="jo-step-text">Many laptops have Secure Boot switched on. If you see a blue <strong>Verification failed</strong> or MokManager screen the first time, do one of these:</p>
+          <ul class="ig-list jo-step-text">
+            <li><strong>Enroll Ventoy's key</strong> (needs Secure Boot Support from step 2): choose <strong>Enroll key from disk</strong>, open <code>VTOYEFI</code>, pick <code>ENROLL_THIS_KEY_IN_MOKMANAGER.cer</code>, then <strong>Continue</strong>, <strong>Yes</strong> and <strong>Reboot</strong>. You only do this once per laptop.</li>
+            <li><strong>Or switch Secure Boot off</strong> in the laptop's firmware settings (BIOS/UEFI) and start again. You can switch it back on afterwards.</li>
+          </ul></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Two menus, one after the other</h3><p class="jo-step-text">First Ventoy's menu, which starts <code>june-local-live.iso</code> after 3 seconds. Then the June Local menu, which starts the graphical installer after a few seconds. Both are expected; you don't need to press anything. Choose <strong>text mode</strong> only if the graphical installer won't start.</p></div></li>
+      </ol>
+      <div class="ig-menus">
+        <figure class="ig-screen" aria-label="Ventoy boot menu, simplified">
+          <div class="ig-screen-bar">Ventoy</div>
+          <ul>
+            <li class="sel">june-local-live.iso <span>1.08 GB</span></li>
+          </ul>
+          <p class="ig-screen-foot">Booting in 3 s…</p>
+        </figure>
+        <figure class="ig-screen" aria-label="June Local boot menu">
+          <div class="ig-screen-bar">June Local</div>
+          <ul>
+            <li class="sel">Install June Local - graphical (default)</li>
+            <li>Install June Local - text mode (basic UI)</li>
+          </ul>
+        </figure>
+        <p class="small muted">Simplified. Your Ventoy version's colours and layout may differ.</p>
+      </div>
+    </div>
+    <p class="muted ig-measure" style="margin-top:var(--space-8)">The installer copies itself into the laptop's memory as it starts, so once it's running the stick can come out. That's useful if you want to save the backup to a different drive.</p>
+  </div>
+</section>
+
+<section class="tint" id="home">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The installer</p>
+      <h2>What would you like to do?</h2>
+      <p class="lead">This is the first screen. Every job asks you to put the oven in recovery mode first, and nothing on the oven changes until you press the final button.</p>
+    </div>
+    <figure class="ig-photo">
+      <img src="img/home-laptop.webp" width="1270" height="402" alt="The installer's home screen on a laptop: five tiles for Install June Local, Install with your own CA, Back up the oven, Restore a backup, and More." loading="lazy">
+      <figcaption class="small muted">On the laptop. The status in the top corner says <strong>No oven</strong> until the oven is connected.</figcaption>
+    </figure>
+    <div class="table-wrap" style="margin-top:var(--space-8)">
+      <table class="stack">
+        <thead><tr><th scope="col">Tile</th><th scope="col">What it does</th></tr></thead>
+        <tbody>
+          <tr><td class="file-name">Install June Local</td><td data-label="What it does" class="muted">Recommended. Keeps June's certificate and the factory app, so the oven's own app works as before, but talks to the local server on the oven instead of June's cloud. About two minutes.</td></tr>
+          <tr><td class="file-name">Install with your own CA</td><td data-label="What it does" class="muted">Advanced. Creates a certificate authority just for your home and signs a certificate for the oven's address.</td></tr>
+          <tr><td class="file-name">Back up the oven</td><td data-label="What it does" class="muted">A full copy of the oven's storage on a USB drive. 15 to 30 minutes.</td></tr>
+          <tr><td class="file-name">Restore a backup</td><td data-label="What it does" class="muted">Puts a backup back on the oven, replacing everything on it.</td></tr>
+          <tr><td class="file-name">More</td><td data-label="What it does" class="muted">Setup guide, text mode and restart. On a phone this tile is <strong>Phone setup</strong>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="recovery">
+  <div class="wrap ig-pair">
+    <div class="ig-flow">
+      <p class="eyebrow">Every job</p>
+      <h2>Put the oven in recovery mode</h2>
+      <p>After you pick a job and its options, the installer shows this screen. These are its steps:</p>
+      <ol class="mini-steps">
+        <li><span>Connect the oven to the laptop with the micro-USB cable. Use a port on the laptop itself, not a hub.</span></li>
+        <li><span>Press and hold <strong>SW2</strong> (force recovery) on the oven's board.</span></li>
+        <li><span>Switch the oven's power on and keep holding SW2 for about 10 seconds.</span></li>
+      </ol>
+      <p><strong>Waiting for the oven</strong> updates by itself. When it says the oven is found, let go of SW2 and press the job's button: <strong>Install June Local</strong>, <strong>Start backup</strong> or <strong>Erase oven and restore</strong>.</p>
+      <p class="muted">The oven's fans spin up and stay loud while it works. That's normal.</p>
+      <div class="jo-notice jo-notice-warning" role="note">
+        <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <div class="jo-notice-body">
+          <p class="jo-notice-title">Mains power</p>
+          <p class="jo-notice-text">Once the oven is plugged in, parts inside carry mains power. Touch only SW2 and the micro-USB cable. <a href="../setup/">Where SW2 is</a></p>
+        </div>
+      </div>
+    </div>
+    <figure class="ig-phone">
+      <img src="img/connect-oven.webp" width="575" height="1083" alt="Installer screen: Put the oven in recovery mode, with a drawing of the laptop, USB cable, SW2 and power switch, the three steps, and a Waiting for the oven panel." loading="lazy">
+      <figcaption class="small muted">Waiting for the oven (here before a restore).</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="tint" id="install">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Job</p>
+      <h2>Install June Local</h2>
+    </div>
+    <div class="ig-pair">
+      <div class="ig-flow">
+        <ol class="steps">
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Choose Install June Local</h3><p class="jo-step-text">Leave <strong>Keep the no-pin patch after a factory reset</strong> off, as it starts, unless you know you need it. Press <strong>Next: connect the oven</strong>.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Put the oven in recovery mode</h3><p class="jo-step-text">As <a href="#recovery">above</a>, then press <strong>Install June Local</strong>.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Wait for “June Local is installed”</h3><p class="jo-step-text">About two minutes. The tracker at the top shows which stage it's on. Keep the oven connected and powered, and don't unplug anything until you see the success screen.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Restart the oven and check it</h3><p class="jo-step-text">Unplug the oven's power and the USB cable. Wait 10 seconds, plug the power back in and let the oven start normally. From a phone or computer on the same network, open <code>http://&lt;oven-ip&gt;/local</code> to see the June Local status page. Pair from the app or Home Assistant, and close the oven up only once that works.</p></div></li>
+        </ol>
+        <div class="card" style="margin-top:var(--space-8)">
+          <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Install with your own CA</h3></div>
+          <p>For a certificate authority of your own instead of June's certificate. Enter the oven's address on your network (for example <code>192.168.1.50</code>, reserved for the oven in your router) and a name such as <code>june.local</code>. The installer creates the CA, signs a certificate for that address and saves both in <code>june-certs/</code> on the stick. After the install, put the CA on your phone (on Android: <strong>Settings › Security › Install a certificate › CA certificate</strong>) and pair using the oven's address.</p>
+        </div>
+      </div>
+      <div class="ig-shots">
+        <figure class="ig-phone">
+          <img src="img/load-bootloader.webp" width="575" height="758" alt="Installer progress: step 2 of 4, Load bootloader, 0:01 elapsed, tegrarcm attempt 1 of 3." loading="lazy">
+          <figcaption class="small muted">Elapsed time while it's still estimating… (these two are from a restore; an install looks the same)</figcaption>
+        </figure>
+        <figure class="ig-phone">
+          <img src="img/progress-details.webp" width="575" height="1078" alt="Installer progress at 35 percent: Write oven storage, 76 s left, 2.6 of 7.3 GiB at 65.7 MB/s, with the live log open under Show details." loading="lazy">
+          <figcaption class="small muted">…then a percentage. <strong>Show details</strong> opens the live log.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="backup">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Jobs</p>
+      <h2>Back up and restore</h2>
+      <p class="lead">A backup is a complete copy of the oven's storage: one file of about 7.3 GB (7.8 GB as most computers count it). Make one before you install anything.</p>
+    </div>
+    <div class="ig-pair">
+      <div class="ig-flow">
+        <h3 class="ig-h3">Back up the oven</h3>
+        <ol class="mini-steps">
+          <li><span>Choose <strong>Back up the oven</strong>, then the drive. The stick you started from is listed as <strong>Ventoy (current boot USB)</strong> if it has room.</span></li>
+          <li><span>Keep the folder (<code>june-backups</code>) and file name it suggests, or change them. Press <strong>Next: connect the oven</strong>.</span></li>
+          <li><span>Put the oven in <a href="#recovery">recovery mode</a> and press <strong>Start backup</strong>. It takes 15 to 30 minutes.</span></li>
+          <li><span>The installer saves the <code>.img</code> file with a <code>.sha256</code> checksum next to it. Unplug the drive safely, then the oven's power and USB cable.</span></li>
+        </ol>
+        <div class="jo-notice jo-notice-info">
+          <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-server"/></svg></span>
+          <div class="jo-notice-body">
+            <p class="jo-notice-title">Not enough room on the stick?</p>
+            <p class="jo-notice-text">The installer runs from the laptop's memory, so you can pull the Ventoy stick out once it's running and plug in a second drive. Press <strong>Rescan drives</strong> and pick it. Use exFAT, NTFS or ext4 with at least 8 GB free.</p>
+          </div>
+        </div>
+        <h3 class="ig-h3" style="margin-top:var(--space-6)">Restore a backup</h3>
+        <ol class="mini-steps">
+          <li><span>Choose <strong>Restore a backup</strong>, pick the drive and press <strong>Find backups</strong>. Select the image.</span></li>
+          <li><span>Read the warning and type <strong>RESTORE</strong> to confirm. Restoring removes June Local and anything that changed since the backup.</span></li>
+          <li><span>Put the oven in <a href="#recovery">recovery mode</a> and press <strong>Erase oven and restore</strong>. Don't unplug the oven until it's finished.</span></li>
+        </ol>
+      </div>
+      <div class="ig-shots">
+        <figure class="ig-phone">
+          <img src="img/restore-drive.webp" width="575" height="1053" alt="Installer screen: Where is the backup? A drive list with Music (USB) and Ventoy (current boot USB, 23.1 GB free) selected, Rescan drives, an optional folder, Find backups, and june_emmc_good.img, 7.8 GB, selected." loading="lazy">
+          <figcaption class="small muted">Picking the drive. The Ventoy stick is marked <strong>Boot USB</strong>.</figcaption>
+        </figure>
+        <figure class="ig-phone">
+          <img src="img/restore-confirm.webp" width="575" height="490" alt="Restore confirmation: june_emmc_good.img selected, a warning that restoring replaces everything on the oven, and RESTORE typed in the confirmation box." loading="lazy">
+          <figcaption class="small muted">Type RESTORE to confirm.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <figure class="ig-photo" style="margin-top:var(--space-8)">
+      <img src="img/progress-laptop.webp" width="1280" height="568" alt="A restore in progress on the laptop: 34 percent, Write oven storage, 60 s left, 2.5 of 7.3 GiB, with the step tracker on the right and the live log open." loading="lazy">
+      <figcaption class="small muted">A restore on the laptop. The speed starts high and settles as it goes, so the time left jumps around; this one took about 14 minutes.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="tint" id="phone">
+  <div class="wrap ig-pair ig-pair-photo">
+    <div class="ig-flow">
+      <p class="eyebrow">Optional</p>
+      <h2>Use your phone</h2>
+      <p>You can follow and run every job from a phone, handy when the laptop is on the kitchen counter and you're crouched by the oven. Press <strong>Use your phone instead</strong> or <strong>Phone</strong> at the top, and scan the code.</p>
+      <ul class="ig-list">
+        <li>The phone must be on the same network as the laptop.</li>
+        <li>Anyone who scans the code can control the installer. Switch <strong>Allow a phone on this network</strong> off when you're done; that disconnects phones and makes a new code.</li>
+        <li>After a custom install, the phone can download the CA from here.</li>
+      </ul>
+      <h3 class="ig-h3" style="margin-top:var(--space-4)">Text mode</h3>
+      <p class="muted">If the graphical installer won't start, choose <strong>text mode (basic UI)</strong> in the June Local menu. It does the same jobs and writes the same logs:</p>
+      <pre class="ig-code"><code>1) Install June Local
+2) Install with your own CA
+3) Back up the oven
+4) Restore a backup
+5) Exit installer and reboot</code></pre>
+    </div>
+    <figure class="ig-photo">
+      <img src="img/phone-qr.webp" width="1000" height="550" alt="The Connect a phone dialog on the laptop, with a QR code, the address to type (192.168.1.82/?k=…), and the Allow a phone on this network switch turned on." loading="lazy">
+      <figcaption class="small muted">Your code and address will be different: the address is the laptop's, and the key changes each time you switch phone access off and on.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="trouble">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Help</p>
+      <h2>If something goes wrong</h2>
+      <p class="lead">A failed job shows the reason with <strong>Try again</strong> and <strong>Back to start</strong>. Every job also writes a log to <code>june-logs/</code> on the Ventoy stick; include it if you ask for help.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="stack">
+        <thead><tr><th scope="col">What you see</th><th scope="col">What to do</th></tr></thead>
+        <tbody>
+          <tr><td class="file-name">Ventoy doesn't list the image</td><td data-label="What to do" class="muted">Put it on the large <strong>Ventoy</strong> drive, not <code>VTOYEFI</code>. Check it ends in <code>.iso</code>, then plug the stick in again.</td></tr>
+          <tr><td class="file-name">Verification failed, or MokManager</td><td data-label="What to do" class="muted">Secure Boot. <a href="#boot">Enroll Ventoy's key or switch Secure Boot off</a>.</td></tr>
+          <tr><td class="file-name">“No bootable device”</td><td data-label="What to do" class="muted">Check the boot order, and try the other USB entry (UEFI or Legacy).</td></tr>
+          <tr><td class="file-name"><span class="mono">mkfs.vfat: command not found</span></td><td data-label="What to do" class="muted">On Linux, install <code>dosfstools</code> and <code>exfatprogs</code> and run <code>Ventoy2Disk.sh</code> again.</td></tr>
+          <tr><td class="file-name">The graphical installer falls back to text</td><td data-label="What to do" class="muted">Images built before 5 October 2026 could fail to start it. Copy the current image onto the stick, or use text mode.</td></tr>
+          <tr><td class="file-name">“Waiting for the oven” never changes</td><td data-label="What to do" class="muted">Plug the cable into the laptop itself, not a hub, and check it carries data. Hold SW2 while switching the power on, and keep holding for 10 seconds.</td></tr>
+          <tr><td class="file-name">The stick isn't offered for the backup</td><td data-label="What to do" class="muted">Keep the name <strong>Ventoy</strong>, use exFAT or NTFS (not FAT32) and leave 8 GB free. Or use a second drive.</td></tr>
+          <tr><td class="file-name">A job stops part-way</td><td data-label="What to do" class="muted">Don't unplug the oven. Press <strong>Try again</strong>. If it fails again, save <code>june-logs/</code> and <a href="../#contact">get in touch</a>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ig-safety">
+      <div class="jo-notice jo-notice-success">
+        <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+        <div class="jo-notice-body">
+          <p class="jo-notice-title">Do</p>
+          <ul class="ig-list jo-notice-text">
+            <li>Use a USB 3 port on the laptop itself</li>
+            <li>Keep the oven powered and connected for the whole job</li>
+            <li>Wait for the success screen before unplugging</li>
+            <li>Test the oven before closing it up</li>
+          </ul>
+        </div>
+      </div>
+      <div class="jo-notice jo-notice-warning">
+        <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <div class="jo-notice-body">
+          <p class="jo-notice-title">Don't</p>
+          <ul class="ig-list jo-notice-text">
+            <li>Unplug the oven during an install or restore</li>
+            <li>Use FAT32 for the backup drive</li>
+            <li>Rename the Ventoy drive</li>
+            <li>Worry about the fans: running fast is normal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tint" id="inside">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">For the curious</p>
+      <h2>What's inside</h2>
+      <p class="lead">The installer image is a small Debian 12 system that runs entirely from the laptop's memory. It puts two programs on the oven, both written in Go and built for the oven's processor.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-server"/></svg><h3 class="mono">june-local</h3></div>
+        <p>The local server that replaces June's cloud on your network. It answers the oven and the app the way June's servers did.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg><h3 class="mono">june-camerad</h3></div>
+        <p>The camera bridge. It takes pictures from the oven's own camera service, without opening the camera itself, and streams them to the app and Home Assistant.</p>
+      </div>
+    </div>
+    <!-- When prj-july/installer is public, link the source here:
+         https://github.com/prj-july/installer/tree/main/golocal -->
+    <p class="muted" style="margin-top:var(--space-6)">The source code for both will be published on GitHub alongside the installer.</p>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Project July, back to top">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span>Project July</span>
+    </a>
+    <p class="small muted">An independent community project. Not affiliated with, endorsed by, or supported by June or Weber. “June” is used only to describe which ovens this works with. Ventoy is a separate open-source project.</p>
+  </div>
+</footer>
+
+</body>
+</html>

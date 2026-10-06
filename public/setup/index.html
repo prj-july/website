@@ -67,6 +67,7 @@
     </a>
     <nav class="nav" aria-label="Sections">
       <a href="../#how">How it works</a>
+      <a href="/clients">Clients</a>
       <a href="../#status">Status</a>
       <a href="../#downloads">Downloads</a>
       <a href="../#privacy">Privacy</a>
@@ -133,15 +134,104 @@
       <ol class="steps">
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Unplug the oven, lay it on its side and take out the 7 screws</h3><p class="jo-step-text">Unplug it from the wall first. Lay it down on its left side, bottom plate facing you, and take out the seven screws: four in the corners, one in the middle and two on the cord housing. Lift the plate off and rest its edge on the shelf. The power cord stays attached to the plate.</p></div></li>
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Plug in the micro-USB cable</h3><p class="jo-step-text">The port is on the edge of the board. Hold the plug with its flat side facing out, ease it in straight and press gently until it clicks.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from the USB stick and choose Install</h3><p class="jo-step-text">Plug the other end of the cable into the laptop and <a href="#usb-stick">start it from the USB stick</a>. Ventoy and the June Local menu start the installer by themselves. Pick <strong>Install June Local</strong>, then <strong>Next: connect the oven</strong>. It then asks you to put the oven in recovery mode.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Hold SW2 while you plug the oven back in, then press Install</h3><p class="jo-step-text">Find <strong>SW2</strong>: the silver switch with a blue cap, next to the heatsink. Press and hold it, plug the oven back into the wall, and keep holding for about 10 seconds. When the laptop says the oven is found, let go and press <strong>Install June Local</strong>. The installer does the rest in about two minutes.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from the USB stick and choose Install</h3><p class="jo-step-text">Plug the other end of the cable into the laptop and <a href="#usb-stick">start it from the USB stick</a>. Ventoy and the June Local menu start the installer by themselves. Pick <strong>Install June Local</strong>, then <strong>Next: connect the oven</strong>. It then asks you to put the oven in recovery mode. <a href="#installer-guide">What the installer shows</a></p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Hold SW2 while you plug the oven back in, then press Install</h3><p class="jo-step-text">Find <strong>SW2</strong>: the silver switch with a blue cap, next to the heatsink (<a href="#sw2">see the photo</a>). Press and hold it, plug the oven back into the wall, and keep holding for about 10 seconds. When the laptop says the oven is found, let go and press <strong>Install June Local</strong>. The installer does the rest in about two minutes.</p></div></li>
       </ol>
     </div>
-    <div class="jo-notice jo-notice-warning" role="note">
-      <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
-      <div class="jo-notice-body">
-        <p class="jo-notice-title">Mains power</p>
-        <p class="jo-notice-text">Unplug the oven before you open it. You only plug it back in while holding SW2, and from then on parts inside carry mains power. Touch only SW2 and the micro-USB cable, and keep fingers and tools away from everything else on the boards and wires.</p>
+    <div class="setup-aside">
+      <div class="jo-notice jo-notice-warning" role="note">
+        <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <div class="jo-notice-body">
+          <p class="jo-notice-title">Mains power</p>
+          <p class="jo-notice-text">Unplug the oven before you open it. You only plug it back in while holding SW2, and from then on parts inside carry mains power. Touch only SW2 and the micro-USB cable, and keep fingers and tools away from everything else on the boards and wires.</p>
+        </div>
+      </div>
+      <figure class="board-photo" id="sw2">
+        <div class="board-photo-frame">
+          <img src="img/sw2.webp" width="720" height="600" alt="Close-up of the oven's main board with the bottom plate off. Two blue buttons sit along the top edge of the board, beside the black heatsink; a red arrow points to the right-hand one, SW2. A second red arrow points to the micro-USB port on the board's left edge." loading="lazy">
+          <svg viewBox="0 0 360 300" aria-hidden="true">
+            <g class="board-arrow">
+              <line x1="198" y1="166" x2="178.9" y2="136.3"/>
+              <polygon points="173,127 184.4,132.8 173.4,139.8"/>
+              <rect x="186" y="166" width="48" height="22" rx="11"/>
+              <text x="210" y="181.5">SW2</text>
+            </g>
+            <g class="board-arrow">
+              <line x1="76" y1="224" x2="56.4" y2="245.8"/>
+              <polygon points="49,254 61.2,250.2 51.6,241.5"/>
+              <rect x="62" y="201" width="78" height="22" rx="11"/>
+              <text x="101" y="216.5">micro-USB</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="small muted">SW2 is the <strong>right-hand</strong> of the two blue buttons on the board's edge, beside the heatsink. The micro-USB port is on the same board.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="tint" id="installer-guide">
+  <div class="wrap ig-pair ig-pair-photo">
+    <div class="ig-flow">
+      <p class="eyebrow">On the laptop</p>
+      <h2>The installer guides you through it</h2>
+      <p>Each step is on screen: pick a job, put the oven in recovery mode, then watch the progress. Nothing on the oven changes until you press the final button.</p>
+      <p>The installer guide shows every screen, and covers what this walkthrough leaves out:</p>
+      <ul class="ig-list">
+        <li><a href="../installer/#backup">Back up the oven</a> before you install, and restore it if you ever need to</li>
+        <li><a href="../installer/#recovery">Recovery mode</a>, and what <strong>Waiting for the oven</strong> means</li>
+        <li><a href="../installer/#phone">Run the installer from your phone</a> while you're crouched by the oven</li>
+        <li><a href="../installer/#trouble">If something goes wrong</a></li>
+      </ul>
+      <p><a class="jo-btn jo-btn-primary" href="../installer/">Open the installer guide</a></p>
+    </div>
+    <div class="setup-shots">
+      <figure class="ig-photo">
+        <img src="../installer/img/home-laptop.webp" width="1270" height="402" alt="The installer's home screen on a laptop: five tiles for Install June Local, Install with your own CA, Back up the oven, Restore a backup, and More." loading="lazy">
+        <figcaption class="small muted">The first screen. Pick <strong>Install June Local</strong>.</figcaption>
+      </figure>
+      <figure class="ig-photo">
+        <img src="../installer/img/progress-laptop.webp" width="1280" height="568" alt="The installer at work on the laptop: a progress bar with time left, the step tracker on the right and the live log open." loading="lazy">
+        <figcaption class="small muted">Then it shows each stage and the time left (a restore, here).</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="certificates">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">After the install</p>
+      <h2>Your oven's certificate</h2>
+      <p class="lead">Phones and Home Assistant connect to the oven over HTTPS, so they need to trust its certificate. What to do depends on which install you chose.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><h3>Install June Local (standard)</h3></div>
+        <p>Keeps June's own certificate. It covers June's server names, not your oven's address, so there's nothing to install on your phone:</p>
+        <ul class="checklist">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>The companion app needs no certificate step.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>In Home Assistant, turn off <strong>Verify TLS certificate</strong>. The link stays encrypted and commands stay signed.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Optional: point <span class="mono">api.junelife.com</span> and <span class="mono">messaging.junelife.com</span> at the oven's IP in your router's DNS or a hosts file. Then even clients that check certificates accept it.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Install with your own CA (custom)</h3></div>
+        <p>Makes a certificate authority just for your home, and a certificate for the oven's IP address and name. When the install finishes, open <strong>Phone setup</strong> in the installer and download your home's CA certificate, <span class="mono">ca.crt</span>. Keep a copy for every new phone.</p>
+        <ul class="checklist">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Android:</strong> Settings › Security › Encryption &amp; credentials › Install a certificate › CA certificate.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>iPhone:</strong> AirDrop or email it to yourself, install the profile, then turn it on under Settings › General › About › Certificate Trust Settings.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Home Assistant:</strong> paste it into <strong>CA certificate (PEM)</strong>, or later under <strong>Configure</strong>.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="honest">
+      <div class="jo-notice jo-notice-info">
+        <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <div class="jo-notice-body">
+          <p class="jo-notice-title">Next: choose a client</p>
+          <p class="jo-notice-text">Check the oven is up by opening <span class="mono">http://&lt;oven-ip&gt;/local</span> from any device on your network. Then <a href="/clients">choose a client</a>: the Home Assistant integration, the Android companion app, or the Apple companion app.</p>
+        </div>
       </div>
     </div>
   </div>

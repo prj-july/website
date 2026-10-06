@@ -34,6 +34,28 @@ three.js r128 is served from `public/setup/vendor/` (MIT licence included) rathe
 The images shown while the home page player loads are `public/setup/poster-light.webp` and `poster-dark.webp`,
 rendered from `player.html?poster` with headless Chrome at 1280×720.
 
+## Setup, installer and clients pages
+
+- `/setup/` is the short version: the 3D walkthrough, the USB stick, the four steps and the
+  certificate step after the install. A section after the four steps links into the installer
+  guide, which covers the rest.
+- `/installer/` is the full installer guide: Ventoy, booting, every screen, backup and restore,
+  and troubleshooting. Its screenshots are in `public/installer/img/`.
+- `/clients` (`public/clients.html`) lists every way to control the oven (Home Assistant, the
+  Android and Apple companion apps) and what each one needs after a standard or custom install.
+
+The board photo on `/setup/` (`public/setup/img/sw2.webp`) is a 360×300 crop of
+`../oven-3d-model/reference-photos/18-electronics-bay-teardown-clear.webp` (from x 170, y 250),
+scaled to 720×600. The red arrows for SW2 and the micro-USB port are an SVG drawn on top in the
+crop's own 360×300 coordinates, so they scale with the photo; SW2 is the right-hand of the two
+blue buttons (SW1 is the left one), matching `june-oven.html`. To re-crop:
+
+```sh
+ffmpeg -i ../oven-3d-model/reference-photos/18-electronics-bay-teardown-clear.webp -vf "crop=360:300:170:250,scale=720:600:flags=lanczos" -c:v libwebp -quality 82 public/setup/img/sw2.webp
+```
+
+When you add or move a page, update `public/sitemap.xml`.
+
 ## July Oven card guide
 
 `public/card/` is a walkthrough of the Home Assistant dashboard card, at `/card/`, linked from the

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>July Oven card guide — Project July</title>
-<meta name="description" content="A walkthrough of the July Oven dashboard card for Home Assistant: starting a cook, the oven states, the camera window, several ovens, settings and sizes, with pictures and animations.">
+<meta name="description" content="A walkthrough of the July Oven dashboard card for Home Assistant: starting a cook in any of its modes, the oven states, the camera window, cook history, several ovens, settings and sizes, with pictures and animations.">
 <meta name="theme-color" content="#08090b">
 <link rel="canonical" href="https://project-july.org/card/">
 <link rel="icon" href="../assets/project-july-mark.svg" type="image/svg+xml">
@@ -15,9 +15,9 @@
 <meta property="og:site_name" content="Project July">
 <meta property="og:url" content="https://project-july.org/card/">
 <meta property="og:title" content="The July Oven card for Home Assistant">
-<meta property="og:description" content="Every screen of the July Oven dashboard card: starting a cook, the oven states, the camera, several ovens and settings.">
+<meta property="og:description" content="Every screen of the July Oven dashboard card: starting a cook, the oven states, the camera, cook history, several ovens and settings.">
 <meta property="og:image" content="https://project-july.org/card/img/home.png">
-<meta property="og:image:alt" content="The July Oven card's home screen: a clock and tiles for Bake, Roast, Broil, Air fry, Toast, Camera and Settings.">
+<meta property="og:image:alt" content="The July Oven card's home screen: the oven's icon and name, the time, and mode tiles for Bake, Roast, Broil, Air fry, Toast, Grill, Pizza and Reheat.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -163,25 +163,26 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
 </style>
 </head>
 <body>
+
 <div class="wrap">
   <header class="top">
     <a class="brand" href="../" aria-label="Project July, home">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 8.5h17M7 6.3h1.5M11 6.3h1.5"/><rect x="7" y="11.5" width="10" height="5.5" rx="1.2"/></svg>
       Project July
     </a>
-    <span class="ver">Card 0.4.9</span>
+    <span class="ver">Card 0.5.12</span>
   </header>
 
   <div class="hero">
     <div>
       <div class="lab ember">A tour of the dashboard card</div>
       <h1 style="margin-top:14px">The July Oven <em>card</em></h1>
-      <p class="lede">Your June oven, on your Home Assistant dashboard, working locally. This walkthrough covers <b>every screen</b> of the card: starting a cook, watching it, the camera, several ovens, and the settings.</p>
+      <p class="lede">Your June oven, on your Home Assistant dashboard, working locally. This walkthrough covers <b>every screen</b> of the card: starting a cook, watching it, the camera, the cook history, several ovens, and the settings.</p>
       <nav class="jump" aria-label="Sections">
-        <a href="#setup">Set up</a><a href="#home">Home screen</a><a href="#start">Start a cook</a><a href="#cook">While it cooks</a><a href="#camera">Camera</a><a href="#ovens">Several ovens</a><a href="#settings">Settings</a><a href="#sizes">Sizes</a><a href="#help">Help</a>
+        <a href="#setup">Set up</a><a href="#home">Home screen</a><a href="#start">Start a cook</a><a href="#cook">While it cooks</a><a href="#camera">Camera</a><a href="#history">History</a><a href="#ovens">Several ovens</a><a href="#settings">Settings</a><a href="#sizes">Sizes</a><a href="#help">Help</a>
       </nav>
     </div>
-    <figure class="shot glow"><img src="img/home.png" width="1000" height="752" alt="The July Oven card's home screen: the Kitchen oven's icon and name, the time 6:30, and tiles for Bake, Roast, Broil, Air fry, Toast, Camera and Settings."></figure>
+    <figure class="shot glow"><img src="img/home.png" width="1000" height="752" alt="The July Oven card's home screen: the Kitchen oven's icon and name, the time 6:30, and the first page of mode tiles: Bake, Roast, Broil, Air fry, Toast, Grill, Pizza and Reheat."></figure>
   </div>
 
   <section id="setup">
@@ -214,23 +215,21 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
     <div class="sec-head">
       <div class="lab">Home screen</div>
       <h2>What you see when the oven is off</h2>
-      <p>The card shows the oven's own home screen: a clock and the cook modes, laid out like the tiles on the oven's touchscreen.</p>
+      <p>The card shows the oven's own home screen: a clock and pages of cook modes, laid out and drawn like the tiles on the oven's touchscreen.</p>
     </div>
     <div class="pair" data-pins>
       <figure class="shot pins">
-        <img src="img/home.png" width="1000" height="752" alt="Home screen with numbered callouts.">
+        <img src="img/home.png" width="1000" height="752" alt="Home screen with numbered callouts: the oven icon, the clock, the mode tiles and the page dots.">
         <span class="pin" data-n="1" style="left:5%;top:18%">1</span>
         <span class="pin" data-n="2" style="left:65%;top:9%">2</span>
         <span class="pin" data-n="3" style="left:21.5%;top:30%">3</span>
-        <span class="pin" data-n="4" style="left:46.4%;top:65%">4</span>
-        <span class="pin" data-n="5" style="left:71%;top:65%">5</span>
+        <span class="pin" data-n="4" style="left:39%;top:93%">4</span>
       </figure>
       <ol class="legend">
         <li data-n="1"><i>1</i><div><b>The oven's icon is its lamp</b>Orange while the oven heats, white while it's off. Tap it to open the oven menu.</div></li>
         <li data-n="2"><i>2</i><div><b>Clock</b>12 or 24 hour follows your locale, or set it in Settings.</div></li>
-        <li data-n="3"><i>3</i><div><b>Cook mode tiles</b>The glow lines show which heating elements each mode uses: bottom for Bake, top for Broil, both for Roast, a fan for Air fry.</div></li>
-        <li data-n="4"><i>4</i><div><b>Camera</b>Opens the camera window inside the card.</div></li>
-        <li data-n="5"><i>5</i><div><b>Settings</b>Card settings for this browser, covered <a href="#settings">below</a>.</div></li>
+        <li data-n="3"><i>3</i><div><b>Cook mode tiles</b>Drawn the way the oven draws them: the glow lines show the heating elements (bottom for Bake, top for Broil, both for Roast), a fan for Air fry, waves for Reheat.</div></li>
+        <li data-n="4"><i>4</i><div><b>More pages</b>Swipe, or tap a dot. Page 2 holds Proof, Keep warm, Dehydrate, and the Camera, History and Settings tiles.</div></li>
       </ol>
     </div>
     <div class="two" style="margin-top:36px">
@@ -241,10 +240,14 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
       <figure class="shot"><img src="img/airfry.gif" width="700" height="526" loading="lazy" alt="Animation: the pointer rests on the Air fry tile and its fan spins up; when the pointer leaves, the fan slows and stops."><figcaption><b>Tiles answer the pointer.</b> A tile's glow fades in on hover, and the Air fry fan spins up, then eases to a stop when you move away.</figcaption></figure>
       <div class="prose" style="align-self:center">
         <div class="lab">Modes you can start from the card</div>
-        <div class="modes"><span class="mode">Bake</span><span class="mode">Roast</span><span class="mode">Broil</span><span class="mode">Air fry</span><span class="mode">Toast</span></div>
-        <p>Other June modes (Reheat, Proof, Dehydrate, Slow cook, Keep warm and more) still show by name when you start them on the oven or in the June app. Starting them from the card comes once their commands have been recorded.</p>
+        <div class="modes"><span class="mode">Bake</span><span class="mode">Roast</span><span class="mode">Broil</span><span class="mode">Air fry</span><span class="mode">Toast</span><span class="mode">Grill</span><span class="mode">Pizza</span><span class="mode">Reheat</span><span class="mode">Proof</span><span class="mode">Keep warm</span><span class="mode">Dehydrate</span></div>
+        <p>Slow cook still shows by name when you start it on the oven or in the June app; starting it from the card comes later.</p>
         <p>Prefer your favourites up front? Set <b>Cook modes</b> to <b>Most used first</b> in Settings and the tiles reorder by how often you start each mode from this card. <a href="#settings">Mode layout</a> sets how many columns and rows of tiles you get.</p>
       </div>
+    </div>
+    <div class="two" style="margin-top:28px">
+      <figure class="shot"><img src="img/home-p2.png" width="1000" height="752" loading="lazy" alt="Page 2 of the home screen: Proof, Keep warm, Dehydrate, Camera, History and Settings, with the second page dot lit."><figcaption><b>Page 2.</b> The last three modes, then Camera, History and Settings.</figcaption></figure>
+      <figure class="shot"><img src="img/pages.gif" width="700" height="526" loading="lazy" alt="Animation: tapping the second dot slides to page 2; after a while with no touch, the tiles glide back to page 1."><figcaption><b>Back to page 1 on its own.</b> Left alone for 45 seconds on a later page, the home screen glides back to the first one. Any touch stops it. (The wait is cut short here.)</figcaption></figure>
     </div>
   </section>
 
@@ -252,7 +255,7 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
     <div class="sec-head">
       <div class="lab">Start a cook</div>
       <h2>Tap a mode, check it, start it</h2>
-      <p>Nothing heats on one tap. Every mode opens a review first, and the oven only starts when you press <b>Start preheating</b>.</p>
+      <p>Nothing heats on one tap. Every mode opens a review first, and the oven only starts when you press <b>Start preheating</b>. Every review has the same layout: the mode's tile on the left, one large control in the middle with − and +, and a slider or a single line under it.</p>
     </div>
     <div class="pair">
       <figure class="shot glow"><img src="img/review.gif" width="700" height="526" loading="lazy" alt="Animation: tapping Bake opens the review at 350 °F; the slider is dragged to 425, then the number is tapped and 400 typed in; Start preheating is pressed and the card switches to Preheating, with the temperature climbing."><figcaption><b>Bake at 400 °F, start to finish.</b> Drag the slider, or use <b>−</b> and <b>+</b>, or tap the number and type it (Enter confirms, Escape puts the old value back). Then <b>Start preheating</b>.</figcaption></figure>
@@ -261,6 +264,12 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
       <div class="note cool" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16"/></svg><div><b>Check the oven is empty</b> and the door is closed before you start. The card reminds you every time.</div></div>
       <div class="note cool" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><div><b>Not now</b>, × or Escape closes the review without changing anything.</div></div>
     </div>
+    </div>
+    <div class="two" style="margin-top:36px">
+      <figure class="shot"><img src="img/review-toast.png" width="1000" height="752" loading="lazy" alt="Toast review: level 5 with − and +, and a slider from 1 Light to 9 Dark."><figcaption><b>Toast</b> sets a level from 1 (light) to 9 (dark) instead of a temperature.</figcaption></figure>
+      <figure class="shot"><img src="img/review-reheat.png" width="1000" height="752" loading="lazy" alt="Reheat review: a timer reading 1 hr 0 min with − and +, a slider from 1 minute to 10 hours, and the line Reheats at 350 °F."><figcaption><b>Reheat</b> sets a timer, from 1 minute to 10 hours. Tap the hours or minutes to type them.</figcaption></figure>
+      <figure class="shot"><img src="img/review-grill.png" width="1000" height="752" loading="lazy" alt="Grill review: Low, Medium and High, with High picked, and the line Grills at 450 °F."><figcaption><b>Grill</b> picks Low, Medium or High, like the oven's own screen.</figcaption></figure>
+      <figure class="shot"><img src="img/review-pizza.png" width="1000" height="752" loading="lazy" alt="Pizza review: 500 °F with the line The oven sets this temperature."><figcaption><b>Pizza</b> runs at the temperature the oven sets. Proof and Dehydrate have their own temperature ranges.</figcaption></figure>
     </div>
   </section>
 
@@ -325,6 +334,28 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
     </div>
   </section>
 
+  <section id="history">
+    <div class="sec-head">
+      <div class="lab">History</div>
+      <h2>Every cook, kept</h2>
+      <p>The integration records each cook when it ends, in Home Assistant, so it survives restarts and every browser sees the same list. The <b>History</b> tile shows them, newest first, with each cook's picture, target, time and result.</p>
+    </div>
+    <div class="pair">
+      <figure class="shot glow"><img src="img/history.gif" width="700" height="706" loading="lazy" alt="Animation: on page 2, tapping History opens the list of past cooks; tapping the Roast cook opens its picture, temperature graph and details; Back returns to the list; Export… shows its two choices and Cancel closes them."><figcaption><b>From the list to one cook and back, then Export.</b></figcaption></figure>
+      <div class="prose">
+        <p>Tap a cook for its last camera picture, its whole temperature curve (oven, and food from the June probe or the thermometer chosen under Settings › Food probe) and its details: result, time, length, target, hottest reading, preheat time and food temperature.</p>
+        <p><b>Export…</b> at the bottom of the list saves the history as a file: <b>Spreadsheet (CSV)</b> has one row per cook, <b>Everything (JSON)</b> has every cook in full with its temperature curve. Pictures stay in Media › june_oven.</p>
+        <p>A single cook, or the whole history, can be deleted from there. The integration keeps the newest 200 cooks per oven; recording and pictures can each be turned off in the integration's options.</p>
+        <p>Each finished cook also fires a <code>june_oven_cook_finished</code> event, handy for a cook log or a notification.</p>
+      </div>
+    </div>
+    <div class="three" style="margin-top:28px">
+      <figure class="shot"><img src="img/history.png" width="1000" height="1008" loading="lazy" alt="History list for Kitchen, 6 cooks: Roast 375°, Air fry 400°, Bake 350°, Toast 450° stopped, Proof 80°, Broil 500°, each with time, length and a Done or Stopped mark."><figcaption><b>The list.</b> A stopped cook says so.</figcaption></figure>
+      <figure class="shot"><img src="img/history-detail.png" width="1000" height="1008" loading="lazy" alt="One cook: Roast, today at 4:55 PM, its camera picture, a graph of oven and food temperature over 52 minutes with the 375° target, and the result Finished."><figcaption><b>One cook.</b> Degrees up the side and minutes along the bottom, like the wall graph.</figcaption></figure>
+      <figure class="shot"><img src="img/history-export.png" width="1000" height="1008" loading="lazy" alt="History list scrolled to the bottom after tapping Export…: buttons Cancel, Spreadsheet (CSV) and Everything (JSON), with a note on what each file holds."><figcaption><b>Export.</b> Pick a spreadsheet or every record in full.</figcaption></figure>
+    </div>
+  </section>
+
   <section id="ovens">
     <div class="sec-head">
       <div class="lab">Several ovens</div>
@@ -352,15 +383,22 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
     <div class="sec-head">
       <div class="lab">Settings</div>
       <h2>Make it yours, right in the card</h2>
-      <p>The Settings tile opens the card's own settings: the look, the camera, the name, the layout of the mode tiles, the card's size and each oven's icon. Choices are saved in this browser, so a wall tablet and your phone can each look the way you like. Your YAML is the starting point, and <b>Reset</b> goes back to it.</p>
+      <p>The Settings tile opens the card's own settings: the look, the camera, the name, the layout of the mode tiles, the card's size, the food probe and each oven's icon. Choices are saved in this browser, so a wall tablet and your phone can each look the way you like. Your YAML is the starting point, and <b>Reset</b> goes back to it.</p>
     </div>
     <div class="two">
       <figure class="shot"><img src="img/settings.png" width="1000" height="1008" loading="lazy" alt="Settings sheet: Appearance (Match Home Assistant, Light, Dark), Camera frame rate (1, 5, 10, 15 fps), Oven name (Tuck into the icon, Always show) and Cook modes (Oven's order, Most used first)."><figcaption><b>The top of Settings.</b> Dark, the oven's own glass, is the default look.</figcaption></figure>
       <figure class="shot"><img src="img/settings-layout.png" width="1000" height="1008" loading="lazy" alt="Settings scrolled to Mode layout: Columns 4 and Rows 2, both automatic, with − and + buttons over a small picture of the home screen; below it the Card size slider at 100%."><figcaption><b>Mode layout and card size.</b> Columns and rows of tiles over a small picture of the home screen, automatic until you change them. Card size scales text, buttons and spacing from 80 to 150%.</figcaption></figure>
     </div>
     <div class="two" style="margin-top:28px">
-      <figure class="shot"><img src="img/layout.gif" width="700" height="526" loading="lazy" alt="Animation: in Settings, Columns goes from 4 to 7 and Rows from 2 to 1, Mode icon size is set to Fill, and closing Settings shows all seven tiles in one row under the clock."><figcaption><b>One row of seven.</b> Seven columns, one row and Fill icons put every mode in a single row under the clock. Modes that don't fit the grid go on more pages.</figcaption></figure>
-      <figure class="shot"><img src="img/icons.gif" width="700" height="706" loading="lazy" alt="Animation: tapping Settings opens the settings sheet; it scrolls to Oven icons, where the bread and then the star icon are picked for Kitchen; closing Settings shows the star next to the oven's name."><figcaption><b>Changing an oven's icon.</b> One row per oven, lit like the card. Pick one of 12 icons or type any <code>mdi:</code> icon; the card changes as you tap. The version is at the bottom.</figcaption></figure>
+      <figure class="shot"><img src="img/layout.gif" width="700" height="526" loading="lazy" alt="Animation: on page 2, Settings opens; Columns goes from 4 to 7, Mode icon size is set to Fill, and closing Settings shows all fourteen tiles on one page."><figcaption><b>Everything on one page.</b> Seven columns and Fill icons fit all 14 tiles on one page. Modes that don't fit the grid go on more pages.</figcaption></figure>
+      <figure class="shot"><img src="img/icons.gif" width="700" height="706" loading="lazy" alt="Animation: on page 2, tapping Settings opens the settings sheet; it scrolls to Oven icons, where the bread and then the star icon are picked for Kitchen; closing Settings shows the star next to the oven's name."><figcaption><b>Changing an oven's icon.</b> One row per oven, lit like the card. Pick one of 12 icons or type any <code>mdi:</code> icon; the card changes as you tap. The version is at the bottom.</figcaption></figure>
+    </div>
+    <div class="pair" style="margin-top:28px">
+      <figure class="shot"><img src="img/settings-probe.png" width="1000" height="1008" loading="lazy" alt="Settings scrolled to Food probe, set to Combustion Probe Core Temperature, then Food target 145 with Stop at target and Show only."><figcaption><b>Food probe.</b> Use another thermometer, such as a Combustion probe.</figcaption></figure>
+      <div class="prose" style="align-self:center">
+        <p>Under <b>Food probe</b>, pick any Home Assistant temperature sensor to use instead of the June probe. Combustion probes' Core Temperature is listed first. The card and the graphs then show that thermometer's reading as the food temperature.</p>
+        <p><b>Food target</b> sets its target. With <b>Stop at target</b>, the card turns the oven off when the food reaches it. The oven can't read that thermometer, so a card has to be open for the stop to happen.</p>
+      </div>
     </div>
     <div class="tbl" style="margin-top:28px">
       <table>
@@ -374,6 +412,8 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
           <tr><td>Card size</td><td>80–150%: text, buttons and spacing</td><td><code>scale</code></td></tr>
           <tr><td>Mode icon size</td><td>Small, Medium, Large (default) or Fill</td><td><code>icon_size</code></td></tr>
           <tr><td>Clock</td><td>Automatic, 12-hour or 24-hour</td><td><code>clock</code></td></tr>
+          <tr><td>Food probe</td><td>The June probe, or any temperature sensor, per oven</td><td><code>probe</code></td></tr>
+          <tr><td>Food target</td><td>The other thermometer's target, and Stop at target or Show only</td><td><code>food_target</code>, <code>food_auto_stop</code></td></tr>
           <tr><td>Oven icons</td><td>12 built-in icons or any <code>mdi:</code> icon, per oven</td><td><code>icon</code></td></tr>
           <tr><td>Oven in Home Assistant</td><td>Opens the oven's device page</td><td>none</td></tr>
         </tbody>
@@ -387,7 +427,8 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
       <h2>From one row to the wall tablet</h2>
       <p>On a sections dashboard the card picks its layout from its size: standard is 12 × 6, wall tablet is full width × 8, compact is 12 × 1, and each extra oven adds a row. In a panel view the card fills the window. Set <code>display_mode</code> to choose one yourself.</p>
     </div>
-    <figure class="shot"><img src="img/wall.png" width="2064" height="1008" loading="lazy" alt="The wall tablet layout: a wide card with a large 12:30 timer, Cooking status, progress bar, Done at 6:42 PM, add-time chips, a wide Stop button, a large camera picture and under it a graph of oven and food temperature."><figcaption><b>Wall tablet.</b> Bigger type and more space, made to be read from across the room. Under the camera, a graph shows the oven temperature and, with the probe in, the food temperature for this cook (up to the last hour), with the target as a dashed line. It reads Home Assistant's history, so it needs the recorder; tap it for the full history.</figcaption></figure>
+    <figure class="shot"><img src="img/wall.png" width="2064" height="1008" loading="lazy" alt="The wall tablet layout: a wide card with a large 12:30 timer, Cooking status, progress bar, Done at 6:42 PM, add-time chips, a wide Stop button, a large camera picture and under it a graph of oven and food temperature."><figcaption><b>Wall tablet.</b> Bigger type and more space, made to be read from across the room. Under the camera, a graph shows the oven temperature and, with the probe in, the food temperature for this cook (up to the last hour), with the target as a dashed line. Degrees run up the left with the target in bold, and minutes since the start along the bottom. It stays up on the Done screen until the food is out. It reads Home Assistant's history, so it needs the recorder; tap it for the full history.</figcaption></figure>
+    <figure class="shot" style="margin-top:24px"><img src="img/wall-probe.png" width="2064" height="1008" loading="lazy" alt="Wall tablet during a probe cook: food at 131 degrees, target 145, Roast at 350 °F, with the oven and food lines on the graph under the camera."><figcaption><b>Probe cook on the wall.</b> The big number is the food, and the graph draws both lines.</figcaption></figure>
     <div style="display:grid;gap:14px;margin-top:32px">
       <div class="lab">Compact, one row</div>
       <figure class="shot"><img src="img/compact-preheat.png" width="1000" height="112" loading="lazy" alt="Compact card: preheating at 312 degrees with a Stop button."></figure>
@@ -422,6 +463,9 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
           <li><b>The oven is cleaning</b>, or <b>isn't ready yet</b>. Try again in a moment.</li>
         </ul>
       </div></details>
+      <details class="glass"><summary>Stop at target didn't turn the oven off</summary><div>
+        <p>The oven can't read another thermometer, so the card does the stopping. It only works while a card showing that oven is open in a browser.</p>
+      </div></details>
       <details class="glass"><summary>The camera says Camera off</summary><div>
         <p>The oven only sends pictures while it heats, unless it runs the Project July local server, which can wake the camera when you open the window. Start a cook and pictures appear within a second or two. If the oven is heating and the window says <b>Waiting for a picture</b>, the oven hasn't sent one yet.</p>
       </div></details>
@@ -432,7 +476,7 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
   </section>
 
   <footer>
-    <span>July Oven card 0.4.9 · part of the June Oven integration by Project July</span>
+    <span>July Oven card 0.5.12 · part of the June Oven integration by Project July</span>
     <span><a href="../">project-july.org</a> · <a href="https://github.com/prj-july/ha-june-oven">github.com/prj-july/ha-june-oven</a></span>
   </footer>
 </div>
@@ -459,7 +503,7 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
     probe: { title: "Probe cook", alt: "Probe cook: food at 131 degrees, target 145, Roast at 350 °F, cooking for 21 minutes.",
       text: ["With the probe in, the big number is the food temperature, with its target beside the status.", "The line below gives the mode, the oven temperature and how long it has been cooking."] },
     done: { title: "Done", img: "dismiss.gif", alt: "Animation: the Done screen says Take food out with a green bar; tapping Food is out returns the card to the home screen.",
-      text: ["The card says <b>Take food out</b> for 30 minutes after the cook ends.", "Press <b>Food is out</b> to clear it and go back to the home screen."] },
+      text: ["The card says <b>Take food out</b> for 30 minutes after the cook ends. On a wall tablet the temperature graph stays up until then.", "Press <b>Food is out</b> to clear it and go back to the home screen. The cook is saved in the <a href=\"#history\">history</a>."] },
     offline: { title: "Offline", alt: "Offline: last reading 401 degrees, shown greyed, with a dashed bar, last seen 3 minutes ago while cooking.",
       text: ["Home Assistant has lost touch with the oven. The last reading stays, greyed, with how long ago it was seen.", "Stop stays available in case the oven comes back mid-cook."] }
   };

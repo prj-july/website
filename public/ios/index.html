@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project July for iPhone — Project July</title>
+<meta name="description" content="The Project July app for iPhone: preheat, set timers, watch the camera and stop a cook on your June oven over your home Wi-Fi, with no cloud and no account. In testing on TestFlight.">
+<meta name="theme-color" content="#08090b">
+<link rel="canonical" href="https://project-july.org/ios/">
+<link rel="icon" href="../assets/project-july-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+<!-- Link previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Project July">
+<meta property="og:url" content="https://project-july.org/ios/">
+<meta property="og:title" content="Project July for iPhone">
+<meta property="og:description" content="Run your June oven from your iPhone, over your own home Wi-Fi. No cloud, no account, no subscription.">
+<meta property="og:image" content="https://project-july.org/assets/app/feature-graphic.png">
+<meta property="og:image:alt" content="Project July, June now local: the app's cooking screen with 12:25 left, a red Stop button and +1, +5 and +10 minute buttons.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@300;400;500&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../css/app-pages.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="../" aria-label="Project July, home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 8.5h17M7 6.3h1.5M11 6.3h1.5"/><rect x="7" y="11.5" width="10" height="5.5" rx="1.2"/></svg>
+      Project July
+    </a>
+    <nav class="top-links" aria-label="App pages">
+      <a href="../android/">Android</a>
+      <a href="./" aria-current="page">iPhone</a>
+      <a href="/clients/privacy" class="hide-sm">Privacy</a>
+      <span class="ver">In testing</span>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="lab ember">The Project July app for iPhone</div>
+      <h1 style="margin-top:14px">Your oven, on your <em>iPhone</em></h1>
+      <p class="lede">The same app as on Android, built from the same code: preheat, set a timer, watch the camera and stop a cook. It talks <b>straight to your June oven</b> over your home Wi‑Fi, with no cloud, no account and no subscription.</p>
+      <nav class="jump" aria-label="Sections">
+        <a href="#status">Get it</a><a href="#setup">Set up</a><a href="#tour">The app</a><a href="#help">Help</a><a href="#privacy">Privacy</a>
+      </nav>
+    </div>
+    <figure class="phone glow"><img src="../assets/app/home.webp" width="540" height="960" alt="Home screen with the oven off: a big clock, the last cook (Bake 400 °F) with Repeat, and twelve glowing tiles for the cook modes and the camera."></figure>
+  </div>
+
+  <section id="status">
+    <div class="sec-head">
+      <div class="lab">Get it</div>
+      <h2>On TestFlight, by invite</h2>
+      <p>The iPhone version is in testing on Apple's TestFlight. There's no public link yet, so ask for an invite by email.</p>
+    </div>
+    <div class="btns" style="margin:0 0 28px">
+      <a class="btn" href="mailto:hello@project-july.org?subject=TestFlight%20invite">Request TestFlight access</a>
+    </div>
+    <div class="two">
+      <div class="prose">
+        <p>Install Apple's free <b>TestFlight</b> app from the App Store, open the invite on your iPhone and select <b>Accept</b>, then <b>Install</b>. Updates arrive through TestFlight.</p>
+        <p>Have an Android phone too? The <a href="../android/#beta">Android beta</a> is open now on Google Play.</p>
+      </div>
+      <div class="note cool" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg><div><b>What you need.</b> A June oven running Project July (see the <a href="../setup/">setup guide</a>), and your iPhone on the same home Wi‑Fi. The app doesn't work away from home. Use Home Assistant? The <a href="../card/">July Oven card</a> works today.</div></div>
+    </div>
+  </section>
+
+  <section id="setup">
+    <div class="sec-head">
+      <div class="lab">Set up</div>
+      <h2>Find the oven, type a code, done</h2>
+    </div>
+    <ol class="steps">
+      <li class="glass"><b>Allow local network</b><span>iOS asks whether Project July may find devices on your local network. Select <b>Allow</b>, or the app can't reach the oven. You can change it later in Settings › Privacy &amp; Security › Local Network.</span></li>
+      <li class="glass"><b>Set up this phone</b><span>The app looks for the oven, or you type its address. The installer names it <code>june.local</code>.</span></li>
+      <li class="glass"><b>Type the code on the oven</b><span>On the oven, open <b>Connect</b> and type the eight-digit code the app shows.</span></li>
+      <li class="glass"><b>Allow remote start</b><span>On the oven, open <b>Settings › App permissions</b> so the app can start cooks.</span></li>
+    </ol>
+    <div class="prose" style="margin-top:28px;max-width:46em">
+      <h3>Encrypting the connection</h3>
+      <p>Commands are always signed by your phone, so the oven only obeys phones it has paired with. To also encrypt the link, add your home's certificate in the app (<b>Settings › Connection › Home certificate</b>), or install <code>ca.crt</code> on the iPhone: AirDrop or email it to yourself, install the profile, then turn it on under <b>Settings › General › About › Certificate Trust Settings</b>.</p>
+    </div>
+  </section>
+
+  <section id="tour">
+    <div class="sec-head">
+      <div class="lab">The app</div>
+      <h2>One big number, one red Stop</h2>
+      <p>Every screen is the same as on Android. The <a href="../android/#tour">Android page</a> has the full tour.</p>
+    </div>
+    <div class="gallery" tabindex="0" aria-label="App screenshots, scroll sideways">
+      <figure class="phone" style="max-width:none"><img src="../assets/app/start.webp" width="540" height="960" loading="lazy" alt="Start review for Roast at 400 °F with a slider, timer choices and Start preheating."><figcaption><b>Check it, then start.</b> Nothing heats on one tap.</figcaption></figure>
+      <figure class="phone" style="max-width:none"><img src="../assets/app/cooking.webp" width="540" height="960" loading="lazy" alt="Cooking: 12:25 left with a red Stop button, add-time buttons and the camera tile."><figcaption><b>While it cooks.</b> Time left, +1/+5/+10 and Stop.</figcaption></figure>
+      <figure class="phone" style="max-width:none"><img src="../assets/app/july-light.webp" width="540" height="960" loading="lazy" alt="The July theme in light mode: the camera above a large 401 °F reading."><figcaption><b>Two looks</b>, each light or dark.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="help">
+    <div class="sec-head">
+      <div class="lab">Help</div>
+      <h2>iPhone questions</h2>
+      <p>Something else? Ask in the <a href="https://groups.google.com/g/prj-july-beta">Project July Beta</a> Google group (anyone can join), or email <a href="mailto:hello@project-july.org">hello@project-july.org</a>.</p>
+    </div>
+    <div class="faq">
+      <details class="glass"><summary>The app can't find or reach the oven</summary><div>
+        <p>Check that Project July is allowed under <b>Settings › Privacy &amp; Security › Local Network</b>, and that the iPhone is on your home Wi‑Fi. Then type the address yourself: <code>june.local</code>, or the oven's IP address.</p>
+      </div></details>
+      <details class="glass"><summary>Saving a picture asks for Photos access</summary><div>
+        <p>The app asks only to <b>add</b> pictures to your library, when you first tap Save. It can't see your photos.</p>
+      </div></details>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="sec-head">
+      <div class="lab">Privacy</div>
+      <h2>Your oven stays at home</h2>
+    </div>
+    <div class="glass privacy-box">
+      <ul>
+        <li>No account, no ads, no analytics and no tracking.</li>
+        <li>The app talks to your oven over your home network. Nothing about your oven or your cooking is sent to us, to June or to anyone else.</li>
+        <li>Pairing keys and settings stay on your iPhone, in the Keychain.</li>
+        <li>To get app updates, the app asks Expo's update service whether there's a new version. That check sends a random installation ID, not linked to you or your oven.</li>
+        <li>Camera pictures are only saved or shared when you tap Save or Share.</li>
+      </ul>
+      <a class="btn ghost" href="/clients/privacy">Read the privacy policy</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Project July for iPhone · in testing · an independent project, not affiliated with June Life, Inc.</span>
+    <span><a href="../">project-july.org</a> · <a href="../android/">Android</a> · <a href="/clients/privacy">Privacy policy</a></span>
+  </footer>
+</div>
+
+</body>
+</html>

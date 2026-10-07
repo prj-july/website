@@ -43,9 +43,15 @@ rendered from `player.html?poster` with headless Chrome at 1280×720.
   and troubleshooting. Its screenshots are in `public/installer/img/`. The dark desktop ones
   (`oven-found`, `custom-options`, `success-laptop`, `backup-drive`) are crops of the installer's
   mock-mode captures in `installer/website-assets/installer-mockups/png/` (version 0.5), converted
-  to WebP with ffmpeg; the rest are photos and phone screenshots of real runs.
+  to WebP with ffmpeg; the rest are photos and phone screenshots of real runs. The sticky section
+  bar under its header is filled in by the script at the end of the page; when you add, remove or
+  rename a section, update the bar's links (and the "On this page" list) to match.
 - `/clients` (`public/clients.html`) lists every way to control the oven (Home Assistant, the
   Android and Apple companion apps) and what each one needs after a standard or custom install.
+- `/clients/privacy` (`public/clients/privacy.html`) is the Project July app's privacy policy
+  (Android and iOS), the URL given to Google Play and the App Store. Keep it in step with what the app actually stores
+  and sends (including any new SDKs), and change the effective date whenever the text changes.
+  Don't move it: the store listings point at this URL.
 
 The board photo on `/setup/` (`public/setup/img/sw2.webp`) is a 360×300 crop of
 `../oven-3d-model/reference-photos/18-electronics-bay-teardown-clear.webp` (from x 170, y 250),

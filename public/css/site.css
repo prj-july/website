@@ -59,7 +59,7 @@ h4 { margin: 0; font-size: 18px; line-height: 28px; font-weight: 600; }
   backdrop-filter: saturate(1.2) blur(8px); -webkit-backdrop-filter: saturate(1.2) blur(8px);
   border-bottom: 1px solid var(--line);
 }
-.site-header .wrap { display: flex; align-items: center; gap: var(--space-6); min-height: 72px; }
+.site-header > .wrap { display: flex; align-items: center; gap: var(--space-6); min-height: 72px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; flex: none; }
 .brand svg { width: 34px; height: 34px; color: var(--ember); }
 .brand span { font-family: "Figtree", var(--font-sans); font-weight: 700; font-size: 24px; letter-spacing: -0.01em; }
@@ -69,14 +69,18 @@ h4 { margin: 0; font-size: 18px; line-height: 28px; font-weight: 600; }
   padding: 10px var(--space-3); border-radius: var(--radius-sm); white-space: nowrap;
 }
 .nav a:hover { background: var(--surface-sunken); }
-@media (max-width: 959px) {
-  .site-header .wrap { flex-wrap: wrap; gap: 0; padding-top: var(--space-2); }
+@media (max-width: 799px) {
+  .site-header > .wrap { flex-wrap: wrap; gap: 0; padding-top: var(--space-2); }
   .nav {
     order: 3; width: calc(100% + 2 * var(--space-4)); margin: 0 calc(-1 * var(--space-4));
     padding: var(--space-1) var(--space-4) var(--space-3); overflow-x: auto; scrollbar-width: none;
   }
   .nav::-webkit-scrollbar { display: none; }
+  /* Pages with a section bar keep just the brand up top on small screens; the bar matters more there. */
+  .site-header.has-progress > .wrap { flex-wrap: nowrap; min-height: 56px; padding-top: 0; }
+  .site-header.has-progress .nav { display: none; }
 }
+.nav a[aria-current] { background: var(--surface-sunken); }
 
 /* --- Hero -------------------------------------------------------------- */
 .hero { padding: 64px 0 72px; border-top: 0; }
@@ -240,6 +244,9 @@ section.tint .faq details { background: var(--surface); }
 .site-footer .wrap { display: flex; flex-direction: column; gap: var(--space-3); }
 .site-footer .brand svg { width: 28px; height: 28px; }
 .site-footer .brand span { font-size: 20px; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); font-size: 16px; line-height: 24px; font-weight: 600; }
+.footer-nav a { color: var(--ink); text-decoration: none; }
+.footer-nav a:hover { color: var(--link); text-decoration: underline; }
 .link-list .soon {
   display: flex; align-items: center; gap: var(--space-4); min-height: 64px; padding: var(--space-3) var(--space-5);
   border: 1px dashed var(--line-strong); border-radius: var(--radius-md); color: var(--ink-muted);
@@ -369,6 +376,40 @@ section.tint .faq details { background: var(--surface); }
 .ig-toc li a { text-decoration: none; }
 .ig-toc li a:hover { text-decoration: underline; }
 
+/* Sticky section bar under the site header: each section's number turns ember while you're in it
+   and green once passed, and its bar fills as you scroll (--p, 0 to 1, set by the page script). */
+.ig-progress { border-top: 1px solid var(--line); }
+.ig-progress ol {
+  position: relative; list-style: none; margin: 0 -4px; padding: 0;
+  display: flex; overflow-x: auto; scrollbar-width: none;
+}
+.ig-progress ol::-webkit-scrollbar { display: none; }
+.ig-progress li { flex: 1 0 auto; }
+.ig-progress a {
+  display: flex; flex-direction: column; gap: 6px; padding: 8px 4px 9px; border-radius: var(--radius-sm);
+  color: var(--ink-muted); text-decoration: none; font-size: 14px; line-height: 20px; font-weight: 600; white-space: nowrap;
+}
+.ig-progress a:hover { color: var(--ink); }
+.ig-progress a:hover .ig-p-n { box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+.ig-p-label { display: flex; align-items: center; gap: 4px; }
+.ig-p-n {
+  flex: none; min-width: 20px; height: 20px; padding: 0 5px; border-radius: var(--radius-full);
+  display: inline-grid; place-items: center; font-size: 12px; line-height: 1; font-variant-numeric: tabular-nums;
+  background: var(--surface-sunken); color: var(--ink-muted); box-shadow: inset 0 0 0 1px var(--line);
+}
+.ig-p-bar { display: block; height: 4px; border-radius: var(--radius-full); background: var(--line); overflow: hidden; }
+.ig-p-bar::before {
+  content: ""; display: block; height: 100%; border-radius: inherit;
+  width: calc(var(--p, 0) * 100%); background: var(--ember); transition: width .12s linear;
+}
+.ig-progress a.is-done { color: var(--ink); }
+.ig-progress a.is-done .ig-p-n { background: var(--ready-soft); color: var(--ready); box-shadow: none; }
+.ig-progress a.is-done .ig-p-bar::before { background: var(--ready); }
+.ig-progress a[aria-current] { color: var(--ink); }
+.ig-progress a[aria-current] .ig-p-n { background: var(--ember); color: var(--on-ember); box-shadow: none; }
+@media (prefers-reduced-motion: reduce) { .ig-p-bar::before { transition: none; } }
+@media (max-width: 719px) { .ig-progress a { padding-top: 6px; padding-bottom: 8px; } }
+
 .ig-flow { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
 .ig-flow .jo-notice { max-width: none; }
 .ig-measure { max-width: 68ch; }
@@ -457,7 +498,6 @@ section.tint .ig-code { background: var(--surface); }
 .client-jump a:hover { border-color: var(--line-strong); }
 .client-jump .icon { width: 20px; height: 20px; color: var(--ember); }
 .client-before { margin-top: var(--space-8); max-width: 820px; }
-.nav a[aria-current="page"] { background: var(--surface-sunken); }
 
 .client-grid { display: grid; gap: var(--space-6); }
 @media (min-width: 960px) { .client-grid { grid-template-columns: repeat(2, 1fr); align-items: start; } }
@@ -492,3 +532,13 @@ section.tint .ig-code { background: var(--surface); }
 .client-link { font-weight: 600; font-size: 16px; }
 .client-more summary { cursor: pointer; font-weight: 600; color: var(--ember); min-height: 44px; display: flex; align-items: center; }
 .client-more p { margin-top: var(--space-2); }
+
+/* --- /privacy policy ---------------------------------------------------------- */
+.policy { max-width: calc(68ch + 2 * var(--space-8)); display: flex; flex-direction: column; gap: var(--space-4); }
+.policy .section-head { margin-bottom: var(--space-2); }
+.policy h2 { font-size: clamp(24px, 3.5vw, 28px); line-height: 1.25; margin-top: var(--space-8); scroll-margin-top: 96px; }
+.policy ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: var(--space-2); }
+.policy .jo-notice { max-width: none; }
+.policy-end { margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--line); }
+.policy-link { margin-top: var(--space-6); max-width: 820px; }
+.footer-nav a[aria-current] { color: var(--link); }

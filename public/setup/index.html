@@ -134,7 +134,7 @@
       <ol class="steps">
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Unplug the oven, lay it on its side and take out the 7 screws</h3><p class="jo-step-text">Unplug it from the wall first. Lay it down on its left side, bottom plate facing you, and take out the seven screws: four in the corners, one in the middle and two on the cord housing. Lift the plate off and rest its edge on the shelf. The power cord stays attached to the plate.</p></div></li>
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Plug in the micro-USB cable</h3><p class="jo-step-text">The port is on the edge of the board. Hold the plug with its flat side facing out, ease it in straight and press gently until it clicks.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from the USB stick and choose Install</h3><p class="jo-step-text">Plug the other end of the cable into the laptop and <a href="#usb-stick">start it from the USB stick</a>. Ventoy and the June Local menu start the installer by themselves. Pick <strong>Install June Local</strong>, then <strong>Next: connect the oven</strong>. It then asks you to put the oven in recovery mode. <a href="#installer-guide">What the installer shows</a></p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from the USB stick and choose Install</h3><p class="jo-step-text">Plug the other end of the cable into the laptop and <a href="#usb-stick">start it from the USB stick</a>. Ventoy and the June Local menu start the installer by themselves. Pick <strong>Install June Local</strong>, keep the oven name <code>june</code> (or <code>june2</code>, <code>june3</code> for another oven), then press <strong>Next: connect the oven</strong>. It then asks you to put the oven in recovery mode. <a href="#installer-guide">What the installer shows</a></p></div></li>
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Hold SW2 while you plug the oven back in, then press Install</h3><p class="jo-step-text">Find <strong>SW2</strong>: the silver switch with a blue cap, next to the heatsink (<a href="#sw2">see the photo</a>). Press and hold it, plug the oven back into the wall, and keep holding for about 10 seconds. When the laptop says the oven is found, let go and press <strong>Install June Local</strong>. The installer does the rest in about two minutes.</p></div></li>
       </ol>
     </div>
@@ -208,7 +208,7 @@
     <div class="cards">
       <div class="card">
         <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><h3>Install June Local (standard)</h3></div>
-        <p>Keeps June's own certificate. It covers June's server names, not your oven's address, so there's nothing to install on your phone:</p>
+        <p>Keeps June's own certificate setup, so there's nothing to install on your phone. The certificate covers June's server names and <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span>, but not the oven's IP address or a name of your own; for those, choose the custom install.</p>
         <ul class="checklist">
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>The companion app needs no certificate step.</span></li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>In Home Assistant, turn off <strong>Verify TLS certificate</strong>. The link stays encrypted and commands stay signed.</span></li>
@@ -217,7 +217,7 @@
       </div>
       <div class="card">
         <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Install with your own CA (custom)</h3></div>
-        <p>Makes a certificate authority just for your home, and a certificate for the oven's IP address and name. When the install finishes, open <strong>Phone setup</strong> in the installer and download your home's CA certificate, <span class="mono">ca.crt</span>. Keep a copy for every new phone.</p>
+        <p>Makes a certificate authority just for your home, and a certificate for the oven's IP address and name. A name of your own also has to be added to your own DNS. When the install finishes, open <strong>Phone setup</strong> in the installer and download your home's CA certificate, <span class="mono">ca.crt</span>. Keep a copy for every new phone.</p>
         <ul class="checklist">
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Android:</strong> Settings › Security › Encryption &amp; credentials › Install a certificate › CA certificate.</span></li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>iPhone:</strong> AirDrop or email it to yourself, install the profile, then turn it on under Settings › General › About › Certificate Trust Settings.</span></li>

@@ -373,7 +373,7 @@
             <tr><td class="file-name">Disk and log limits</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Storage use is capped and old logs are rotated out.</td></tr>
             <tr><td class="file-name">Per-home certificates</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Each home gets its own security keys. Phone and Home Assistant pairing verified on 3 October.</td></tr>
             <tr><td class="file-name">Recipes and presets</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">June's preset library is back on the oven, so Proof and Slow Cook work again.</td></tr>
-            <tr><td class="file-name">Find the oven by name</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Reach it at a name like <span class="mono">june.local</span>, picked during install.</td></tr>
+            <tr><td class="file-name">Find the oven by name</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Reach it at <span class="mono">june.local</span>, or <span class="mono">june2.local</span> and <span class="mono">june3.local</span> for more ovens, picked during install. Any other name needs your own CA.</td></tr>
             <tr><td class="file-name">Guided installer</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>In progress</span></td><td data-label="Notes" class="muted">A few <a href="/setup/">guided steps</a>: start a laptop from USB, connect the oven, and the installer does the rest.</td></tr>
           </tbody>
         </table>
@@ -603,11 +603,11 @@
       </details>
       <details>
         <summary>What happens after a factory reset?</summary>
-        <p class="answer">That depends on how you set it up. With the standard setup, a factory reset removes Project July and the oven goes back to how it came. With the reset-proof setup, the oven keeps its local control after a reset. You might need to pair your phone again.</p>
+        <p class="answer">That depends on one option in the installer, <strong>Keep June Local after a factory reset</strong>. It starts switched off: then a factory reset removes Project July and the oven goes back to how it came. Switch it on and the oven keeps its local control after a reset. You might need to pair your phone again.</p>
       </details>
       <details>
         <summary>Can I undo it?</summary>
-        <p class="answer">Yes. With the standard setup, a factory reset removes everything Project July added and puts the oven back the way it came. If you'd rather keep local control no matter what, choose the reset-proof setup. Then a factory reset won't take your local control away.</p>
+        <p class="answer">Yes. Unless you chose <strong>Keep June Local after a factory reset</strong>, a factory reset removes everything Project July added and puts the oven back the way it came. The installer can also make a full backup of the oven before you change anything, and put it back later, whichever option you chose. <a href="installer/#backup">How to back up and restore</a></p>
       </details>
       <details>
         <summary>Does it work with Home Assistant?</summary>

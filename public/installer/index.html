@@ -341,7 +341,10 @@
         <li><span>Press and hold <strong>SW2</strong> (force recovery) on the oven's board.</span></li>
         <li><span>Switch the oven's power on and keep holding SW2 for about 10 seconds.</span></li>
       </ol>
-      <p><strong>Waiting for the oven</strong> updates by itself. When it says the oven is found, let go of SW2 and press the job's button: <strong>Install June Local</strong>, <strong>Start backup</strong> or <strong>Erase oven and restore</strong>.</p>
+      <p><strong>Waiting for the oven</strong> updates by itself. When it says the oven is found, let go of SW2, wait a few seconds and press the job's button: <strong>Install June Local</strong>, <strong>Start backup</strong> or <strong>Erase oven and restore</strong>. The newest installer starts the job by itself after 3 seconds; press <strong>Back</strong> to stop it.</p>
+      <figure class="ig-photo">
+        <img src="img/oven-found.webp" width="974" height="264" alt="Oven found, RCM mode: Starting June Local in 3 seconds, press Back to stop. Below are the Install June Local and Back buttons." loading="lazy">
+      </figure>
       <p class="muted">The oven's fans spin up and stay loud while it works. That's normal.</p>
       <div class="jo-notice jo-notice-warning" role="note">
         <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
@@ -366,14 +369,17 @@
     <div class="ig-pair">
       <div class="ig-flow">
         <ol class="steps">
-          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Choose Install June Local</h3><p class="jo-step-text">Leave <strong>Keep the no-pin patch after a factory reset</strong> off, as it starts, unless you know you need it. Press <strong>Next: connect the oven</strong>.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Choose Install June Local</h3><p class="jo-step-text">The <strong>Oven name</strong> is how the oven appears on your network: the default, <code>june</code>, makes it <code>june.local</code>. The certificate covers <code>june.local</code>, <code>june2.local</code> and <code>june3.local</code>, so use <code>june2</code> or <code>june3</code> for a second or third oven. For a certificate for the oven's IP address, or a name of your own, use <a href="#own-ca">Install with your own CA</a>. Leave <strong>Keep June Local after a factory reset</strong> off, as it starts, unless you want June Local to survive a factory reset. Press <strong>Next: connect the oven</strong>.</p></div></li>
           <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Put the oven in recovery mode</h3><p class="jo-step-text">As <a href="#recovery">above</a>, then press <strong>Install June Local</strong>.</p></div></li>
           <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Wait for “June Local is installed”</h3><p class="jo-step-text">About two minutes. The tracker at the top shows which stage it's on. Keep the oven connected and powered, and don't unplug anything until you see the success screen.</p></div></li>
-          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Restart the oven and check it</h3><p class="jo-step-text">Unplug the oven's power and the USB cable. Wait 10 seconds, plug the power back in and let the oven start normally. From a phone or computer on the same network, open <code>http://&lt;oven-ip&gt;/local</code> to see the June Local status page. Pair from the app or Home Assistant, and close the oven up only once that works.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Restart the oven and check it</h3><p class="jo-step-text">Unplug the oven's power and the USB cable. Wait 10 seconds, plug the power back in and let the oven start normally. From a phone or computer on the same network, open <code>http://&lt;oven-ip&gt;/local</code> to see the June Local status page, or scan its code on the success screen. Pair from the app or Home Assistant, and close the oven up only once that works.</p></div></li>
         </ol>
-        <div class="card" style="margin-top:var(--space-8)">
+        <div class="card" id="own-ca" style="margin-top:var(--space-8)">
           <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Install with your own CA</h3></div>
-          <p>For a certificate authority of your own instead of June's certificate. Enter the oven's address on your network (for example <code>192.168.1.50</code>, reserved for the oven in your router) and a name such as <code>june.local</code>. The installer creates the CA, signs a certificate for that address and saves both in <code>june-certs/</code> on the stick. After the install, put the CA on your phone (on Android: <strong>Settings › Security › Install a certificate › CA certificate</strong>) and pair using the oven's address.</p>
+          <p>For a certificate authority of your own instead of June's certificate. Enter the oven's address on your network (for example <code>192.168.1.50</code>, reserved for the oven in your router) and a hostname: <code>june.local</code>, or a name of your own, which you then add to your own DNS. The installer creates the CA, signs a certificate for that address and name, and saves both in <code>june-certs/</code> on the stick. After the install, put the CA on your phone (on Android: <strong>Settings › Security › Install a certificate › CA certificate</strong>) and pair using the oven's address. <strong>Keep June Local after a factory reset</strong> works here too, and keeps the CA as well.</p>
+          <figure class="ig-photo">
+            <img src="img/custom-options.webp" width="974" height="540" alt="Install with your own CA: Your oven's address, with an Oven LAN IP field, a Hostname field set to june.local, and the Keep June Local after a factory reset option." loading="lazy">
+          </figure>
         </div>
       </div>
       <div class="ig-shots">
@@ -387,6 +393,10 @@
         </figure>
       </div>
     </div>
+    <figure class="ig-photo" style="margin-top:var(--space-8)">
+      <img src="img/success-laptop.webp" width="1150" height="1000" alt="June Local is installed, done in 0:13: the four next steps, then QR codes for the June Local status page, the setup guide, your home's CA certificate and the companion app, and the buttons Restart this computer, Shut down and Back to start." loading="lazy">
+      <figcaption class="small muted">The success screen on the laptop after a custom install. Every install shows codes for the status page and the <a href="../setup/">setup guide</a>; the CA certificate and companion app codes appear once a <a href="#phone">phone is allowed</a>. Take the USB stick out before you restart the laptop, or the installer starts again.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -405,6 +415,9 @@
           <li><span>Put the oven in <a href="#recovery">recovery mode</a> and press <strong>Start backup</strong>. It takes 15 to 30 minutes.</span></li>
           <li><span>The installer saves the <code>.img</code> file with a <code>.sha256</code> checksum next to it. Unplug the drive safely, then the oven's power and USB cable.</span></li>
         </ol>
+        <figure class="ig-photo">
+          <img src="img/backup-drive.webp" width="974" height="557" alt="Back up the oven: Where should the backup go? Ventoy (current boot USB) is selected, with 52.4 GB free; a second USB drive and the laptop's internal drive are also listed, with Rescan drives below." loading="lazy">
+        </figure>
         <div class="jo-notice jo-notice-info">
           <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-server"/></svg></span>
           <div class="jo-notice-body">
@@ -481,6 +494,7 @@
           <tr><td class="file-name">The graphical installer falls back to text</td><td data-label="What to do" class="muted">Images built before 5 October 2026 could fail to start it. Copy the current image onto the stick, or use text mode.</td></tr>
           <tr><td class="file-name">“Waiting for the oven” never changes</td><td data-label="What to do" class="muted">Plug the cable into the laptop itself, not a hub, and check it carries data. Hold SW2 while switching the power on, and keep holding for 10 seconds.</td></tr>
           <tr><td class="file-name">The stick isn't offered for the backup</td><td data-label="What to do" class="muted">Keep the name <strong>Ventoy</strong>, use exFAT or NTFS (not FAT32) and leave 8 GB free. Or use a second drive.</td></tr>
+          <tr><td class="file-name">A backup is marked <strong>Wrong size</strong></td><td data-label="What to do" class="muted">It's smaller than a full oven image (7.8 GB), so it isn't a complete backup: usually one that stopped part-way, or was copied to a FAT32 drive. Pick a complete one, or make a new backup.</td></tr>
           <tr><td class="file-name">A job stops part-way</td><td data-label="What to do" class="muted">Don't unplug the oven. Press <strong>Try again</strong>. If it fails again, save <code>june-logs/</code> and <a href="../#contact">get in touch</a>.</td></tr>
         </tbody>
       </table>

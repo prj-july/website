@@ -40,7 +40,10 @@ rendered from `player.html?poster` with headless Chrome at 1280×720.
   certificate step after the install. A section after the four steps links into the installer
   guide, which covers the rest.
 - `/installer/` is the full installer guide: Ventoy, booting, every screen, backup and restore,
-  and troubleshooting. Its screenshots are in `public/installer/img/`.
+  and troubleshooting. Its screenshots are in `public/installer/img/`. The dark desktop ones
+  (`oven-found`, `custom-options`, `success-laptop`, `backup-drive`) are crops of the installer's
+  mock-mode captures in `installer/website-assets/installer-mockups/png/` (version 0.5), converted
+  to WebP with ffmpeg; the rest are photos and phone screenshots of real runs.
 - `/clients` (`public/clients.html`) lists every way to control the oven (Home Assistant, the
   Android and Apple companion apps) and what each one needs after a standard or custom install.
 

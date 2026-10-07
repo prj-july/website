@@ -59,21 +59,39 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
+<header class="site-header has-progress">
   <div class="wrap">
     <a class="brand" href="../#top" aria-label="Project July, home">
       <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
       <span>Project July</span>
     </a>
-    <nav class="nav" aria-label="Sections">
+    <nav class="nav" aria-label="Site">
       <a href="../#how">How it works</a>
-      <a href="../#status">Status</a>
+      <a href="../setup/" aria-current="true">Setup</a>
+      <a href="/clients">Clients</a>
       <a href="../#downloads">Downloads</a>
-      <a href="../#privacy">Privacy</a>
       <a href="../#faq">FAQ</a>
-      <a href="../#contact">Contact</a>
     </nav>
   </div>
+  <!-- Quick nav for this guide. The script at the end colours each section as you read:
+       green once passed, ember while you're in it, its bar filling as you scroll through. -->
+  <nav class="ig-progress" aria-label="Guide sections">
+    <div class="wrap">
+      <ol>
+        <li><a href="#download"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">1</span>Download</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#ventoy"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">2</span>Ventoy</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#copy"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">3</span>Copy files</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#boot"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">4</span>Boot</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#home"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">5</span>Home screen</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#recovery"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">6</span>Recovery</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#install"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">7</span>Install</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#backup"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">8</span>Backup</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#phone"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">9</span>Phone</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#trouble"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">10</span>Help</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#inside"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">11</span>Inside</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+      </ol>
+    </div>
+  </nav>
 </header>
 
 <main id="main">
@@ -558,9 +576,70 @@
       <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#i-mark"/></svg>
       <span>Project July</span>
     </a>
+    <nav class="footer-nav" aria-label="More">
+      <a href="../#status">Status</a>
+      <a href="/clients/privacy">Privacy policy</a>
+      <a href="../installer/">Installer guide</a>
+      <a href="../card/">Card guide</a>
+      <a href="../#contact">Contact</a>
+      <a href="mailto:hello@project-july.org">hello@project-july.org</a>
+    </nav>
     <p class="small muted">An independent community project. Not affiliated with, endorsed by, or supported by June or Weber. “June” is used only to describe which ovens this works with. Ventoy is a separate open-source project.</p>
   </div>
 </footer>
+
+<script>
+// Section bar: marks the section you're reading and how far through it you are.
+(() => {
+  const header = document.querySelector('.site-header');
+  const list = document.querySelector('.ig-progress ol');
+  const items = [...list.querySelectorAll('a')]
+    .map(a => ({ a, section: document.getElementById(a.hash.slice(1)) }))
+    .filter(item => item.section);
+  const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let current = -2, queued = false;
+
+  function update() {
+    queued = false;
+    const headerH = header.offsetHeight;
+    document.documentElement.style.scrollPaddingTop = (headerH + 16) + 'px';
+    // The reading line sits just under the header. On the last screenful it slides down to the
+    // bottom of the page, so the final sections still fill up although they can't reach the top.
+    const view = innerHeight - headerH;
+    const left = document.documentElement.scrollHeight - innerHeight - scrollY;
+    const line = scrollY + headerH + 24 + Math.max(0, view - 24 - Math.max(0, left));
+
+    let now = -1;
+    const spans = items.map(({ section }, i) => {
+      const top = section.getBoundingClientRect().top + scrollY;
+      if (top <= line) now = i;
+      return { top, height: section.offsetHeight };
+    });
+    items.forEach(({ a }, i) => {
+      const { top, height } = spans[i];
+      const p = i < now ? 1 : i > now ? 0 : Math.min(1, Math.max(0, (line - top) / height));
+      a.style.setProperty('--p', p.toFixed(3));
+      a.classList.toggle('is-done', i < now);
+      if (i === now) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    });
+
+    // Keep the current section in view when the bar scrolls sideways (phones).
+    if (now !== current) {
+      current = now;
+      if (now >= 0 && list.scrollWidth > list.clientWidth) {
+        const a = items[now].a;
+        list.scrollTo({ left: a.offsetLeft - (list.clientWidth - a.offsetWidth) / 2, behavior: smooth ? 'smooth' : 'auto' });
+      }
+    }
+  }
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  addEventListener('load', queue);
+  update();
+})();
+</script>
 
 </body>
 </html>

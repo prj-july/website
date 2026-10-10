@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>July Oven card guide — Project July</title>
+<title>July Oven card for Home Assistant — Project July</title>
 <meta name="description" content="A walkthrough of the July Oven dashboard card for Home Assistant: starting a cook in any of its modes, the oven states, the camera window, cook history, several ovens, settings and sizes, with pictures and animations.">
 <meta name="theme-color" content="#08090b">
-<link rel="canonical" href="https://project-july.org/card/">
-<link rel="icon" href="../assets/project-july-mark.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://project-july.org/clients/ha-card/">
+<link rel="icon" href="/assets/project-july-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <!-- Link previews -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Project July">
-<meta property="og:url" content="https://project-july.org/card/">
+<meta property="og:url" content="https://project-july.org/clients/ha-card/">
 <meta property="og:title" content="The July Oven card for Home Assistant">
 <meta property="og:description" content="Every screen of the July Oven dashboard card: starting a cook, the oven states, the camera, cook history, several ovens and settings.">
-<meta property="og:image" content="https://project-july.org/card/img/home.png">
+<meta property="og:image" content="https://project-july.org/clients/ha-card/img/home.png">
 <meta property="og:image:alt" content="The July Oven card's home screen: the oven's icon and name, the time, and mode tiles for Bake, Roast, Broil, Air fry, Toast, Grill, Pizza and Reheat.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -55,9 +55,13 @@ b,strong{font-weight:600;color:var(--fg)}
 
 /* ---- top bar ---- */
 .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
-.brand{color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:10px;font:600 16px var(--f-label);letter-spacing:.02em}
+.brand{color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:10px;font:600 16px var(--f-label);letter-spacing:.02em;white-space:nowrap}
 .brand svg{width:26px;height:26px;color:var(--ember);filter:drop-shadow(0 0 6px var(--glow))}
 .ver{font:600 12px var(--f-label);letter-spacing:.08em;text-transform:uppercase;color:var(--fg2);border:1px solid var(--rim2);border-radius:999px;padding:4px 10px}
+.ver.ha{color:var(--cool);border-color:rgba(90,176,232,.4);background:rgba(90,176,232,.06)}
+.top-end{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 14px}
+.back{font:500 15px var(--f-label);color:var(--fg2);text-decoration:none}
+.back:hover{color:var(--fg)}
 
 /* ---- hero ---- */
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:center;padding-block:28px 56px}
@@ -166,16 +170,20 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
 
 <div class="wrap">
   <header class="top">
-    <a class="brand" href="../" aria-label="Project July, home">
+    <a class="brand" href="/" aria-label="Project July, home">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M3.5 8.5h17M7 6.3h1.5M11 6.3h1.5"/><rect x="7" y="11.5" width="10" height="5.5" rx="1.2"/></svg>
       Project July
     </a>
-    <span class="ver">Card 0.5.12</span>
+    <div class="top-end">
+      <a class="back" href="/clients#dashboard-card">‹ All clients</a>
+      <span class="ver ha">Home Assistant</span>
+      <span class="ver">Card 0.5.12</span>
+    </div>
   </header>
 
   <div class="hero">
     <div>
-      <div class="lab ember">A tour of the dashboard card</div>
+      <div class="lab ember">Home Assistant · A tour of the dashboard card</div>
       <h1 style="margin-top:14px">The July Oven <em>card</em></h1>
       <p class="lede">Your June oven, on your Home Assistant dashboard, working locally. This walkthrough covers <b>every screen</b> of the card: starting a cook, watching it, the camera, the cook history, several ovens, and the settings.</p>
       <nav class="jump" aria-label="Sections">
@@ -189,7 +197,7 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
     <div class="sec-head">
       <div class="lab">Set up</div>
       <h2>Add the card to a dashboard</h2>
-      <p>The card ships inside the June Oven integration. Once the integration is installed, the card is already loaded on every dashboard.</p>
+      <p>The card ships inside the June Oven integration. Once the integration is installed, the card is already loaded on every dashboard. What the integration needs from the oven (its address and the optional certificate) is on the <a href="/clients#home-assistant">clients page</a>.</p>
     </div>
     <ol class="steps">
       <li class="glass"><b>Install the integration</b><span>In HACS, add the custom repository <code>prj-july/ha-june-oven</code> as an Integration, open <b>June Oven</b> and select Download.</span></li>
@@ -476,8 +484,8 @@ footer{border-top:1px solid var(--rim);padding-block:28px;color:var(--fg3);font-
   </section>
 
   <footer>
-    <span>July Oven card 0.5.12 · part of the June Oven integration by Project July</span>
-    <span><a href="../">project-july.org</a> · <a href="https://github.com/prj-july/ha-june-oven">github.com/prj-july/ha-june-oven</a></span>
+    <span>July Oven card 0.5.12 · part of the June Oven integration for Home Assistant by Project July</span>
+    <span><a href="/">project-july.org</a> · <a href="/clients">All clients</a> ·<a href="https://github.com/prj-july/ha-june-oven">github.com/prj-july/ha-june-oven</a></span>
   </footer>
 </div>
 

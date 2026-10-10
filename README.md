@@ -65,6 +65,17 @@ ffmpeg -i ../oven-3d-model/reference-photos/18-electronics-bay-teardown-clear.we
 
 When you add or move a page, update `public/sitemap.xml`.
 
+## App pages
+
+- `/android/` and `/ios/` are the pages for the Project July phone app (`prj-july/project-july-app`).
+  The Android page has the Google Play beta links: the tester group `prj-july-beta` and the
+  opt-in page for `org.projectjuly.oven`. The iPhone page asks for TestFlight invites by email.
+  Both end with a short privacy summary that links to `/clients/privacy`; keep it in step with
+  the policy.
+- They share `public/css/app-pages.css`, the same dark glass as the card guide. The screenshots in
+  `public/assets/app/` are WebP copies of the app repo's `docs/screenshots/` and
+  `store-assets/screenshots/`; `feature-graphic.png` is the link-preview image.
+
 ## July Oven card guide
 
 `public/card/` is a walkthrough of the Home Assistant dashboard card, at `/card/`, linked from the

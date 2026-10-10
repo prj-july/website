@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clients for your Project July oven</title>
-<meta name="description" content="Home Assistant, Android, Apple and web clients for a June oven running Project July (June Local). Pick the one that fits your setup.">
+<meta name="description" content="The Project July app for iPhone and Android, plus Home Assistant and web clients, for a June oven running Project July (June Local).">
 <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://project-july.org/clients">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Project July">
 <meta property="og:url" content="https://project-july.org/clients">
 <meta property="og:title" content="Clients for your Project July oven">
-<meta property="og:description" content="Home Assistant, Android, Apple and web clients for a June oven running Project July (June Local). Pick the one that fits your setup.">
+<meta property="og:description" content="The Project July app for iPhone and Android, plus Home Assistant and web clients, for a June oven running Project July (June Local).">
 <meta property="og:image" content="https://project-july.org/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -72,22 +72,22 @@
       <p class="eyebrow">Compatible clients</p>
       <h1 class="setup-title">Clients for your Project July oven</h1>
       <p class="lead">Every way to control a June oven running Project July (June Local). June's cloud is gone, so each of these talks to the oven directly on your home network.</p>
-      <p class="muted">Choose a client: the Home Assistant integration, the Android companion app, or the Apple companion app (the Apple app may need TestFlight). Searching for “Project July” also finds them.</p>
+      <p class="muted">For your phone, we recommend the <strong>Project July app</strong>, on <a href="#android">Android</a> and <a href="#apple">iPhone</a>. Home Assistant users can add the integration and its dashboard card. Searching for “Project July” also finds them.</p>
     </div>
 
     <ul class="client-jump" aria-label="Clients on this page">
-      <li><a href="#home-assistant"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg>Home Assistant</a></li>
       <li><a href="#android"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Android</a></li>
-      <li><a href="#apple"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Apple</a></li>
-      <li><a href="#web"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg>Web browser</a></li>
+      <li><a href="#apple"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>iPhone</a></li>
+      <li><a href="#home-assistant"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg>Home Assistant</a></li>
       <li><a href="#dashboard-card"><svg class="icon" aria-hidden="true"><use href="#i-oven"/></svg>Dashboard card</a></li>
+      <li><a href="#web"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg>Web browser</a></li>
     </ul>
 
     <div class="jo-notice jo-notice-info client-before">
       <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-key"/></svg></span>
       <div class="jo-notice-body">
-        <p class="jo-notice-title">Which install did you choose?</p>
-        <p class="jo-notice-text">The installer offers two: <strong>Install June Local</strong>, the standard install that keeps June's certificate, and <strong>Install with your own CA</strong>, the custom install that makes a certificate just for your home. Some clients need one extra step after a custom install. <a href="/setup/#certificates">Certificates, explained</a>.</p>
+        <p class="jo-notice-title">Every client works with either install</p>
+        <p class="jo-notice-text">Certificates are optional. Any client can use the oven's plain port 80 or connect without checking the certificate, and commands are signed either way. To have it checked, after the custom install (<strong>Install with your own CA</strong>) give the client your home's <span class="mono">ca.crt</span>. <a href="/setup/#certificates">Certificates, explained</a>.</p>
       </div>
     </div>
   </div>
@@ -96,6 +96,54 @@
 <section class="tint">
   <div class="wrap">
     <div class="client-grid">
+
+      <!-- ============================ Android ============================ -->
+      <article class="client" id="android" aria-labelledby="android-title">
+        <div class="client-head">
+          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+          <div>
+            <h2 id="android-title">Project July for Android</h2>
+            <p class="client-meta"><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Recommended</span><span>Beta on Google Play</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
+          </div>
+        </div>
+        <p>Our app for June ovens: preheat, change the temperature, timers with +1/+5/+10 minutes, the live camera and a one-tap Stop. It talks straight to your oven on your home Wi‑Fi, with no cloud and no account.</p>
+        <dl class="client-needs">
+          <dt>Download</dt><dd>In beta on Google Play, and anyone can join. Use the same Google account that&rsquo;s on your phone for all three steps: 1.&nbsp;<a href="https://groups.google.com/g/prj-july-beta">join the beta group</a>, 2.&nbsp;<a href="https://play.google.com/apps/testing/org.projectjuly.oven">become a tester</a>, 3.&nbsp;<a href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">install</a>. If Google Play says &ldquo;Not found&rdquo;, finish steps 1 and 2 first, then wait a few minutes. Questions are welcome in the group.</dd>
+          <dt>Oven address</dt><dd>The app finds the oven on your Wi‑Fi, or you type its address. No root or computer needed.</dd>
+          <dt>Certificate</dt><dd>Nothing to do. The app comes with the standard install's certificate, so <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span> connect over checked HTTPS. After the custom install, paste <span class="mono">ca.crt</span> under <strong>Home certificate</strong>. Otherwise it uses port 80.</dd>
+          <dt>Pairing</dt><dd>The app shows an eight-digit code; type it on the oven's <strong>Connect</strong> screen.</dd>
+        </dl>
+        <div class="client-actions">
+          <a class="jo-btn jo-btn-primary" href="https://groups.google.com/g/prj-july-beta">1. Join the beta group</a>
+          <a class="client-link" href="https://play.google.com/apps/testing/org.projectjuly.oven">2. Become a tester</a>
+          <a class="client-link" href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">3. Install</a>
+          <a class="client-link" href="/android/">About the app</a>
+          <a class="client-link" href="/clients/privacy">Privacy policy</a>
+        </div>
+      </article>
+
+      <!-- ============================ Apple ============================ -->
+      <article class="client" id="apple" aria-labelledby="apple-title">
+        <div class="client-head">
+          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+          <div>
+            <h2 id="apple-title">Project July for iPhone</h2>
+            <p class="client-meta"><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Recommended</span><span>TestFlight</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
+          </div>
+        </div>
+        <p>The same app for iPhone: preheat, change the temperature, timers with +1/+5/+10 minutes, the live camera and a one-tap Stop, over your home Wi‑Fi with no cloud and no account.</p>
+        <dl class="client-needs">
+          <dt>Download</dt><dd>In testing on TestFlight, with no public link yet. Email <a href="mailto:hello@project-july.org?subject=TestFlight%20invite">hello@project-july.org</a> for an invite, then accept it in Apple's free TestFlight app.</dd>
+          <dt>Oven address</dt><dd>The app finds the oven on your Wi‑Fi, or you type its address. No computer needed.</dd>
+          <dt>Certificate</dt><dd>Nothing to do. The app comes with the standard install's certificate, so <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span> connect over checked HTTPS. After the custom install, paste <span class="mono">ca.crt</span> under <strong>Home certificate</strong>. Otherwise it uses port 80.</dd>
+          <dt>Pairing</dt><dd>The app shows an eight-digit code; type it on the oven's <strong>Connect</strong> screen.</dd>
+        </dl>
+        <div class="client-actions">
+          <a class="jo-btn jo-btn-primary" href="mailto:hello@project-july.org?subject=TestFlight%20invite">Request TestFlight access</a>
+          <a class="client-link" href="/ios/">About the iPhone app</a>
+          <a class="client-link" href="/clients/privacy">Privacy policy</a>
+        </div>
+      </article>
 
       <!-- ============================ Home Assistant ============================ -->
       <article class="client" id="home-assistant" aria-labelledby="ha-title">
@@ -108,9 +156,9 @@
         </div>
         <p>Adds your June oven to Home Assistant: on/off and cook modes, target and current temperature, cook progress, preheat-ready and done sensors, food probe, and the interior camera on demand. Working on real ovens; it has no tagged release yet.</p>
         <dl class="client-needs">
-          <dt>Install</dt><dd>Either install. Home Assistant 2025.1 or newer, and HACS (as a custom repository) or a manual copy.</dd>
-          <dt>Oven address</dt><dd>The oven's IP address or hostname. The standard install's certificate covers <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span>; for the IP address or a name of your own, use your own CA, which puts it in the certificate.</dd>
-          <dt>Certificate</dt><dd>Your own CA: paste your home's <span class="mono">ca.crt</span> into <strong>CA certificate (PEM)</strong> when adding the oven, or later under <strong>Configure</strong>. Standard install: turn off <strong>Verify TLS certificate</strong> instead.</dd>
+          <dt>Install</dt><dd>Home Assistant 2025.1 or newer, and HACS (as a custom repository) or a manual copy.</dd>
+          <dt>Oven address</dt><dd>The oven's IP address or hostname. Enter <span class="mono">http://&lt;oven-ip&gt;:80</span> to use the plain port.</dd>
+          <dt>Certificate</dt><dd>Optional. Use port 80, or turn off <strong>Verify TLS certificate</strong>. To have it checked after the custom install, paste your home's <span class="mono">ca.crt</span> into <strong>CA certificate (PEM)</strong>, or later under <strong>Configure</strong>.</dd>
           <dt>Pairing</dt><dd>You type an eight-digit code on the oven's <strong>Connect</strong> screen.</dd>
         </dl>
         <div class="client-actions">
@@ -118,70 +166,6 @@
           <a class="client-link" href="https://github.com/prj-july/ha-june-oven#project-july-local-server">Setup with Project July</a>
           <a class="client-link" href="https://github.com/prj-july/ha-june-oven#troubleshooting">Troubleshooting</a>
         </div>
-      </article>
-
-      <!-- ============================ Android ============================ -->
-      <article class="client" id="android" aria-labelledby="android-title">
-        <div class="client-head">
-          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-          <div>
-            <h2 id="android-title">Android companion app</h2>
-            <p class="client-meta"><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Beta</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
-          </div>
-        </div>
-        <p>The June app you know, rebuilt to talk to June Local: it looks and works like June's app, but connects to your oven's address instead of June's servers, and no longer refuses your home's certificate.</p>
-        <dl class="client-needs">
-          <dt>Download</dt><dd>It comes with the installer. When the install finishes, open <strong>Phone setup</strong> and tap <strong>Download the companion app</strong>, or scan the code it shows. It isn't offered as a separate download yet.</dd>
-          <dt>Install</dt><dd>Either install. Your own CA: first install your home's <span class="mono">ca.crt</span> on the phone, under Settings › Security › Encryption &amp; credentials › Install a certificate › CA certificate.</dd>
-          <dt>Endpoint</dt><dd>Root, or an ADB shell with root, to point the app at your oven. An in-app setting is planned.</dd>
-        </dl>
-        <ol class="mini-steps">
-          <li><span>Install the app from the installer's <strong>Phone setup</strong>.</span></li>
-          <li><span>Set the endpoint to your oven's address:<br><code class="client-cmd">adb shell setprop persist.june.local_endpoint &lt;oven-address&gt;</code></span></li>
-          <li><span>Open the app and pair from the oven's <strong>Connect</strong> screen.</span></li>
-        </ol>
-        <p class="small muted">The Project July app, the same app as on iPhone, is also being tested on Android. It will be listed here when it's ready. <a href="/clients/privacy">Privacy policy</a></p>
-      </article>
-
-      <!-- ============================ Apple ============================ -->
-      <article class="client" id="apple" aria-labelledby="apple-title">
-        <div class="client-head">
-          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-          <div>
-            <h2 id="apple-title">Apple companion app</h2>
-            <p class="client-meta"><span class="jo-pill jo-pill-cooking"><span class="jo-pill-dot" aria-hidden="true"></span>TestFlight</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
-          </div>
-        </div>
-        <p>The Project July app for iPhone: preheat, change the temperature, timers with +1/+5/+10 minutes, and the live camera beside the temperature. You pair it once by typing a code on the oven. It's in testing, so TestFlight may be required.</p>
-        <dl class="client-needs">
-          <dt>Download</dt><dd>There's no public TestFlight link yet. Email <a href="mailto:hello@project-july.org?subject=TestFlight%20invite">hello@project-july.org</a> to ask for an invite, then install Apple's free TestFlight app to accept it.</dd>
-          <dt>Install</dt><dd>Either install. Your own CA: send <span class="mono">ca.crt</span> to the iPhone (AirDrop or email), install the profile, then turn it on under Settings › General › About › Certificate Trust Settings.</dd>
-          <dt>Oven address</dt><dd>Typed in the app on first launch. No root or computer needed.</dd>
-        </dl>
-        <div class="client-actions">
-          <a class="jo-btn jo-btn-primary" href="mailto:hello@project-july.org?subject=TestFlight%20invite">Request TestFlight access</a>
-          <a class="client-link" href="/clients/privacy">Privacy policy</a>
-        </div>
-      </article>
-
-      <!-- ============================ Web ============================ -->
-      <article class="client" id="web" aria-labelledby="web-title">
-        <div class="client-head">
-          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg></span>
-          <div>
-            <h2 id="web-title">Web browser</h2>
-            <p class="client-meta"><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Stable</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
-          </div>
-        </div>
-        <p>Every oven running June Local serves a status page. It's the quickest way to check the oven is up after an install. It shows status only; use one of the apps or Home Assistant to cook.</p>
-        <dl class="client-needs">
-          <dt>Install</dt><dd>Nothing to install, with either install. Any browser on the same network as the oven.</dd>
-          <dt>Address</dt><dd>Open <code>http://&lt;oven-ip&gt;/local</code>, using your oven's IP address.</dd>
-        </dl>
-        <details class="client-more">
-          <summary>For advanced users</summary>
-          <p class="small muted"><code>http://&lt;oven-ip&gt;/local/status</code> returns the same as JSON, for scripts and monitoring: <code>{"ok": true, "mode": "local", "server": "june-local", …}</code>. The oven's API and WebSocket are on <code>https://&lt;oven-ip&gt;</code> (port 443), with the same routes June's cloud used.</p>
-        </details>
       </article>
 
       <!-- ============================ Dashboard card ============================ -->
@@ -201,6 +185,43 @@
         <div class="client-actions">
           <a class="jo-btn jo-btn-primary" href="https://github.com/prj-july/ha-june-oven#july-oven-dashboard-card">Card setup and options</a>
         </div>
+      </article>
+
+      <!-- ============================ Web ============================ -->
+      <article class="client" id="web" aria-labelledby="web-title">
+        <div class="client-head">
+          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg></span>
+          <div>
+            <h2 id="web-title">Web browser</h2>
+            <p class="client-meta"><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Stable</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
+          </div>
+        </div>
+        <p>Every oven running June Local serves a status page. It's the quickest way to check the oven is up after an install. It shows status only; use one of the apps or Home Assistant to cook.</p>
+        <dl class="client-needs">
+          <dt>Install</dt><dd>Nothing to install, with either install. Any browser on the same network as the oven.</dd>
+          <dt>Address</dt><dd>Open <code>http://&lt;oven-ip&gt;/local</code>, using your oven's IP address.</dd>
+        </dl>
+        <details class="client-more">
+          <summary>For advanced users</summary>
+          <p class="small muted"><code>http://&lt;oven-ip&gt;/local/status</code> returns the same as JSON, for scripts and monitoring: <code>{"ok": true, "mode": "local", "server": "june-local", …}</code>. The oven's API and WebSocket are on <code>https://&lt;oven-ip&gt;</code> (port 443) and <code>http://&lt;oven-ip&gt;</code> (port 80), with the same routes June's cloud used.</p>
+        </details>
+      </article>
+
+      <!-- ============================ Original June app ============================ -->
+      <article class="client" id="june-app" aria-labelledby="june-app-title">
+        <div class="client-head">
+          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+          <div>
+            <h2 id="june-app-title">June's original app, rebuilt (Android)</h2>
+            <p class="client-meta"><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>For tinkerers</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
+          </div>
+        </div>
+        <p>June's own Android app, rebuilt to talk to June Local instead of June's servers. Most people should use <a href="#android">Project July for Android</a>; this one needs root to point it at your oven.</p>
+        <dl class="client-needs">
+          <dt>Download</dt><dd>It comes with the installer: open <strong>Phone setup</strong> and tap <strong>Download the companion app</strong>, or scan the code it shows.</dd>
+          <dt>Certificate</dt><dd>Nothing to do after the standard install. After the custom install, install <span class="mono">ca.crt</span> on the phone under Settings › Security › Encryption &amp; credentials › Install a certificate › CA certificate.</dd>
+          <dt>Endpoint</dt><dd>Root, or an ADB shell with root:<br><code class="client-cmd">adb shell setprop persist.june.local_endpoint &lt;oven-address&gt;</code></dd>
+        </dl>
       </article>
 
     </div>

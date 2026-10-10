@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Project July">
 <meta property="og:url" content="https://project-july.org/clients/privacy">
 <meta property="og:title" content="Privacy policy: Project July for Android and iOS">
-<meta property="og:description" content="Your oven, camera and cooking data stay on your home network, and we don't collect them.">
+<meta property="og:description" content="No account, no ads, no analytics. Your oven, camera and cooking data stay on your home network; the only outside request is an update check to Expo.">
 <meta property="og:image" content="https://project-july.org/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -70,60 +70,82 @@
       <p class="muted">Effective <time datetime="2026-10-07">October 7, 2026</time></p>
     </div>
 
-    <p>Project July is an independent, community-made app for controlling a June oven over your home network. This policy explains what the app does with your information.</p>
+    <p>Project July is an independent, community-made app for controlling a June oven over your home network. This policy covers the <strong>Project July</strong> app for Android and iOS (<span class="mono">org.projectjuly.oven</span>) and explains what it does with your information. "We" means the Project July developers.</p>
 
     <div class="jo-notice jo-notice-success" role="note">
       <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
       <div class="jo-notice-body">
         <p class="jo-notice-title">In short</p>
-        <p class="jo-notice-text">Your oven, camera and cooking data stay on your home network, and we don't collect them.</p>
+        <p class="jo-notice-text">No account, no ads, no analytics and no tracking. Your oven, camera and cooking data stay on your home network, and we don't collect them. The only request the app makes outside your home is an update check, which sends a random install ID to Expo, the update service.</p>
       </div>
     </div>
 
     <h2 id="phone">What stays on your phone</h2>
-    <p>To connect to your oven, the app stores the following on your phone only:</p>
+    <p>To connect to your ovens, the app stores the following on your phone only, in its secure storage (Android Keystore or iOS Keychain):</p>
     <ul>
-      <li>Your oven's address on your home network and the name you give this phone</li>
-      <li>Pairing keys created when you pair with your oven. These are kept in your phone's secure storage (Android Keystore or iOS Keychain) and never leave the device.</li>
-      <li>Your preferences, such as the theme, light or dark mode, and °F or °C</li>
+      <li>Each paired oven's address on your home network, its name, model and ID, and the pairing keys created when you paired. The private keys never leave the phone.</li>
+      <li>The name you give this phone, which the oven shows in its list of connected phones</li>
+      <li>Your home certificate (<span class="mono">ca.crt</span>), if you add one, and how the app should check the oven's certificate</li>
+      <li>Your preferences, such as the theme, light or dark mode, °F or °C, camera frame rate and clock</li>
+      <li>The last cook on each oven (mode, temperature and time) for the Repeat button, and how often you start each mode, to put your most-used modes first</li>
     </ul>
     <p>We can't see or access any of this.</p>
 
     <h2 id="oven">What goes to your oven</h2>
-    <p>The app talks directly to the Project July server (<span class="mono">june-local</span>) running on your own home network. That includes oven status and temperatures, cook settings, the timer, probe readings and pictures from the oven camera. This data travels only between your phone and your server. It isn't sent to us, to June, or to any other company.</p>
-    <p>The app connects over HTTPS when your phone trusts your server's certificate. Otherwise it falls back to plain HTTP on your home network. On that fallback connection, commands are still signed and pairing is still protected, but the link itself isn't encrypted. Camera pictures are shown in the app and aren't saved on your phone.</p>
+    <p>The app talks directly to the Project July server (<span class="mono">june-local</span>) running on your oven, on your own home network. When you pair, it sends this phone's name, a random ID and password created for it, the app's version, your phone's time zone, and the public halves of the keys it created. After that it sends your commands, such as start, change the temperature, add time and stop, each signed by your phone. The oven sends back its status and temperatures, cook settings, the timer, probe readings and pictures from its camera.</p>
+    <p>This data travels only between your phone and your oven. It isn't sent to us, to June, or to any other company.</p>
+    <p>The app connects over HTTPS when your phone trusts your server's certificate. Otherwise it falls back to plain HTTP on your home network and says so. On that fallback connection, commands are still signed and pairing is still protected, but the link itself isn't encrypted.</p>
+
+    <h2 id="network">Finding the oven</h2>
+    <p>During setup, the app can search for the oven. It reads your phone's own address on your Wi-Fi, then asks each address in that range (private home-network ranges only) whether it runs the Project July server. It doesn't keep a list of the other devices on your network or send it anywhere. You can skip the search and type the oven's address instead.</p>
+
+    <h2 id="camera">Camera pictures</h2>
+    <p>The app shows pictures from the oven's camera while you watch, and doesn't save them on its own. A picture leaves the app only when you choose to:</p>
+    <ul>
+      <li><strong>Save</strong> adds the picture on screen to your phone's photo library. The app asks only for permission to add photos, and it can't see or read your library.</li>
+      <li><strong>Share</strong> opens your phone's share menu, and the picture goes wherever you send it. A temporary copy sits in the app's cache for the share menu.</li>
+    </ul>
 
     <h2 id="updates">App updates (Expo)</h2>
     <p>When the app starts, it checks for updates with Expo (650 Industries, Inc.), the service that delivers updates to the app. That check sends:</p>
     <ul>
-      <li>the app's version and runtime version</li>
+      <li>a random install ID, created on your phone the first time the app checks and sent with every check. It isn't your phone's hardware ID or advertising ID, and it isn't linked to you, your account or your oven. Reinstalling the app creates a new one.</li>
+      <li>the app's version, runtime version and current update</li>
       <li>your platform (Android or iOS) and update channel</li>
-      <li>a random install ID created by the app, which isn't linked to you, your account or your device hardware</li>
     </ul>
-    <p>Like any internet request, it also reveals your IP address to Expo. This is used only to deliver updates. Expo handles it under its own <a href="https://expo.dev/privacy">privacy policy</a>.</p>
+    <p>Like any internet request, it also reveals your IP address to Expo. Expo uses this to deliver the right update and to count the installs that have it. It isn't used for advertising or tracking, and it includes nothing about your oven, your cooking or your settings. Expo handles it under its own <a href="https://expo.dev/privacy">privacy policy</a>.</p>
+
+    <h2 id="permissions">Permissions</h2>
+    <ul>
+      <li><strong>Network access and network state:</strong> to reach your oven, to check the phone is on Wi-Fi before searching, and to check for updates</li>
+      <li><strong>Local network</strong> (iOS): to find and talk to the oven on your home network</li>
+      <li><strong>Add to photos:</strong> asked only when you tap Save. Android 10 and later need no permission for this; on Android 9 and earlier it's storage write access.</li>
+      <li><strong>Vibration:</strong> small taps of feedback when you press buttons</li>
+    </ul>
+    <p>The app doesn't use your location, contacts, microphone or your phone's camera, and it can't read your photos.</p>
 
     <h2 id="dont">What we don't do</h2>
     <ul>
       <li>No accounts, sign-in or sign-up</li>
-      <li>No analytics, advertising or tracking</li>
-      <li>We don't sell or share your data, and we don't collect your oven, cooking or camera data at all</li>
+      <li>No analytics, advertising, crash reporting or tracking</li>
+      <li>We don't sell your data, and we don't collect your oven, cooking or camera data at all. The only data that goes to another company is the update check above, sent to Expo, which runs the update service for us.</li>
     </ul>
 
     <h2 id="stores">App stores</h2>
-    <p>Google Play and the Apple App Store may collect information when you download or use apps, such as installs and crash reports. They do this under their own privacy policies, not this one.</p>
+    <p>Google Play, the Apple App Store and TestFlight may collect information when you download or use apps, such as installs and crash reports. They do this under their own privacy policies, not this one.</p>
 
     <h2 id="delete">Deleting your data</h2>
     <ul>
-      <li><strong>Settings → Unpair</strong> removes the oven's address and pairing keys from your phone.</li>
-      <li>Uninstalling the app removes everything it stored, including the install ID.</li>
+      <li><strong>Settings → Forget this oven</strong> unpairs the phone from that oven and removes its address, details and pairing keys from your phone.</li>
+      <li>Uninstalling the app removes everything it stored, including the install ID, so later update checks can't be linked to earlier ones.</li>
     </ul>
-    <p>Because we don't hold any of your data, there's nothing on our side to delete.</p>
+    <p>Because we don't hold any of your data, there's nothing on our side to delete. For the update records Expo keeps, see <a href="https://expo.dev/privacy">Expo's privacy policy</a>.</p>
 
     <h2 id="children">Children</h2>
-    <p>Project July isn't directed at children under 13.</p>
+    <p>Project July isn't directed at children under 13 and doesn't knowingly collect anything from them.</p>
 
     <h2 id="changes">Changes</h2>
-    <p>If this policy changes, we'll update this page and the date at the top.</p>
+    <p>If the app starts handling data differently, we'll update this page and the date at the top before that version is released.</p>
 
     <h2 id="contact">Contact</h2>
     <p>Questions? Email <a href="mailto:hello@project-july.org">hello@project-july.org</a>.</p>

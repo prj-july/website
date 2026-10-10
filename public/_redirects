@@ -1,0 +1,4 @@
+# The card guide moved under /clients; keep old links working.
+/card /clients/ha-card/ 301
+/card/ /clients/ha-card/ 301
+/card/* /clients/ha-card/:splat 301

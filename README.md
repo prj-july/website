@@ -82,8 +82,10 @@ When you add or move a page, update `public/sitemap.xml`.
 
 ## July Oven card guide
 
-`public/card/` is a walkthrough of the Home Assistant dashboard card, at `/card/`, linked from the
-App section and the Home Assistant FAQ. It is styled after the card's own dark glass rather than
+`public/clients/ha-card/` is a walkthrough of the Home Assistant dashboard card, at `/clients/ha-card/`,
+linked from the clients page (the Home Assistant and dashboard card entries), the App section, the
+Home Assistant FAQ, the setup page's next steps, the app pages and every footer. It used to be at
+`/card/`; `public/_redirects` sends old links there. It is styled after the card's own dark glass rather than
 the site's design system. Its screenshots and GIFs are rendered from the card's test page in
 `prj-july/ha-june-oven` (`tests/card/index.html`); the same guide, in Markdown, is in that repo's
 `docs/card-guide/`.

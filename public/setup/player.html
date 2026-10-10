@@ -9,7 +9,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=IBM+Plex+Mono&family=Public+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=IBM+Plex+Mono&family=Barlow+Semi+Condensed:wght@400;500;600&family=Barlow+Condensed:wght@300&family=Public+Sans:wght@400;600&display=swap">
 <link rel="icon" href="../assets/project-july-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../css/tokens.css">
 <style>
@@ -102,8 +102,8 @@
     .cap-title { font-size: 18px; line-height: 24px; }
   }
 
-  /* Step 4: the laptop (drawn, not 3D). The screens copy the real June Local installer; which one
-     shows, the key press and the gauge are driven from the player's timeline so they pause with it. */
+  /* Steps 3 and 4: the laptop (drawn, not 3D). The screens copy the real June Local installer; which one
+     shows, the pointer and the progress are driven from the player's timeline so they pause with it. */
   .laptop {
     position: absolute; z-index: 3; right: 6%; top: 50%; transform: translateY(-58%); transform-origin: 100% 100%;
     width: min(380px, 58%); pointer-events: none; animation: lap-in .6s ease-out;
@@ -113,64 +113,121 @@
   .laptop.mini { transform: translateY(-58%) translate(3%, 36%) scale(.42); }   /* tucked into the corner while SW2 is pressed */
   .lap-screen {
     position: relative; aspect-ratio: 16 / 10; overflow: hidden; container-type: inline-size;
-    border: 10px solid #1c1c1e; border-radius: 14px 14px 4px 4px; background: #1b64d8; box-shadow: var(--shadow-lg);
+    border: 10px solid #1c1c1e; border-radius: 14px 14px 4px 4px; background: #08090b; box-shadow: var(--shadow-lg);
   }
   .lap-base { position: relative; height: 12px; margin: 0 -7%; border-radius: 0 0 12px 12px; background: var(--line-strong); }
   .lap-cable { position: absolute; right: calc(107% - 3px); bottom: 0; width: 150px; height: 90px; overflow: visible; animation: cable-in .9s .6s cubic-bezier(.2, .7, .2, 1) both; transition: opacity .2s; }
   .laptop.mini .lap-cable { opacity: 0; }
   .link-cable { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; overflow: visible; }
-  .lap-key {
-    position: absolute; right: 6%; top: calc(100% + 12px); padding: 6px 10px; border-radius: 8px;
-    font: 600 14px var(--font-sans); background: var(--surface-raised); border: 1.5px solid var(--line-strong); box-shadow: 0 3px 0 var(--line-strong);
-    opacity: 0; transition: opacity .2s, transform .08s, box-shadow .08s;
+  /* The screens: Ventoy's menu, the June Local boot menu, then the graphical installer ("Still Glass",
+     colours from its app.css), drawn larger than life so they read at this size. */
+  .lap-screen > div { display: none; position: absolute; inset: 0; }
+  .laptop[data-scr="ventoy"] .ventoy, .laptop[data-scr="jlmenu"] .jlmenu,
+  .laptop[data-scr="home"] .g-home, .laptop[data-scr="options"] .g-options,
+  .laptop[data-scr="rcm"] .g-rcm, .laptop[data-scr="found"] .g-rcm,
+  .laptop[data-scr="gauge"] .g-run, .laptop[data-scr="done"] .g-run { display: block; }
+  .bm { background: #0d0f14; color: #c9ced8; font: 2.5cqw/1.5 "IBM Plex Mono", ui-monospace, Consolas, monospace; }
+  .bm-bar { padding: 1.4cqw 4cqw; background: #1b2030; color: #fff; font-weight: 600; }
+  .bm ul { list-style: none; margin: 0; padding: 4cqw; }
+  .bm li { display: flex; justify-content: space-between; padding: .4cqw 1.6cqw; border-radius: .6cqw; white-space: nowrap; }
+  .bm li.sel { background: #e8eaf0; color: #0d0f14; }
+  .bm-foot { position: absolute; left: 4cqw; bottom: 4cqw; margin: 0; }
+
+  .gui {
+    color: #f4f4f5; font-family: "Barlow Semi Condensed", var(--font-sans); font-size: 2.1cqw; line-height: 1.3;
+    background: linear-gradient(112deg, transparent 0 66%, rgba(255,255,255,.025) 66.3%, transparent 80%), linear-gradient(180deg, #08090b, #0f1115);
   }
-  .lap-key.show { opacity: 1; }
-  .lap-key.press { transform: translateY(3px); box-shadow: 0 0 0 var(--line-strong); }
-  .tui { position: absolute; inset: 0; font: 8px/1.35 "IBM Plex Mono", ui-monospace, Consolas, monospace; font-size: 2.45cqw; color: #111; }
-  .tui-dlg {
-    display: none; position: absolute; left: 4%; right: 4%; top: 14%; padding: 3.4cqw 3cqw 2.4cqw;
-    background: #e8e8e4; border: 1px solid #222; box-shadow: 1.6cqw 1.6cqw 0 #0a1a38;
+  :where(.gui p) { margin: 0; }
+  .g-head { display: flex; align-items: center; gap: 1.6cqw; height: 10cqw; padding: 0 3cqw; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .g-logo { width: 4.4cqw; flex: none; color: #f89a4e; }
+  .g-name { font-size: 2.6cqw; line-height: 1.1; font-weight: 500; }
+  .g-name small { display: block; font-size: 1.2cqw; letter-spacing: .06em; color: #a1a1aa; font-weight: 400; }
+  .g-pill { margin-left: auto; display: flex; align-items: center; gap: .9cqw; padding: .7cqw 1.6cqw; border: 1px solid rgba(255,255,255,.1); border-radius: 99px; font-size: 1.35cqw; font-weight: 600; letter-spacing: .08em; }
+  .g-pill i { display: inline-block; flex: none; width: 1.8cqw; height: 1.8cqw; border-radius: 50%; border: .3cqw dashed #8b9099; }
+  .g-spin { display: inline-block; flex: none; width: 1.8cqw; height: 1.8cqw; border-radius: 50%; border: .3cqw solid rgba(255,255,255,.12); border-top-color: #ff7a2e; animation: g-spin 1s linear infinite; }
+  @keyframes g-spin { to { transform: rotate(360deg); } }
+  .g-ok { display: inline-grid; place-items: center; flex: none; width: 1.9cqw; height: 1.9cqw; border-radius: 50%; background: #4ade80; }
+  .g-ok::after, .g-steps .ok b::after, .g-track .ok i::after { content: ""; width: 24%; height: 44%; margin-top: -10%; border: solid #08090b; border-width: 0 .32cqw .32cqw 0; transform: rotate(45deg); }
+  .g-body { position: absolute; top: 10cqw; left: 0; right: 0; bottom: 0; padding: 4cqw 7cqw; }
+  .g-eyebrow { font-size: 1.4cqw; font-weight: 600; letter-spacing: .1em; color: #a1a1aa; text-transform: uppercase; }
+  .g-h1 { margin: .4cqw 0 2.6cqw; font: 300 6.4cqw/1.05 "Barlow Condensed", var(--font-sans); }
+  .g-h2 { margin: .6cqw 0 2cqw; font-size: 3.4cqw; line-height: 1.15; font-weight: 500; }
+  .g-muted { color: #a1a1aa; }
+  .g-btns { display: flex; gap: 1.6cqw; margin-top: 2.6cqw; }
+  .g-btn { padding: 1.2cqw 2.4cqw; border-radius: 1cqw; border: 1px solid rgba(255,255,255,.16); font-size: 2.1cqw; font-weight: 600; white-space: nowrap; transition: transform .08s, filter .08s; }
+  .g-btn.pri { background: #f4f4f5; border-color: #f4f4f5; color: #0a0a0b; }
+  .g-btn.off { background: #55575c; border-color: #55575c; color: #2a2b2e; }
+  .g-btn.hover { filter: brightness(1.12); }
+  .g-btn.down, .g-tile.down { transform: scale(.96); filter: brightness(.85); }
+
+  .g-tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5cqw; }
+  .g-tile {
+    position: relative; height: 22cqw; padding: 1.8cqw 1.5cqw; border-radius: 1.6cqw; overflow: hidden;
+    border: 1px solid rgba(255,122,64,.36); background: radial-gradient(120% 60% at 50% 115%, rgba(255,86,24,.34), transparent 70%), linear-gradient(180deg, #1d1210, #2e1511);
+    display: flex; flex-direction: column; justify-content: flex-end; font-size: 2.1cqw; line-height: 1.15; font-weight: 500;
+    transition: transform .08s, filter .08s;
   }
-  .laptop[data-scr="menu"] .tui-menu, .laptop[data-scr="rcm"] .tui-rcm,
-  .laptop[data-scr="gauge"] .tui-gauge, .laptop[data-scr="done"] .tui-done { display: block; }
-  .tui-title { position: absolute; left: 0; right: 0; top: -.75em; text-align: center; }
-  .tui-title span { background: #e8e8e4; color: #d4291b; padding: 0 .5em; border-left: 1px solid #222; border-right: 1px solid #222; }
-  .tui p { margin: 0 0 .6em; }
-  .tui ul, .tui ol { list-style: none; margin: 0 0 .9em 7%; padding: 0; }
-  .tui li { white-space: nowrap; padding: 0 .3em; }
-  .tui ul li b { font-weight: 400; display: inline-block; width: 5.4em; }
-  .tui li.sel { background: #d4291b; color: #fff; }
-  .tui-rcm ol { margin-left: 0; }
-  .tui-btns { display: flex; justify-content: space-around; }
-  .tui-btns span { padding: 0 .2em; }
-  .tui-rcm .ok, .tui-done .ok, .laptop.okflash .tui-menu .ok { background: #d4291b; color: #fff; }
-  .laptop.okflash .tui-rcm .ok { background: #111; }
-  /* Debian live boot menu, and the short "booting" screen after it */
-  .boot, .booting { display: none; position: absolute; inset: 0; background: #11161c; color: #e9e9e9; font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; }
-  .laptop[data-scr="boot"] .boot, .laptop[data-scr="booting"] .booting { display: block; }
-  .boot-logo { position: absolute; left: 7%; top: 10%; width: 22%; }
-  .boot-info { position: absolute; left: 36%; top: 10%; right: 4%; font-size: 1.9cqw; line-height: 1.45; color: #cfd3d8; }
-  .boot-info b { display: block; font-family: var(--font-sans); font-weight: 700; font-size: 3.1cqw; line-height: 1.15; color: #fff; margin-bottom: .35em; }
-  .boot-info b + b { font-size: 2.6cqw; margin-bottom: .6em; }
-  .boot-menu { position: absolute; left: 10%; top: 58%; margin: 0; padding: 0; list-style: none; font-size: 2.3cqw; line-height: 1.5; }
-  .boot-menu li { padding: 0 .4em; }
-  .boot-menu .sel { background: #e9e9e9; color: #11161c; }
-  .boot-foot { position: absolute; left: 0; right: 0; bottom: 5%; margin: 0; text-align: center; font-size: 2cqw; color: #cfd3d8; }
-  .booting { padding: 6% 7%; font-size: 2.2cqw; line-height: 1.6; color: #cfd3d8; }
-  .booting p { margin: 0; }
-  .booting .cur { display: inline-block; width: .6em; height: 1em; vertical-align: -.15em; background: #cfd3d8; animation: blink 1s steps(1) infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
+  .g-tile.hover { border-color: #ff7a2e; box-shadow: 0 0 0 .3cqw rgba(255,122,46,.35); }
+  .g-tile svg { position: absolute; left: 1.5cqw; top: 1.8cqw; height: 4cqw; width: auto; color: #ffc247; filter: drop-shadow(0 0 .8cqw rgba(255,106,26,.75)); }
+  .g-tile.more { border-color: rgba(255,255,255,.16); background: linear-gradient(180deg, #191a1d, #24262a); }
+  .g-tile.more svg { color: #c9ccd1; filter: none; }
+  .g-note { margin-top: 3cqw; padding-top: 2.4cqw; border-top: 1px solid rgba(255,255,255,.1); font-size: 1.6cqw; color: #a1a1aa; }
+
+  .g-cols { display: grid; grid-template-columns: 20cqw 1fr; gap: 3cqw; align-items: start; }
+  .g-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 2cqw; font-size: 2.1cqw; }
+  .g-steps li { display: flex; align-items: center; gap: 1.4cqw; color: #a1a1aa; }
+  .g-steps b { display: grid; place-items: center; flex: none; width: 3.4cqw; height: 3.4cqw; border-radius: 50%; border: 1px solid rgba(255,255,255,.16); font-size: 1.6cqw; font-weight: 500; }
+  .g-steps .cur { color: #f4f4f5; }
+  .g-steps .cur b { border-color: #ff7a2e; color: #ffb04a; }
+  .g-steps .ok b { border: 0; background: #4ade80; }
+  .g-field { margin-top: .7cqw; width: 62%; padding: 1.2cqw 1.8cqw; border-radius: 1cqw; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.035); font-size: 2.4cqw; }
+  .g-check { display: flex; gap: 1.6cqw; align-items: center; margin-top: 2.2cqw; padding: 1.5cqw 1.8cqw; border-radius: 1.2cqw; border: 1px solid rgba(255,255,255,.1); }
+  .g-check i { width: 2.6cqw; height: 2.6cqw; flex: none; border-radius: .6cqw; border: 1px solid rgba(255,255,255,.4); }
+  .g-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2cqw; }
+  .g-list li { display: flex; gap: 1.4cqw; align-items: center; }
+  .g-list b { display: grid; place-items: center; flex: none; width: 2.8cqw; height: 2.8cqw; border-radius: 50%; border: 1px solid #ff7a2e; color: #ffb04a; font-size: 1.5cqw; font-weight: 500; }
+  .g-st { display: flex; gap: 1.8cqw; align-items: center; margin-top: 2.4cqw; padding: 1.6cqw 2.2cqw; border-radius: 1.4cqw; border: 1px solid rgba(255,255,255,.1); }
+  .g-st b { display: block; font-size: 1.5cqw; letter-spacing: .1em; font-weight: 600; }
+  .g-st span { font-size: 1.7cqw; color: #a1a1aa; }
+  .g-st .g-spin, .g-st .g-ok { width: 3cqw; height: 3cqw; }
+  .laptop[data-scr="found"] .g-st { border-color: #4ade80; background: rgba(74,222,128,.06); }
+  .laptop[data-scr="found"] .w-only, .laptop:not([data-scr="found"]) .f-only { display: none !important; }
+
+  .g-run .g-body { display: grid; grid-template-columns: 1fr 24cqw; gap: 4cqw; align-items: start; }
+  .g-time { margin: -.6cqw 0 .6cqw; font: 300 13cqw/1 "Barlow Condensed", var(--font-sans); }
+  .g-done-h { margin: .6cqw 0 1.4cqw; font: 300 7.4cqw/1.05 "Barlow Condensed", var(--font-sans); }
+  .g-phase { display: flex; align-items: center; gap: 1cqw; font-size: 1.5cqw; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .g-phase span { color: #a1a1aa; font-weight: 400; }
+  .g-bar { position: relative; height: .7cqw; margin: 2cqw 0 2.4cqw; border-radius: 99px; background: rgba(255,255,255,.11); overflow: hidden; }
+  .g-bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: inherit; background: #ff7a2e; }
+  .laptop[data-scr="done"] .g-bar i { background: #4ade80; }
+  .g-warn { display: flex; gap: 1.2cqw; align-items: center; font-size: 1.8cqw; color: #d4d4d8; }
+  .g-warn svg { width: 2.4cqw; flex: none; color: #fbbf24; }
+  .g-ol { margin: 0; padding-left: 2.6cqw; font-size: 1.8cqw; line-height: 1.55; }
+  .g-track { list-style: none; margin: .4cqw 0 0; padding: 0; display: grid; gap: 2.6cqw; font-size: 1.9cqw; color: #a1a1aa; }
+  .g-track li { position: relative; display: flex; align-items: center; gap: 1.4cqw; }
+  .g-track li + li::before { content: ""; position: absolute; left: 1.6cqw; bottom: 100%; height: 2.6cqw; width: 1px; background: rgba(255,255,255,.16); }
+  .g-track i { display: grid; place-items: center; flex: none; width: 3.2cqw; height: 3.2cqw; border-radius: 50%; border: 1px solid rgba(255,255,255,.16); }
+  .g-track .cur, .g-track .ok { color: #f4f4f5; }
+  .g-track .cur i { border-color: #ff7a2e; }
+  .g-track .cur i::after { content: ""; width: 1cqw; height: 1cqw; border-radius: 50%; background: #ff7a2e; }
+  .g-track .ok i { border: 0; background: #4ade80; }
+  .laptop[data-scr="done"] .run-only, .laptop:not([data-scr="done"]) .done-only { display: none !important; }
+
+  /* the mouse pointer, moved and clicked from the timeline */
+  .g-cursor { position: absolute; z-index: 2; left: 0; top: 0; width: 3.4cqw; height: auto; margin: -.2cqw 0 0 -.3cqw; overflow: visible; opacity: 0; }
+  .g-cursor.show { opacity: 1; }
+  .g-cursor circle { fill: none; stroke: #ffb04a; stroke-width: 1.4; opacity: 0; }
+  .g-cursor.click circle { animation: g-click .35s ease-out; }
+  @keyframes g-click { from { r: 1px; opacity: 1; } to { r: 10px; opacity: 0; } }
   /* the USB stick the laptop boots from, in its right-hand side */
   .lap-stick { position: absolute; left: calc(107% - 3px); bottom: 1px; width: 38px; height: 14px; }
-  .tui-bar { position: relative; height: 1.4em; border: 1px solid #222; background: #fff; }
-  .tui-bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: #d4291b; }
   @keyframes lap-in { from { opacity: 0; } }
   @keyframes cable-in { from { transform: translateX(-28px); opacity: 0; } 30% { opacity: 1; } }
   .paused .laptop, .paused .laptop * { animation-play-state: paused !important; }
   @media (max-width: 640px) {
     .laptop { right: 50%; top: auto; bottom: 92px; transform: translateX(50%); width: 80%; }
     .laptop.mini { transform: translateX(50%) scale(.9); opacity: 0; }   /* no room for it next to the close-up */
-    .lap-key { display: none; }
   }
 
   /* Step 4: plugging the oven back in while SW2 is held (a drawn card, side-on plug and socket) */
@@ -218,7 +275,6 @@
 
   @media (prefers-reduced-motion: reduce) {
     .laptop, .laptop * { animation-duration: 1ms !important; animation-delay: 0s !important; transition: none !important; }
-    .lap-key { display: none; }
   }
 </style>
 </head>
@@ -239,7 +295,7 @@
     <path id="linkPath" fill="none" stroke="#56585c" stroke-linecap="round"/>
     <path id="linkHi" fill="none" stroke="#7f8185" stroke-linecap="round" transform="translate(0 -0.6)"/>
   </svg>
-  <div class="laptop" id="laptop" data-scr="boot" hidden aria-hidden="true">
+  <div class="laptop" id="laptop" data-scr="ventoy" hidden aria-hidden="true">
     <svg class="lap-cable" viewBox="0 0 150 90">
       <defs>
         <linearGradient id="rubber" x1="0" y1="0" x2="0" y2="1">
@@ -252,60 +308,109 @@
       <path d="M110 77.6V90.4M114 77.6V90.4M118 77.6V90.4" stroke="#3a3b3e" stroke-width="1" opacity=".8"/>
     </svg>
     <div class="lap-screen">
-      <div class="boot">
-        <svg class="boot-logo" viewBox="0 0 100 72" aria-hidden="true">
-          <path d="M12 54C12 26 29 9 50 9s38 17 38 45Z" fill="#f1cf1d" stroke="#7a6400" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M40 11.5c-2 12-2 28-1 42.5M60 11.5c2 12 2 28 1 42.5" fill="none" stroke="#c9a900" stroke-width="3"/>
-          <path d="M22 26c6-8 14-12 20-13" fill="none" stroke="#fff6b8" stroke-width="3" stroke-linecap="round" opacity=".8"/>
-          <rect x="4" y="52" width="92" height="11" rx="5.5" fill="#e3bf12" stroke="#7a6400" stroke-width="2.5"/>
-        </svg>
-        <div class="boot-info">
-          <b>Debian GNU/Linux 12 (bookworm) amd64</b>
-          <b>Built: 2026-09-27 02:50:39 UTC</b>
-          <span>linux: 6.1.187-1</span><br><span>live-build: 20230502</span><br><span>live-boot: 1:20230131+deb12u1</span>
-        </div>
-        <ul class="boot-menu">
-          <li class="sel">Live system (amd64)</li>
-          <li>Live system (amd64 fail-safe mode)</li>
-          <li>Utilities...</li>
+      <div class="bm ventoy">
+        <div class="bm-bar">Ventoy</div>
+        <ul><li class="sel">june-local-live.iso <span>1.08 GB</span></li></ul>
+        <p class="bm-foot">Booting in <span id="vtCount">3</span> s…</p>
+      </div>
+      <div class="bm jlmenu">
+        <div class="bm-bar">June Local</div>
+        <ul>
+          <li class="sel">Install June Local - graphical (default)</li>
+          <li>Install June Local - text mode (basic UI)</li>
         </ul>
-        <p class="boot-foot">enter: boot, `e': options, `c': cmd-line</p>
       </div>
-      <div class="booting"><p>Booting the live system…</p><p>Starting the June Local installer <span class="cur"></span></p></div>
-      <div class="tui">
-        <div class="tui-dlg tui-menu">
-          <div class="tui-title"><span>June Local installer</span></div>
-          <p>Connect the oven via USB. Choose an action:</p>
-          <ul>
-            <li class="sel"><b>install</b>Install June Local (recommended)</li>
-            <li><b>generate</b>Install with per-home CA + leaf (advanced)</li>
-            <li><b>status</b>Check USB / disk status</li>
-            <li><b>shell</b>Exit to a shell</li>
-          </ul>
-          <div class="tui-btns"><span class="ok">&lt;Ok&gt;</span><span>&lt;Cancel&gt;</span></div>
+      <!-- The graphical installer, version 0.5. Text and layout follow its mock-mode captures. -->
+      <div class="gui g-home">
+        <div class="g-head">
+          <svg class="g-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="13" rx="3"/><rect x="5" y="8" width="11" height="7" rx="1.5"/><path d="M19 10v3M6 18v2M18 18v2" stroke-linecap="round"/></svg>
+          <p class="g-name">Project July<small>JUNE LOCAL INSTALLER 0.5</small></p>
+          <p class="g-pill"><i></i>NO OVEN</p>
         </div>
-        <div class="tui-dlg tui-rcm">
-          <div class="tui-title"><span>June Local installer</span></div>
-          <p>Put the oven in RCM mode:</p>
-          <ol>
-            <li>1. Connect the oven with the USB cable.</li>
-            <li>2. Hold SW2 (FORCE_RECOVERY).</li>
-            <li>3. Power the oven on, keep holding SW2 for ~10s.</li>
-            <li>4. Press OK to continue.</li>
-          </ol>
-          <div class="tui-btns"><span class="ok">&lt;Ok&gt;</span></div>
-        </div>
-        <div class="tui-dlg tui-gauge">
-          <div class="tui-title"><span>June Local installer</span></div>
-          <p>Installing June Local…</p>
-          <div class="tui-bar"><i></i></div>
-        </div>
-        <div class="tui-dlg tui-done">
-          <div class="tui-title"><span>June Local installer</span></div>
-          <p>Install complete.</p>
-          <div class="tui-btns"><span class="ok">&lt;Ok&gt;</span></div>
+        <div class="g-body">
+          <p class="g-eyebrow">June Local</p>
+          <p class="g-h1">What would you like to do?</p>
+          <div class="g-tiles">
+            <div class="g-tile" data-target="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="13" rx="3"/><rect x="5" y="8" width="11" height="7" rx="1.5"/><path d="M19 10v3" stroke-linecap="round"/></svg>Install June Local</div>
+            <div class="g-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="17" r="4"/><path d="M10 14l9-9M16 8l2 2M14 10l2 2"/></svg>Install with your own CA</div>
+            <div class="g-tile"><svg viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="6" width="15" height="12" rx="2.5"/><path d="M19 12h6M22 9l3 3-3 3"/><rect x="29" y="8" width="14" height="8" rx="2.5"/></svg>Back up the oven</div>
+            <div class="g-tile"><svg viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="8" width="14" height="8" rx="2.5"/><path d="M18 12h6M21 9l3 3-3 3"/><rect x="28" y="6" width="15" height="12" rx="2.5"/></svg>Restore a backup</div>
+            <div class="g-tile more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7h18M3 17h18"/><circle cx="9" cy="7" r="2.5" fill="#24262a"/><circle cx="15" cy="17" r="2.5" fill="#24262a"/></svg>More</div>
+          </div>
+          <p class="g-note">Each job asks you to put the oven in recovery mode first. Nothing changes until you press the final button.</p>
         </div>
       </div>
+      <div class="gui g-options">
+        <div class="g-head">
+          <svg class="g-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="13" rx="3"/><rect x="5" y="8" width="11" height="7" rx="1.5"/><path d="M19 10v3M6 18v2M18 18v2" stroke-linecap="round"/></svg>
+          <p class="g-name">Project July<small>JUNE LOCAL INSTALLER 0.5</small></p>
+          <p class="g-pill"><i></i>NO OVEN</p>
+        </div>
+        <div class="g-body g-cols">
+          <ol class="g-steps"><li class="cur"><b>1</b>Options</li><li><b>2</b>Connect oven</li><li><b>3</b>Install</li></ol>
+          <div>
+            <p class="g-eyebrow">Install June Local</p>
+            <p class="g-h2">Install June Local on this oven</p>
+            <p class="g-eyebrow">Oven name</p>
+            <p class="g-field">june</p>
+            <p class="g-check"><i></i>Keep June Local after a factory reset</p>
+            <div class="g-btns"><span class="g-btn pri" data-target="next">Next: connect the oven ›</span><span class="g-btn">Back</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="gui g-rcm">
+        <div class="g-head">
+          <svg class="g-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="13" rx="3"/><rect x="5" y="8" width="11" height="7" rx="1.5"/><path d="M19 10v3M6 18v2M18 18v2" stroke-linecap="round"/></svg>
+          <p class="g-name">Project July<small>JUNE LOCAL INSTALLER 0.5</small></p>
+          <p class="g-pill w-only"><i></i>NO OVEN</p>
+          <p class="g-pill f-only"><span class="g-ok"></span>OVEN · RCM MODE</p>
+        </div>
+        <div class="g-body g-cols">
+          <ol class="g-steps"><li class="ok"><b></b>Options</li><li class="cur"><b>2</b>Connect oven</li><li><b>3</b>Install</li></ol>
+          <div>
+            <p class="g-eyebrow">Install June Local</p>
+            <p class="g-h2">Put the oven in recovery mode</p>
+            <ol class="g-list">
+              <li><b>1</b>Connect the oven to this computer with the USB cable.</li>
+              <li><b>2</b>Press and hold SW2 (force recovery) on the oven's board.</li>
+              <li><b>3</b>Switch the oven's power on and keep holding SW2 for about 10 seconds.</li>
+            </ol>
+            <div class="g-st">
+              <span class="g-spin w-only"></span><span class="g-ok f-only"></span>
+              <p class="w-only"><b>WAITING FOR THE OVEN</b><span>Looking for it on USB. This updates by itself.</span></p>
+              <p class="f-only"><b>OVEN FOUND · RCM MODE</b><span>Starting June Local in <span id="foundCount">3</span> s… press Back to stop.</span></p>
+            </div>
+            <div class="g-btns"><span class="g-btn off w-only">Install June Local</span><span class="g-btn pri f-only" data-target="install">Install June Local</span><span class="g-btn">Back</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="gui g-run">
+        <div class="g-head">
+          <svg class="g-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="13" rx="3"/><rect x="5" y="8" width="11" height="7" rx="1.5"/><path d="M19 10v3M6 18v2M18 18v2" stroke-linecap="round"/></svg>
+          <p class="g-name">Project July<small>JUNE LOCAL INSTALLER 0.5</small></p>
+          <p class="g-pill run-only"><span class="g-spin"></span>WORKING</p>
+          <p class="g-pill done-only"><span class="g-ok"></span>OVEN · RCM MODE</p>
+        </div>
+        <div class="g-body">
+          <div>
+            <p class="g-eyebrow">Installing June Local</p>
+            <p class="g-time run-only" id="runTime">0:00</p>
+            <p class="g-done-h done-only">June Local is installed</p>
+            <p class="g-phase run-only"><span class="g-spin"></span><b id="runPhase">Connect to oven</b><span>· elapsed</span></p>
+            <p class="g-phase done-only"><span class="g-ok"></span>Done<span id="doneTime">· 1:52</span></p>
+            <div class="g-bar"><i id="runBar"></i></div>
+            <p class="g-warn run-only"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5" stroke-linecap="round"/></svg>Keep the oven connected and powered. Don't unplug anything.</p>
+            <ol class="g-ol done-only">
+              <li>Unplug the oven's power and the USB cable.</li>
+              <li>Wait 10 seconds, plug the power back in and let the oven start normally.</li>
+              <li>From a device on the same network, open <b>http://&lt;oven-ip&gt;/local</b>.</li>
+            </ol>
+            <div class="g-btns done-only"><span class="g-btn pri">Restart this computer</span><span class="g-btn">Shut down</span><span class="g-btn">Back to start</span></div>
+          </div>
+          <ol class="g-track" id="runTrack"><li><i></i>Connect to oven</li><li><i></i>Load bootloader</li><li><i></i>Open oven storage</li><li><i></i>Install June Local</li></ol>
+        </div>
+      </div>
+      <svg class="g-cursor" id="gCursor" viewBox="0 0 12 18"><circle cx="1" cy="1" r="1"/><path d="M1 1v14.5l3.6-3.4 2.5 5.6 2.4-1.1-2.4-5.5H12z" fill="#fff" stroke="#111" stroke-width="1.1" stroke-linejoin="round"/></svg>
     </div>
     <div class="lap-base"></div>
     <svg class="lap-stick" viewBox="0 0 38 14" aria-hidden="true">
@@ -313,7 +418,6 @@
       <rect x="0" y="1" width="6" height="12" rx="1.5" fill="#1f2226"/>
       <circle cx="30" cy="7" r="1.6" fill="#f89a4e"/>
     </svg>
-    <span class="lap-key">Enter ↵</span>
   </div>
 
 
@@ -2070,18 +2174,19 @@
       enter() {
         cableSeated(); unplugging = false; lapFlags = {}; lapT = 0;
         focusLocal(WIDE_BAY_VIEW.pos, WIDE_BAY_VIEW.target);
-        showLaptop('boot');
+        showLaptop('ventoy');
       },
       run(done) { lapGoal = L.split; lapDone = done; if (reduceMotion.matches) lapT = L.split; },
       progress: () => lapT / L.split,
       detail: () => lapT < 1.6 ? 'Plug the other end of the cable into the laptop.'
-        : lapT < L.menu ? 'Start the laptop from the USB stick. At the Debian boot menu, press Enter.'
-        : lapT < L.rcm ? 'Pick “Install June Local” and press Enter.'
+        : lapT < L.home ? 'Start the laptop from the USB stick. Ventoy and the June Local menu start the installer by themselves.'
+        : lapT < L.options ? 'Pick Install June Local.'
+        : lapT < L.rcm ? 'Keep the oven name june and press Next: connect the oven.'
         : 'The installer asks you to put the oven in recovery mode. That’s the next step.' },
-    { name: 'Hold SW2 while you plug the oven back in, then press OK', short: 'SW2',
+    { name: 'Hold SW2 while you plug the oven back in, then press Install', short: 'SW2',
       enter() {
         cableSeated(); unplugging = false; lapFlags = {};
-        if (laptop.hidden || lapT < L.split) {   // started from this step: bring the laptop up on the RCM screen
+        if (laptop.hidden || lapT < L.split) {   // started from this step: bring the laptop up on the recovery-mode screen
           lapT = L.split;
           focusLocal(WIDE_BAY_VIEW.pos, WIDE_BAY_VIEW.target);
           showLaptop('rcm');
@@ -2091,19 +2196,64 @@
       progress: () => (lapT - L.split) / (L.end - L.split),
       detail: () => lapT < L.touch ? 'Find SW2: the silver switch with a blue cap, next to the heatsink. Press and hold it.'
         : lapT < L.lift ? 'Keep holding SW2 while you plug the oven back into the wall, for about 10 seconds. From now on, touch only SW2 and the cable.'
-        : lapT < L.back ? 'Let go of SW2.'
-        : lapT < L.gauge ? 'On the laptop, press OK (Enter).'
-        : lapT < L.done ? 'The installer does the rest.'
-        : 'Install complete.' },
+        : lapT < L.back ? 'When the laptop says the oven is found, let go of SW2.'
+        : lapT < L.gauge ? 'Press Install June Local. If you don’t, it starts by itself after 3 seconds.'
+        : lapT < L.done ? 'The installer does the rest, in about two minutes.'
+        : 'June Local is installed.' },
   ];
 
-  // Laptop timeline (seconds), shared by steps 3 and 4. The screens, the key presses and the SW2 press all follow it.
-  const L = { key0: 1.7, press0: 2.2, booting: 2.5, menu: 3.7, key1: 4.3, press1: 4.8, rcm: 5.1,
-    mini: 5.8, fingerIn: 7.1, touch: 7.8, plugIn: 8.3, lift: 11.8, off: 12.3, back: 13.0,
-    key2: 14.0, press2: 14.5, gauge: 14.8, done: 17.9, end: 18.6, split: 5.6 };   // split: where step 3 hands over to step 4
+  // Laptop timeline (seconds), shared by steps 3 and 4. The screens, the pointer and the SW2 press all follow it.
+  const L = { home: 3.4, jlmenu: 2.2, curIn: 3.6, tileAt: 4.4, click0: 4.6, options: 4.9, nextAt: 5.7, click1: 5.9, rcm: 6.2,
+    mini: 7.1, fingerIn: 8.4, touch: 9.1, plugIn: 9.6, found: 12.4, lift: 13.1, off: 13.6, back: 14.3,
+    installAt: 14.9, click2: 15.1, gauge: 15.3, done: 18.5, end: 19.3, split: 6.9 };   // split: where step 3 hands over to step 4
   let lapT = 0, lapGoal = 0, lapFlags = {};
-  const lapKey = laptop.querySelector('.lap-key'), gaugeFill = laptop.querySelector('.tui-bar i');
-  const KEYS = [[L.key0, L.press0, L.booting], [L.key1, L.press1, L.rcm], [L.key2, L.press2, L.gauge]];   // show, press, screen changes
+  const lapScreen = laptop.querySelector('.lap-screen'), cursor = $('gCursor');
+  // The pointer glides between buttons (by their data-target) and clicks them: [from, to, start, end].
+  const MOVES = [[L.curIn, L.tileAt, 'rest', 'tile'], [L.options + 0.15, L.nextAt, 'tile', 'next'],
+    [L.rcm + 0.1, L.rcm + 0.7, 'next', 'rest'], [L.back + 0.2, L.installAt, 'rest', 'install']];
+  const CLICKS = [[L.tileAt, L.click0, L.options, 'tile'], [L.nextAt, L.click1, L.rcm, 'next'], [L.installAt, L.click2, L.gauge, 'install']];   // arrive, click, screen changes
+  const REST = { x: 80, y: 84 }, curAt = {};
+  function curTarget(name) {   // where a button is, in % of the screen; remembered for when its screen has gone
+    if (name === 'rest') return REST;
+    const el = laptop.querySelector(`[data-target="${name}"]`);
+    if (el && el.offsetParent) {
+      const r = el.getBoundingClientRect(), s = lapScreen.getBoundingClientRect();
+      if (s.width) curAt[name] = { x: (r.left + r.width * 0.55 - s.left) / s.width * 100, y: (r.top + r.height * 0.6 - s.top) / s.height * 100 };
+    }
+    return curAt[name] || REST;
+  }
+  const RUN_STEPS = laptop.querySelectorAll('#runTrack li'), runTime = $('runTime'), runPhase = $('runPhase'), runBar = $('runBar');
+  function setText(el, txt) { if (el.textContent !== txt) el.textContent = txt; }
+  function lapScreens(t) {
+    laptop.dataset.scr = t < L.jlmenu ? 'ventoy' : t < L.home ? 'jlmenu' : t < L.options ? 'home' : t < L.rcm ? 'options'
+      : t < L.found ? 'rcm' : t < L.gauge ? 'found' : t < L.done ? 'gauge' : 'done';
+    setText($('vtCount'), String(Math.max(1, 3 - Math.floor(t / (L.jlmenu / 3)))));
+    setText($('foundCount'), String(Math.max(1, 3 - Math.floor(t - L.found))));
+
+    // Installing: the clock runs through about two minutes, and the tracker and bar follow it.
+    const p = clamp01((t - L.gauge) / (L.done - L.gauge)), secs = Math.round(p * 112);
+    const step = t >= L.done ? 4 : p < 0.18 ? 0 : p < 0.4 ? 1 : p < 0.6 ? 2 : 3;
+    setText(runTime, `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')}`);
+    if (step < 4) setText(runPhase, RUN_STEPS[step].textContent);
+    RUN_STEPS.forEach((li, i) => { li.classList.toggle('ok', i < step); li.classList.toggle('cur', i === step); });
+    runBar.style.width = (p * 100).toFixed(1) + '%';
+
+    cursor.classList.toggle('show', t >= L.curIn && t < L.gauge);
+    let pos = REST;
+    for (const [a, b, from, to] of MOVES) {
+      if (t < a) break;
+      const k = ease(clamp01((t - a) / (b - a)));
+      const p0 = curTarget(from), p1 = curTarget(to);
+      pos = { x: p0.x + (p1.x - p0.x) * k, y: p0.y + (p1.y - p0.y) * k };
+    }
+    cursor.style.left = pos.x.toFixed(2) + '%'; cursor.style.top = pos.y.toFixed(2) + '%';
+    cursor.classList.toggle('click', CLICKS.some(([, c]) => t >= c && t < c + 0.35));
+    for (const [arrive, click, change, name] of CLICKS) {
+      const el = laptop.querySelector(`[data-target="${name}"]`);
+      el.classList.toggle('hover', t >= arrive && t < change);
+      el.classList.toggle('down', t >= click && t < click + 0.18);
+    }
+  }
   function once(name, fn) { if (!lapFlags[name]) { lapFlags[name] = true; fn(); } }
   const plugCard = $('plugin'), plugG = $('plugG'), plugLabel = $('plugLabel');
   // ins: 0 = plug clear of the socket, 1 = prongs fully in. live: the power badge is lit.
@@ -2125,12 +2275,8 @@
     const ins = ease(clamp01((t - L.plugIn - 0.5) / 0.8));
     setPlug(t >= L.plugIn && t < L.lift + 0.1, ins, ins >= 1, ins >= 1 ? 'Power on · keep holding SW2' : 'Plug the oven back in');
 
-    laptop.dataset.scr = t < L.booting ? 'boot' : t < L.menu ? 'booting' : t < L.rcm ? 'menu' : t < L.gauge ? 'rcm' : t < L.done ? 'gauge' : 'done';
-    lapKey.classList.toggle('show', KEYS.some(([s, , c]) => t >= s && t < c + 0.3));
-    lapKey.classList.toggle('press', KEYS.some(([, p]) => t >= p && t < p + 0.18));
-    laptop.classList.toggle('okflash', KEYS.slice(1).some(([, p, c]) => t >= p && t < c));
+    lapScreens(t);
     laptop.classList.toggle('mini', t >= L.mini && t < L.back);
-    gaugeFill.style.width = (clamp01((t - L.gauge - 0.1) / 2.9) * 100).toFixed(1) + '%';
 
     if (t >= L.mini && t < L.back) {
       once('toSw2', () => {

@@ -23,6 +23,9 @@ plays by itself once scrolled into view and pauses when scrolled away) and full-
 - The oven model comes from `../oven-3d-model/june-oven.html` (the explorer version). That folder
   sits next to this repo locally and isn't part of it yet, so rebuilding the player needs a copy of it.
 - The captions, step controls, laptop step and site styling are in `tools/player-template.html`.
+  The laptop's screens (Ventoy, the June Local boot menu, then the graphical installer's home, options,
+  recovery-mode, installing and done screens) are drawn in HTML after the installer's 0.5 mock-mode
+  captures in `installer/website-assets/installer-mockups/png/`; update them when the installer's UI changes.
 
 After changing either one, run:
 

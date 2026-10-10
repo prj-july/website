@@ -60,21 +60,24 @@
   <section id="beta">
     <div class="sec-head">
       <div class="lab">Join the beta</div>
-      <h2>Get it from Google Play</h2>
-      <p>The beta runs on Google Play, so you install it like any other app and updates arrive on their own. Anyone can join: become a member of the open tester group, then opt in. The group is also where testers ask questions, share feedback and hear about new builds.</p>
+      <h2>Get Project July for Android</h2>
+      <p>Project July is in beta on Google Play. Use the same Google account that's on your phone for all three steps. The group is also where testers ask questions, share feedback and hear about new builds.</p>
     </div>
+    <!-- Closed beta: all three links, in this order. Once the app is in open testing
+         or production, replace the steps, buttons and note with only the store link. -->
     <ol class="steps">
-      <li class="glass"><b>Join the tester group</b><span>Open <a href="https://groups.google.com/g/prj-july-beta">Project July Beta</a> on Google Groups and select <b>Join group</b>. Use the same Google account as the Play Store on your phone.</span></li>
-      <li class="glass"><b>Opt in on Google Play</b><span>Open the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">opt-in page</a> and select <b>Become a tester</b>.</span></li>
-      <li class="glass"><b>Install the app</b><span>Follow the link to <b>Project July</b> on Google Play, or search for it on your phone, and install it. It can take a few minutes to show up after you opt in.</span></li>
-      <li class="glass"><b>Try it, then tell us</b><span>Try the demo first, then <a href="#setup">set it up</a> with your oven. Ask questions and report anything odd in the group.</span></li>
+      <li class="glass"><b>Join the beta group</b><span>Open <a href="https://groups.google.com/g/prj-july-beta">Project July Beta</a> on Google Groups and select <b>Join group</b>.</span></li>
+      <li class="glass"><b>Become a tester</b><span>Open the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">testing page</a> on Google Play and select <b>Become a tester</b>.</span></li>
+      <li class="glass"><b>Install</b><span>Open <a href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">Project July on Google Play</a> and install it.</span></li>
+      <li class="glass"><b>Try it, then tell us</b><span>No oven yet? Tap <b>Try the demo</b> first in the app. Then <a href="#setup">set it up</a> with your oven, and report anything odd in the group.</span></li>
     </ol>
     <div class="btns">
-      <a class="btn" href="https://groups.google.com/g/prj-july-beta">1. Join the tester group</a>
-      <a class="btn ghost" href="https://play.google.com/apps/testing/org.projectjuly.oven">2. Opt in on Google Play</a>
+      <a class="btn" href="https://groups.google.com/g/prj-july-beta">1. Join the beta group</a>
+      <a class="btn ghost" href="https://play.google.com/apps/testing/org.projectjuly.oven">2. Become a tester</a>
+      <a class="btn ghost" href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">3. Install</a>
     </div>
     <div class="two" style="margin-top:28px">
-      <div class="note cool" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg><div><b>Opt-in page says the app isn't available?</b> Check that you joined the group with the same Google account your phone uses. Joining can take a few minutes to reach Google Play.</div></div>
+      <div class="note cool" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg><div><b>Google Play says “Not found”?</b> Finish steps 1 and 2 first, with the same Google account that's on your phone, then wait a few minutes.</div></div>
       <div class="note" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/></svg><div><b>It's a beta.</b> Bake is tested on a real oven. Modes marked <b>?</b> in the app haven't been yet, and some may not start from the phone. The oven's own safety checks still apply.</div></div>
     </div>
   </section>
@@ -116,8 +119,8 @@
     <div class="two" style="margin-top:28px">
       <div class="prose">
         <h3>Secure connection</h3>
-        <p>Every command is signed by your phone, and the oven only obeys phones it has paired with. To also encrypt the connection, add your home's certificate, <code>ca.crt</code> from the installer, under <b>Home certificate</b> when you set up, or later in <b>Settings › Connection</b>.</p>
-        <p>Without it, the app uses the oven's plain port on your home network and says so. Basic installs keep June's factory certificate, which no phone accepts, so they always use the plain port.</p>
+        <p>Every command is signed by your phone, and the oven only obeys phones it has paired with. The app also comes with the standard install's certificate, so with <code>june.local</code>, <code>june2.local</code> or <code>june3.local</code> the connection is encrypted and checked with nothing to set up.</p>
+        <p>After a custom install, add your home's certificate, <code>ca.crt</code> from the installer, under <b>Home certificate</b> when you set up, or later in <b>Settings › Connection</b>. If the app can't check the certificate, for example when you type the IP address after a standard install, it uses the oven's plain port 80 and says so.</p>
       </div>
       <div class="prose">
         <h3>Several ovens</h3>
@@ -180,7 +183,7 @@
     </div>
 
     <div style="margin-top:48px">
-      <div class="lab" style="margin-bottom:14px">On Google Play</div>
+      <div class="lab" style="margin-bottom:14px"><a href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">On Google Play</a></div>
       <div class="gallery" tabindex="0" aria-label="Store screenshots, scroll sideways">
         <img src="../assets/app/store-01-cooking.webp" width="540" height="960" loading="lazy" alt="Your oven, on your Wi-Fi. No cloud, no account, no subscription. The cooking screen.">
         <img src="../assets/app/store-02-home.webp" width="540" height="960" loading="lazy" alt="Every mode, one tap away. The home screen with the clock, last cook and mode tiles.">
@@ -214,13 +217,13 @@
         </ul>
       </div></details>
       <details class="glass"><summary>It says it's using the plain port</summary><div>
-        <p>Your phone doesn't trust your home's certificate yet. Commands are still signed and only paired phones are obeyed, but the link isn't encrypted. To encrypt it, add <code>ca.crt</code> under <b>Settings › Connection › Home certificate</b> and check the connection again.</p>
+        <p>The app couldn't check the oven's certificate. Commands are still signed and only paired phones are obeyed, but the link isn't encrypted. After a standard install, use <code>june.local</code> (or <code>june2.local</code>, <code>june3.local</code>) as the address instead of the IP. After a custom install, add <code>ca.crt</code> under <b>Settings › Connection › Home certificate</b>. Then check the connection again.</p>
       </div></details>
       <details class="glass"><summary>The Play Store says I'm not a tester</summary><div>
-        <p>Join <a href="https://groups.google.com/g/prj-july-beta">the tester group</a> with the Google account your phone uses, wait a few minutes, then open the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">opt-in page</a> again. If you have several Google accounts on the phone, switch to that one in the Play Store.</p>
+        <p>Join <a href="https://groups.google.com/g/prj-july-beta">the beta group</a> with the Google account your phone uses, wait a few minutes, then open the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">testing page</a> again and select <b>Become a tester</b>. If you have several Google accounts on the phone, switch to that one in the Play Store.</p>
       </div></details>
       <details class="glass"><summary>How do I leave the beta?</summary><div>
-        <p>On the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">opt-in page</a>, select <b>Leave the program</b>, then uninstall the app. You can also leave the Google group.</p>
+        <p>On the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">testing page</a>, select <b>Leave the program</b>, then uninstall the app. You can also leave the Google group.</p>
       </div></details>
     </div>
   </section>

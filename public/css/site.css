@@ -205,6 +205,8 @@ td .jo-pill { white-space: nowrap; }
 .card p { color: var(--ink-muted); }
 .honest { margin-top: var(--space-8); }
 .honest .jo-notice { max-width: 820px; }
+.cert-optional { max-width: none; margin-bottom: var(--space-6); }
+.cert-optional .jo-notice-text + .jo-notice-text { margin-top: var(--space-2); }
 
 /* --- FAQ --------------------------------------------------------------- */
 .faq { max-width: 820px; display: flex; flex-direction: column; gap: var(--space-3); }

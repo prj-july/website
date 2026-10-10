@@ -104,7 +104,7 @@
     <div>
       <h2 style="margin-bottom:var(--space-6)">Before you start: the USB stick</h2>
       <ol class="steps">
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Download the installer image</h3><p class="jo-step-text">It will be linked on the <a href="../#downloads">home page</a> once testing is complete. Check its <a href="../installer/#download">SHA-256 checksum</a> before you use it.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Download the installer image</h3><p class="jo-step-text">We're getting it ready to publish. It will be linked on the <a href="../#downloads">home page</a> as soon as it's out. Check its <a href="../installer/#download">SHA-256 checksum</a> before you use it.</p></div></li>
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Put Ventoy on the stick and copy the image to it</h3><p class="jo-step-text">Ventoy is a free tool for Windows and Linux. Installing it erases whatever is on the stick. Then copy the image onto the large drive called <strong>Ventoy</strong>, and keep that name: the installer saves its logs and backups there. <a href="../installer/#ventoy">Step-by-step guide</a></p></div></li>
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from it</h3><p class="jo-step-text">Plug the stick in, switch the laptop on and press its boot-menu key straight away. It's often F12, F11, F9 or Esc, and usually shown briefly on screen. Then pick the USB stick. If Secure Boot stops it, see <a href="../installer/#boot">starting the laptop</a>. On an Intel Mac, hold Option while it starts. Macs with Apple chips (M1 and later) can't start from this stick.</p></div></li>
       </ol>
@@ -201,15 +201,23 @@
     <div class="section-head">
       <p class="eyebrow">After the install</p>
       <h2>Your oven's certificate</h2>
-      <p class="lead">Phones and Home Assistant connect to the oven over HTTPS, so they need to trust its certificate. What to do depends on which install you chose.</p>
+      <p class="lead">Phones and Home Assistant can check the oven's certificate, so they know they're talking to your oven. That's optional, with either install.</p>
+    </div>
+    <div class="jo-notice jo-notice-info cert-optional">
+      <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+      <div class="jo-notice-body">
+        <p class="jo-notice-title">Skip certificates entirely, with either install</p>
+        <p class="jo-notice-text">Every client can connect on the oven's plain port 80, which isn't encrypted, or keep HTTPS and turn off certificate checking, which is encrypted but can't tell your oven from an impostor on your network. Either way, commands are still signed and the oven only obeys devices it has paired with.</p>
+        <p class="jo-notice-text">The <strong>Project July app</strong> falls back to port 80 by itself when it can't check the certificate, or turn on <strong>Connect without checking the certificate</strong> in its settings. In <strong>Home Assistant</strong>, enter <span class="mono">http://&lt;oven-ip&gt;:80</span> as the address, or turn off <strong>Verify TLS certificate</strong>.</p>
+      </div>
     </div>
     <div class="cards">
       <div class="card">
         <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><h3>Install June Local (standard)</h3></div>
-        <p>Keeps June's own certificate setup, so there's nothing to install on your phone. The certificate covers June's server names and <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span>, but not the oven's IP address or a name of your own; for those, choose the custom install.</p>
+        <p>Keeps June's own certificate setup, so there's nothing to download. The certificate covers June's server names and <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span>, but not the oven's IP address or a name of your own; for those, choose the custom install.</p>
         <ul class="checklist">
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>The companion app needs no certificate step.</span></li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>In Home Assistant, turn off <strong>Verify TLS certificate</strong>. The link stays encrypted and commands stay signed.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Project July app:</strong> nothing to do. It comes with the standard install's certificate, so it connects over checked HTTPS when you use <span class="mono">june.local</span>, <span class="mono">june2.local</span> or <span class="mono">june3.local</span>, or the DNS names below. By IP address, it uses port 80.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Home Assistant and other clients:</strong> use port 80 or skip the check, as above.</span></li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Optional: point <span class="mono">api.junelife.com</span> and <span class="mono">messaging.junelife.com</span> at the oven's IP in your router's DNS or a hosts file. Then even clients that check certificates accept it.</span></li>
         </ul>
       </div>
@@ -217,9 +225,10 @@
         <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Install with your own CA (custom)</h3></div>
         <p>Makes a certificate authority just for your home, and a certificate for the oven's IP address and name. A name of your own also has to be added to your own DNS. When the install finishes, open <strong>Phone setup</strong> in the installer and download your home's CA certificate, <span class="mono">ca.crt</span>. Keep a copy for every new phone.</p>
         <ul class="checklist">
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Android:</strong> Settings › Security › Encryption &amp; credentials › Install a certificate › CA certificate.</span></li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>iPhone:</strong> AirDrop or email it to yourself, install the profile, then turn it on under Settings › General › About › Certificate Trust Settings.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Project July app:</strong> paste it, or pick the file, under <strong>Home certificate</strong> when you set up the app, or later in <strong>Settings › Connection</strong>. Nothing to install on the phone itself.</span></li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Home Assistant:</strong> paste it into <strong>CA certificate (PEM)</strong>, or later under <strong>Configure</strong>.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Other apps on Android:</strong> install it on the phone under Settings › Security › Encryption &amp; credentials › Install a certificate › CA certificate.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Other apps on iPhone:</strong> AirDrop or email it to yourself, install the profile, then turn it on under Settings › General › About › Certificate Trust Settings.</span></li>
         </ul>
       </div>
     </div>
@@ -227,8 +236,8 @@
       <div class="jo-notice jo-notice-info">
         <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
         <div class="jo-notice-body">
-          <p class="jo-notice-title">Next: choose a client</p>
-          <p class="jo-notice-text">Check the oven is up by opening <span class="mono">http://&lt;oven-ip&gt;/local</span> from any device on your network. Then <a href="/clients">choose a client</a>: the Home Assistant integration, the Android companion app, or the Apple companion app.</p>
+          <p class="jo-notice-title">Next: get the Project July app</p>
+          <p class="jo-notice-text">Check the oven is up by opening <span class="mono">http://&lt;oven-ip&gt;/local</span> from any device on your network. Then install the Project July app on your phone: <a href="/android/">Android</a> (<a href="https://groups.google.com/g/prj-july-beta">join the beta group</a>, <a href="https://play.google.com/apps/testing/org.projectjuly.oven">become a tester</a>, then <a href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">install</a>) or <a href="/ios/">iPhone</a> (TestFlight, by invite). Prefer something else? <a href="/clients">See all clients</a>, including the Home Assistant integration.</p>
         </div>
       </div>
     </div>

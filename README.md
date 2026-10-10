@@ -67,7 +67,8 @@ When you add or move a page, update `public/sitemap.xml`.
 
 ## App pages
 
-- `/android/` and `/ios/` are the pages for the Project July phone app (`prj-july/project-july-app`).
+- `/android/` and `/ios/` are the pages for the Project July phone app ([`prj-july/project-july-app`](https://github.com/prj-july/project-july-app), public, MIT).
+  The home page, the clients page, both app pages and the privacy policy link to it.
   The Android page has the Google Play beta links: the tester group `prj-july-beta` and the
   opt-in page for `org.projectjuly.oven`. The iPhone page asks for TestFlight invites by email.
   Both end with a short privacy summary that links to `/clients/privacy`; keep it in step with

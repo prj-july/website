@@ -37,6 +37,7 @@
       <a href="./" aria-current="page">Android</a>
       <a href="../ios/">iPhone</a>
       <a href="/clients/privacy" class="hide-sm">Privacy</a>
+      <a href="https://github.com/prj-july/project-july-app" class="hide-sm">Source</a>
       <span class="ver beta">Beta</span>
     </nav>
   </header>
@@ -66,13 +67,13 @@
     <!-- Closed beta: all three links, in this order. Once the app is in open testing
          or production, replace the steps, buttons and note with only the store link. -->
     <ol class="steps">
-      <li class="glass"><b>Join the beta group</b><span>Open <a href="https://groups.google.com/g/prj-july-beta">Project July Beta</a> on Google Groups and select <b>Join group</b>.</span></li>
+      <li class="glass"><b>Join the beta group</b><span>Open <a href="https://groups.google.com/g/prj-july-beta/about">Project July Beta</a> on Google Groups and select <b>Join group</b>.</span></li>
       <li class="glass"><b>Become a tester</b><span>Open the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">testing page</a> on Google Play and select <b>Become a tester</b>.</span></li>
       <li class="glass"><b>Install</b><span>Open <a href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">Project July on Google Play</a> and install it.</span></li>
       <li class="glass"><b>Try it, then tell us</b><span>No oven yet? Tap <b>Try the demo</b> first in the app. Then <a href="#setup">set it up</a> with your oven, and report anything odd in the group.</span></li>
     </ol>
     <div class="btns">
-      <a class="btn" href="https://groups.google.com/g/prj-july-beta">1. Join the beta group</a>
+      <a class="btn" href="https://groups.google.com/g/prj-july-beta/about">1. Join the beta group</a>
       <a class="btn ghost" href="https://play.google.com/apps/testing/org.projectjuly.oven">2. Become a tester</a>
       <a class="btn ghost" href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">3. Install</a>
     </div>
@@ -198,12 +199,12 @@
     <div class="sec-head">
       <div class="lab">Help</div>
       <h2>When something looks off</h2>
-      <p>Not covered here? Ask in the <a href="https://groups.google.com/g/prj-july-beta">Project July Beta</a> group, where other testers and the developers can help. You can also email <a href="mailto:hello@project-july.org">hello@project-july.org</a>.</p>
+      <p>Not covered here? Ask in the <a href="https://groups.google.com/g/prj-july-beta/about">Project July Beta</a> group, where other testers and the developers can help. You can also email <a href="mailto:hello@project-july.org">hello@project-july.org</a>.</p>
     </div>
     <div class="faq">
       <details class="glass"><summary>The app doesn't find my oven</summary><div>
         <p>Check that the phone is on your home Wi‑Fi, not mobile data or a guest network, and that the oven shows it's connected. Then type the address yourself: <code>june.local</code>, or the oven's IP address from your router.</p>
-        <p>If the address works in the phone's browser (it opens june-local's status page) but not in the app, post in the <a href="https://groups.google.com/g/prj-july-beta">Project July Beta</a> group.</p>
+        <p>If the address works in the phone's browser (it opens june-local's status page) but not in the app, post in the <a href="https://groups.google.com/g/prj-july-beta/about">Project July Beta</a> group.</p>
       </div></details>
       <details class="glass"><summary>The code ran out before I typed it</summary><div>
         <p>Go back and start pairing again for a fresh code. Open the oven's <b>Connect</b> screen first, so it's ready when the code appears.</p>
@@ -220,7 +221,7 @@
         <p>The app couldn't check the oven's certificate. Commands are still signed and only paired phones are obeyed, but the link isn't encrypted. After a standard install, use <code>june.local</code> (or <code>june2.local</code>, <code>june3.local</code>) as the address instead of the IP. After a custom install, add <code>ca.crt</code> under <b>Settings › Connection › Home certificate</b>. Then check the connection again.</p>
       </div></details>
       <details class="glass"><summary>The Play Store says I'm not a tester</summary><div>
-        <p>Join <a href="https://groups.google.com/g/prj-july-beta">the beta group</a> with the Google account your phone uses, wait a few minutes, then open the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">testing page</a> again and select <b>Become a tester</b>. If you have several Google accounts on the phone, switch to that one in the Play Store.</p>
+        <p>Join <a href="https://groups.google.com/g/prj-july-beta/about">the beta group</a> with the Google account your phone uses, wait a few minutes, then open the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">testing page</a> again and select <b>Become a tester</b>. If you have several Google accounts on the phone, switch to that one in the Play Store.</p>
       </div></details>
       <details class="glass"><summary>How do I leave the beta?</summary><div>
         <p>On the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">testing page</a>, select <b>Leave the program</b>, then uninstall the app. You can also leave the Google group.</p>
@@ -240,6 +241,7 @@
         <li>Pairing keys and settings stay on your phone, in Android's secure storage.</li>
         <li>Camera pictures are only saved or shared when you tap Save or Share.</li>
         <li>To get app updates, the app asks Expo's update service whether there's a new version. That check sends a random installation ID, not linked to you or your oven.</li>
+        <li>The app is open source, so you can check all of this yourself: <a href="https://github.com/prj-july/project-july-app">the code is on GitHub</a>.</li>
       </ul>
       <a class="btn ghost" href="/clients/privacy">Read the privacy policy</a>
     </div>
@@ -247,7 +249,7 @@
 
   <footer>
     <span>Project July for Android · beta · an independent project, not affiliated with June Life, Inc.</span>
-    <span><a href="../">project-july.org</a> · <a href="../ios/">iPhone</a> · <a href="/clients/privacy">Privacy policy</a></span>
+    <span><a href="../">project-july.org</a> · <a href="../ios/">iPhone</a> · <a href="/clients/privacy">Privacy policy</a> · <a href="https://github.com/prj-july/project-july-app">Source code</a></span>
   </footer>
 </div>
 

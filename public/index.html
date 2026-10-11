@@ -611,18 +611,18 @@
             <!-- When a file is ready: upload it to the R2 downloads bucket, link the name,
                  and replace the pill with its SHA-256 in <code class="checksum">. -->
             <tr>
-              <td><a class="file-name" href="setup/">Install guide</a></td>
+              <td><a class="file-name" href="setup/">Setup guide</a></td>
               <td data-label="What it's for" class="muted">Start here. Every step, with a 3D walkthrough.</td>
               <td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Available</span></td>
             </tr>
             <tr>
               <td><a class="file-name" href="installer/">Installer guide</a></td>
-              <td data-label="What it's for" class="muted">Make the USB stick with June USB (or Ventoy), and every screen of the installer: install, back up and restore.</td>
+              <td data-label="What it's for" class="muted">The in-depth guide, from making the USB stick with June USB (or Ventoy) to every screen of the installer: install, back up and restore.</td>
               <td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Available</span></td>
             </tr>
             <tr>
               <td><a class="file-name" href="installer/#stick">June USB</a></td>
-              <td data-label="What it's for" class="muted">The app that makes the USB stick: it downloads the installer image, checks it and prepares the stick. For <a href="https://downloads.project-july.org/june-usb/June-USB.exe">Windows 10 and 11</a> and <a href="https://downloads.project-july.org/june-usb/June-USB.dmg">Mac (macOS 13 or later)</a>. <a href="installer/#stick">How to use it</a></td>
+              <td data-label="What it's for" class="muted">The app that makes the USB stick: it downloads the installer image, checks it and prepares the stick. For <a href="https://downloads.project-july.org/june-usb/June-USB.exe">Windows 10 and 11</a> and <a href="https://downloads.project-july.org/june-usb/June-USB.dmg">Mac (macOS 13 or later)</a>. <a href="installer/#stick">How to use it</a>. Source code <a href="https://github.com/prj-july/installer/tree/main/installer/usbtool">on GitHub</a>.</td>
               <td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Beta</span></td>
             </tr>
             <tr>
@@ -646,19 +646,19 @@
               <td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Available</span></td>
             </tr>
             <tr>
-              <td class="file-name mono">june-local</td>
-              <td data-label="What it's for" class="muted">The local server that runs on the oven. Included in the installer.</td>
-              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+              <td><a class="file-name mono" href="https://github.com/prj-july/installer/tree/main/golocal">june-local</a></td>
+              <td data-label="What it's for" class="muted">The local server that runs on the oven, in place of June's cloud. Included in the installer; source code on GitHub.</td>
+              <td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Open source</span></td>
             </tr>
             <tr>
-              <td class="file-name mono">june-camerad</td>
-              <td data-label="What it's for" class="muted">The camera program that streams stills locally. Included in the installer.</td>
-              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+              <td><a class="file-name mono" href="https://github.com/prj-july/installer/tree/main/golocal/camerad">june-camerad</a></td>
+              <td data-label="What it's for" class="muted">The camera program that streams stills locally. Included in the installer; source code on GitHub.</td>
+              <td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Open source</span></td>
             </tr>
             <tr>
-              <td class="file-name">Certificate scripts</td>
-              <td data-label="What it's for" class="muted">Make your home's own security certificate. Included in the installer.</td>
-              <td><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Coming soon</span></td>
+              <td><a class="file-name" href="https://github.com/prj-july/installer/tree/main/packaging">Certificate scripts</a></td>
+              <td data-label="What it's for" class="muted">Make your home's own security certificate. Included in the installer; source code on GitHub.</td>
+              <td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Open source</span></td>
             </tr>
           </tbody>
         </table>
@@ -690,7 +690,7 @@
       </div>
       <div class="card">
         <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><h3>Open source</h3></div>
-        <p>The app's code is <a href="https://github.com/prj-july/project-july-app">on GitHub</a> now. The oven's code and build scripts will be published with the first release, so you, or someone you trust, can check exactly what runs on the oven.</p>
+        <p>It's all on GitHub: the <a href="https://github.com/prj-july/project-july-app">app</a>, and the <a href="https://github.com/prj-july/installer">installer</a> with the oven's server, camera program and build scripts. You, or someone you trust, can check exactly what runs on the oven.</p>
       </div>
     </div>
     <div class="honest">
@@ -698,7 +698,7 @@
         <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
         <div class="jo-notice-body">
           <p class="jo-notice-title">Where things stand</p>
-          <p class="jo-notice-text">Project July is an early community project. It isn't made or supported by June or Weber. Setup is a one-time job: seven screws, one micro-USB cable and one button. Installer 0.7 is out for beta testing. The app's code is already public, and the oven's will follow. We'll keep the status list above up to date.</p>
+          <p class="jo-notice-text">Project July is an early community project. It isn't made or supported by June or Weber. Setup is a one-time job: seven screws, one micro-USB cable and one button. Installer 0.7 is out for beta testing. The code for the app and the oven is public on GitHub. We'll keep the status list above up to date.</p>
         </div>
       </div>
     </div>
@@ -775,7 +775,7 @@
         <li><a href="mailto:hello@project-july.org"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>hello@project-july.org<small>Questions and help</small></span></a></li>
         <li><a href="https://github.com/prj-july/ha-june-oven"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg><span>Home Assistant integration<small>Integration and dashboard card, on GitHub</small></span></a></li>
         <li><a href="https://github.com/prj-july/project-july-app"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>Project July app<small>iPhone and Android source code, on GitHub</small></span></a></li>
-        <li><div class="soon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span>Oven code and build scripts<small>Published with the first release</small></span></div></li>
+        <li><a href="https://github.com/prj-july/installer"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span>Installer and oven code<small>Installer, June USB, oven server and camera, on GitHub</small></span></a></li>
         <li><div class="soon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg><span>Issue tracker<small>Opens with the first release</small></span></div></li>
       </ul>    </div>
   </div>

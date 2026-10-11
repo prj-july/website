@@ -156,10 +156,10 @@
       <h2>Download and verify</h2>
       <p>You need two downloads:</p>
       <ul class="ig-list">
-        <li><strong>Ventoy</strong>, a free tool that turns a USB stick into a boot menu. Get it from the official site, <a href="https://www.ventoy.net">ventoy.net</a>.</li>
+        <li><strong>Ventoy</strong>, a free tool that turns a USB stick into a boot menu. Download version 1.1.18 for <a href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-windows.zip/download">Windows</a> or <a href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-linux.tar.gz/download">Linux</a> from SourceForge. Newer versions are on the official site, <a href="https://www.ventoy.net">ventoy.net</a>. There's no Mac version, so make the stick on a Windows or Linux computer.</li>
         <li><strong>The installer image</strong>, <code>june-local-live.iso</code> (about 1.4 GB). Download it from <a href="https://downloads.project-july.org/installer/latest">downloads.project-july.org/installer/latest</a>.</li>
       </ul>
-      <p><a class="jo-btn jo-btn-primary" href="https://downloads.project-july.org/installer/latest">Download installer 0.5</a></p>
+      <p><a class="jo-btn jo-btn-primary" href="https://downloads.project-july.org/installer/latest">Download installer 0.5</a> <a class="jo-btn jo-btn-quiet" href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-windows.zip/download">Ventoy for Windows</a> <a class="jo-btn jo-btn-quiet" href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-linux.tar.gz/download">Ventoy for Linux</a></p>
       <p>Before you use the image, check that it's exactly the file we published. Work out its SHA-256 checksum and compare it with the one shown here. If they differ, download it again.</p>
       <div class="ig-os">
         <div>
@@ -201,7 +201,7 @@
       <div class="card">
         <h3 class="ig-h3">On Windows</h3>
         <ol class="mini-steps">
-          <li><span>Unzip the Ventoy download and run <code>Ventoy2Disk.exe</code> as Administrator.</span></li>
+          <li><span>Unzip the <a href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-windows.zip/download">Ventoy download for Windows</a> and run <code>Ventoy2Disk.exe</code> as Administrator.</span></li>
           <li><span>Pick your USB stick under <strong>Device</strong>. Check the name and size twice. Leave <strong>Show all devices</strong> off.</span></li>
           <li><span>Open <strong>Option › Partition Style</strong> and choose <strong>MBR</strong>.</span></li>
           <li><span>If the laptop uses Secure Boot, turn on <strong>Option › Secure Boot Support</strong>.</span></li>
@@ -215,7 +215,7 @@
         </ol>
         <pre class="ig-code"><code>sudo apt install dosfstools exfatprogs</code></pre>
         <ol class="mini-steps" style="counter-reset: step 1">
-          <li><span>Unpack the Ventoy download and find your stick. Use the whole disk, like <code>/dev/sdX</code>, never a partition like <code>/dev/sdX1</code>:</span></li>
+          <li><span>Unpack the <a href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-linux.tar.gz/download">Ventoy download for Linux</a> and find your stick. Use the whole disk, like <code>/dev/sdX</code>, never a partition like <code>/dev/sdX1</code>:</span></li>
         </ol>
         <pre class="ig-code"><code>lsblk -o NAME,SIZE,MODEL,TRAN,MOUNTPOINTS</code></pre>
         <ol class="mini-steps" style="counter-reset: step 2">

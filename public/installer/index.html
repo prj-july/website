@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>USB installer guide — Project July</title>
-<meta name="description" content="Make the Project July USB stick with Ventoy, verify the installer image, and use the June Local installer to back up, install and restore your June oven.">
+<meta name="description" content="Make the Project July USB stick with the June USB app, then use the June Local installer to back up, install and restore your June oven.">
 <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://project-july.org/installer/">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Project July">
 <meta property="og:url" content="https://project-july.org/installer/">
 <meta property="og:title" content="Project July installer guide: the USB stick and every screen">
-<meta property="og:description" content="Put Ventoy on a USB stick, copy the June Local installer onto it, and back up, install or restore your June oven.">
+<meta property="og:description" content="Make the USB stick with the June USB app, start the June Local installer from it, and back up, install or restore your June oven.">
 <meta property="og:image" content="https://project-july.org/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -79,16 +79,15 @@
     <div class="wrap">
       <ol>
         <li><a href="#download"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">1</span>Download</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#ventoy"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">2</span>Ventoy</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#copy"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">3</span>Copy files</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#boot"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">4</span>Boot</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#home"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">5</span>Home screen</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#recovery"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">6</span>Recovery</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#install"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">7</span>Install</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#backup"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">8</span>Backup</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#phone"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">9</span>Phone</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#trouble"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">10</span>Help</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
-        <li><a href="#inside"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">11</span>Inside</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#stick"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">2</span>USB stick</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#boot"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">3</span>Boot</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#home"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">4</span>Home screen</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#recovery"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">5</span>Recovery</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#install"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">6</span>Install</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#backup"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">7</span>Backup</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#phone"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">8</span>Phone</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#trouble"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">9</span>Help</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
+        <li><a href="#inside"><span class="ig-p-label"><span class="ig-p-n" aria-hidden="true">10</span>Inside</span><span class="ig-p-bar" aria-hidden="true"></span></a></li>
       </ol>
     </div>
   </nav>
@@ -100,7 +99,7 @@
     <div class="section-head">
       <p class="eyebrow">Installer guide</p>
       <h1 class="setup-title">Make the USB stick and run the installer</h1>
-      <p class="lead">The installer runs on a laptop, started from a USB stick. This page shows how to make that stick with Ventoy, and what each screen of the installer looks like.</p>
+      <p class="lead">The installer runs on a laptop, started from a USB stick. This page shows how to make that stick with the June USB app (or with Ventoy), and what each screen of the installer looks like.</p>
       <p class="muted">Opening the oven and finding SW2 is covered in the <a href="../setup/">3D setup walkthrough</a>.</p>
     </div>
 
@@ -117,8 +116,8 @@
       <div class="jo-notice jo-notice-warning" role="note">
         <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
         <div class="jo-notice-body">
-          <p class="jo-notice-title">Installing Ventoy erases the USB stick</p>
-          <p class="jo-notice-text">Everything on the stick is deleted. Copy off anything you want to keep, and check twice that you've picked the stick and not another drive.</p>
+          <p class="jo-notice-title">Making the stick erases it</p>
+          <p class="jo-notice-text">Everything on the stick is deleted, whether you use June USB or Ventoy. Copy off anything you want to keep, and check twice that you've picked the stick and not another drive.</p>
         </div>
       </div>
       <div class="jo-notice jo-notice-warning" role="note">
@@ -133,9 +132,8 @@
     <nav class="ig-toc" aria-label="On this page">
       <p class="eyebrow">On this page</p>
       <ol>
-        <li><a href="#download">Download and verify</a></li>
-        <li><a href="#ventoy">Put Ventoy on the stick</a></li>
-        <li><a href="#copy">Copy the installer and settings</a></li>
+        <li><a href="#download">Download June USB</a></li>
+        <li><a href="#stick">Make the USB stick</a> (or <a href="#ventoy">with Ventoy</a>)</li>
         <li><a href="#boot">Start the laptop from the stick</a></li>
         <li><a href="#home">The installer's home screen</a></li>
         <li><a href="#recovery">Put the oven in recovery mode</a></li>
@@ -153,13 +151,18 @@
   <div class="wrap setup-grid">
     <div class="ig-flow">
       <p class="eyebrow">Step 1</p>
-      <h2>Download and verify</h2>
-      <p>You need two downloads:</p>
+      <h2>Download June USB</h2>
+      <p><strong>June USB</strong> is a small app for Windows 10 and 11 and macOS that makes the stick for you. It downloads the latest installer image from downloads.project-july.org, checks it, and prepares the stick. You don't need Ventoy or anything else.</p>
+      <p><a class="jo-btn jo-btn-primary" href="https://downloads.project-july.org/june-usb/June-USB.exe">June USB for Windows</a> <a class="jo-btn jo-btn-primary" href="https://downloads.project-july.org/june-usb/June-USB.dmg">June USB for Mac</a></p>
+      <p class="muted">On Linux, use <a href="#ventoy">Ventoy</a> for now.</p>
+
+      <h3 class="ig-h3" style="margin-top:var(--space-4)">The installer image, for Ventoy</h3>
+      <p>June USB checks the image's SHA-256 itself, so with June USB you can skip this part. You only download the image yourself for the <a href="#ventoy">Ventoy way</a>, or to give it to June USB with <strong>Use an ISO file I already have</strong>. For Ventoy, you need two downloads:</p>
       <ul class="ig-list">
-        <li><strong>Ventoy</strong>, a free tool that turns a USB stick into a boot menu. Download version 1.1.18 for <a href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-windows.zip/download">Windows</a> or <a href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-linux.tar.gz/download">Linux</a> from SourceForge. Newer versions are on the official site, <a href="https://www.ventoy.net">ventoy.net</a>. There's no Mac version, so make the stick on a Windows or Linux computer.</li>
+        <li><strong>Ventoy</strong>, a free tool that turns a USB stick into a boot menu. Download version 1.1.18 for <a href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-windows.zip/download">Windows</a> or <a href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-linux.tar.gz/download">Linux</a> from SourceForge. Newer versions are on the official site, <a href="https://www.ventoy.net">ventoy.net</a>. There's no Mac version; on a Mac, use June USB.</li>
         <li><strong>The installer image</strong>, <code>june-local-live.iso</code> (about 1.4 GB). Download it from <a href="https://downloads.project-july.org/installer/latest">downloads.project-july.org/installer/latest</a>.</li>
       </ul>
-      <p><a class="jo-btn jo-btn-primary" href="https://downloads.project-july.org/installer/latest">Download installer 0.5</a> <a class="jo-btn jo-btn-quiet" href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-windows.zip/download">Ventoy for Windows</a> <a class="jo-btn jo-btn-quiet" href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-linux.tar.gz/download">Ventoy for Linux</a></p>
+      <p><a class="jo-btn" href="https://downloads.project-july.org/installer/latest">Download installer 0.5</a> <a class="jo-btn jo-btn-quiet" href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-windows.zip/download">Ventoy for Windows</a> <a class="jo-btn jo-btn-quiet" href="https://sourceforge.net/projects/ventoy/files/v1.1.18/ventoy-1.1.18-linux.tar.gz/download">Ventoy for Linux</a></p>
       <p>Before you use the image, check that it's exactly the file we published. Work out its SHA-256 checksum and compare it with the one shown here. If they differ, download it again.</p>
       <div class="ig-os">
         <div>
@@ -190,12 +193,81 @@
   </div>
 </section>
 
-<section id="ventoy">
+<section id="stick">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Step 2</p>
-      <h2>Put Ventoy on the stick</h2>
-      <p class="lead">Use a stick of at least 32 GB. Pick 64 GB if you want the oven backup on the same stick. USB 3 makes the backup much faster.</p>
+      <h2>Make the USB stick</h2>
+      <p class="lead">Use a stick of at least 16 GB. That's enough for the installer and one oven backup; 32 GB is better. USB 3 makes the backup much faster.</p>
+    </div>
+    <div class="ig-pair ig-pair-photo">
+      <div class="ig-flow">
+        <ol class="steps">
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Start June USB</h3><p class="jo-step-text">Open the app you <a href="#download">downloaded</a>. On Windows, it asks for administrator permission when it starts: it needs that to partition the stick.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Get the installer</h3><p class="jo-step-text">The first screen shows the latest installer, about 1.4 GB, from downloads.project-july.org. Press <strong>Download and continue</strong>. June USB checks the download's SHA-256 itself. If you've downloaded the image before, choose <strong>Use an ISO file I already have</strong> instead; an image that isn't the published release is marked as such.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Choose the USB stick</h3><p class="jo-step-text">The list shows each USB stick with its size and its current drive letters or names, so you can tell them apart. A stick that's too small is marked <strong>Can't use</strong>. <strong>Show all drives</strong> also lists SD cards and drives over 300 GB. The computer's built-in disks are never shown.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Confirm, twice</h3><p class="jo-step-text">The next screen names the stick, for example <strong>Erase “Music”?</strong>, and lists what's on it. Tick <strong>I have copied everything I need from “Music”</strong> and press <strong>Erase and create the stick</strong>. Windows or macOS then asks once more, naming the stick again. June USB only goes ahead if you answer <strong>Yes</strong>.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">5</span><div class="jo-step-body"><h3 class="jo-step-title">Wait a few minutes</h3><p class="jo-step-text">June USB prepares the stick, copies the installer, verifies the copy and makes the stick bootable. It reads every file back and checks it. Don't unplug the stick or close the window.</p></div></li>
+          <li class="jo-step"><span class="jo-step-num" aria-hidden="true">6</span><div class="jo-step-body"><h3 class="jo-step-title">Your stick is ready</h3><p class="jo-step-text">June USB ejects the stick itself, so it's safe to unplug. Then <a href="#boot">start the laptop from it</a>: plug it into the laptop, not the oven, open the boot menu, choose the USB stick and then <strong>Install June Local - graphical</strong>.</p></div></li>
+        </ol>
+        <div class="jo-notice jo-notice-info">
+          <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+          <div class="jo-notice-body">
+            <p class="jo-notice-title">Already have a June stick?</p>
+            <p class="jo-notice-text">Sticks made with June USB are marked <strong>June stick</strong> in the list. Pick one and June USB offers <strong>Update the installer</strong>: it replaces only the installer and keeps everything on <strong>JUNE</strong>, including backups, logs and certificates. Choose <strong>Erase and start fresh</strong> to wipe it instead.</p>
+          </div>
+        </div>
+      </div>
+      <div class="setup-shots">
+        <figure class="ig-photo">
+          <img src="img/june-usb-choose-stick.webp" width="1024" height="630" alt="June USB, step 2 of 3, Choose the USB stick: a 30.8 GB SanDisk stick (E:\ PHOTOS) is selected; a Kingston stick with the volumes JUNEBOOT and JUNE is marked June stick, and an 8 GB stick is marked Can't use. Below are the Show all drives switch and the Back and Continue buttons." loading="lazy">
+          <figcaption class="small muted">Choose the stick. The drives here are examples.</figcaption>
+        </figure>
+        <figure class="ig-photo">
+          <img src="img/june-usb-confirm-erase.webp" width="1024" height="509" alt="June USB, step 3 of 3: Erase “Music”? The stick will get two parts, JUNEBOOT for the installer and JUNE for backups, logs and certificates. A warning says everything on the 30.8 GB stick will be erased, the box I have copied everything I need from “Music” is ticked, and the Erase and create the stick button is below." loading="lazy">
+          <figcaption class="small muted">Confirm. This run used an ISO file of a test build, so it's marked as not the published release.</figcaption>
+        </figure>
+        <figure class="ig-photo">
+          <img src="img/june-usb-writing.webp" width="1024" height="429" alt="June USB creating the June stick: 20 percent, Copy the installer, with the steps Prepare the stick, Copy the installer, Verify the copy, Make it bootable and Finish, and the note Don't unplug the stick or close this window." loading="lazy">
+          <figcaption class="small muted">Writing. Each step is ticked off on the right.</figcaption>
+        </figure>
+        <figure class="ig-photo">
+          <img src="img/june-usb-done.webp" width="1024" height="489" alt="June USB: Your stick is ready. You can unplug it now. Four next steps: plug the stick into the laptop, not the oven; open its boot menu with F12, F11, Esc or F2; choose the USB stick, the UEFI entry if it's listed twice; choose Install June Local - graphical." loading="lazy">
+          <figcaption class="small muted">Done. The next steps are on screen too.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <h3 class="ig-sub">The finished stick</h3>
+    <p class="muted ig-measure">June USB splits the stick into two parts. Leave the small one alone. The large one is yours to use, and it's where the installer saves backups, logs and certificates.</p>
+    <figure class="ig-stick" aria-label="Partition layout of a stick made with June USB">
+      <div class="ig-part ig-part-efi">
+        <b>JUNEBOOT</b>
+        <span>4 GB · FAT32</span>
+        <span>The installer</span>
+        <span>Don't touch</span>
+      </div>
+      <div class="ig-part ig-part-data">
+        <b>JUNE</b>
+        <span>exFAT · the rest of the stick</span>
+        <span>Backups, logs, certificates</span>
+      </div>
+    </figure>
+    <ul class="checklist ig-rules">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Leave JUNEBOOT alone.</strong> It holds the installer. To put a newer installer on it, use <strong>Update the installer</strong> in June USB.</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>JUNE is ready for backups.</strong> It's exFAT, so it can hold the oven backup, one file of about 7.3 GB. The installer also adds <code>june-logs/</code> and <code>june-certs/</code> here.</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Nothing else to copy.</strong> The stick starts the installer as it is.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="tint" id="ventoy">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Other way</p>
+      <h2>Make the stick with Ventoy</h2>
+      <p class="lead">On Linux, or if you'd rather use Ventoy, make the stick this way instead. You need Ventoy and the installer image from <a href="#download">step 1</a>.</p>
+      <p class="muted">Use a stick of at least 32 GB. Pick 64 GB if you want the oven backup on the same stick.</p>
     </div>
     <div class="ig-os ig-os-wide">
       <div class="card">
@@ -225,9 +297,9 @@
       </div>
     </div>
 
-    <h3 class="ig-sub">The finished stick</h3>
+    <h3 class="ig-sub">The finished Ventoy stick</h3>
     <p class="muted ig-measure">Ventoy splits the stick into two parts. Leave the small one alone. The large one is where everything for Project July goes, and the installer finds it by its name, <strong>Ventoy</strong>.</p>
-    <figure class="ig-stick" aria-label="Partition layout of the finished USB stick">
+    <figure class="ig-stick" aria-label="Partition layout of a stick made with Ventoy">
       <div class="ig-part ig-part-efi">
         <b>VTOYEFI</b>
         <span>32 MB · FAT</span>
@@ -244,19 +316,15 @@
       <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>exFAT or NTFS, never FAT32.</strong> An oven backup is one file of about 7.3 GB, and FAT32 can't hold files over 4 GB. Ventoy's default, exFAT, is right.</span></li>
       <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Leave about 8 GB free</strong> if the backup will go on this stick.</span></li>
     </ul>
-  </div>
-</section>
 
-<section class="tint" id="copy">
-  <div class="wrap setup-grid">
-    <div class="ig-flow">
-      <p class="eyebrow">Step 3</p>
-      <h2>Copy the installer and settings</h2>
-      <ol class="mini-steps">
-        <li><span>Open the large <strong>Ventoy</strong> drive and copy <code>june-local-live.iso</code> to the top level, not into a folder.</span></li>
-        <li><span>Make a folder called <code>ventoy</code> there, and in it a text file called <code>ventoy.json</code> with this in it:</span></li>
-      </ol>
-      <pre class="ig-code"><code>{
+    <h3 class="ig-sub" id="copy">Copy the installer and settings</h3>
+    <div class="setup-grid">
+      <div class="ig-flow">
+        <ol class="mini-steps">
+          <li><span>Open the large <strong>Ventoy</strong> drive and copy <code>june-local-live.iso</code> to the top level, not into a folder.</span></li>
+          <li><span>Make a folder called <code>ventoy</code> there, and in it a text file called <code>ventoy.json</code> with this in it:</span></li>
+        </ol>
+        <pre class="ig-code"><code>{
   "control": [
     { "VTOY_DEFAULT_MENU_MODE": "0" },
     { "VTOY_FILT_DOT_UNDERSCORE_FILE": "1" },
@@ -264,44 +332,62 @@
     { "VTOY_DEFAULT_IMAGE": "/june-local-live.iso" }
   ]
 }</code></pre>
-      <p class="muted">This makes Ventoy start the installer by itself after 3 seconds, and hides the hidden files a Mac leaves behind. It's optional: without it, you pick the image from Ventoy's menu yourself.</p>
-      <ol class="mini-steps" style="counter-reset: step 2">
-        <li><span>Eject the stick safely before you unplug it.</span></li>
-      </ol>
+        <p class="muted">This makes Ventoy start the installer by itself after 3 seconds, and hides the hidden files a Mac leaves behind. It's optional: without it, you pick the image from Ventoy's menu yourself.</p>
+        <ol class="mini-steps" style="counter-reset: step 2">
+          <li><span>Eject the stick safely before you unplug it.</span></li>
+        </ol>
+      </div>
+      <figure class="ig-tree-wrap">
+        <figcaption class="ig-h4">On the Ventoy drive</figcaption>
+        <ul class="ig-tree">
+          <li><code>june-local-live.iso</code><span>the installer</span></li>
+          <li><code>ventoy/</code>
+            <ul><li><code>ventoy.json</code><span>start it by itself</span></li></ul>
+          </li>
+          <li class="ig-later"><code>june-logs/</code><span>added by the installer: a log of every job</span></li>
+          <li class="ig-later"><code>june-certs/</code><span>added by “Install with your own CA”</span></li>
+          <li class="ig-later"><code>june-backups/</code><span>oven backups, if you save them here</span></li>
+        </ul>
+        <p class="small muted">The last three appear once you've used the installer.</p>
+      </figure>
     </div>
-    <figure class="ig-tree-wrap">
-      <figcaption class="ig-h4">On the Ventoy drive</figcaption>
-      <ul class="ig-tree">
-        <li><code>june-local-live.iso</code><span>the installer</span></li>
-        <li><code>ventoy/</code>
-          <ul><li><code>ventoy.json</code><span>start it by itself</span></li></ul>
-        </li>
-        <li class="ig-later"><code>june-logs/</code><span>added by the installer: a log of every job</span></li>
-        <li class="ig-later"><code>june-certs/</code><span>added by “Install with your own CA”</span></li>
-        <li class="ig-later"><code>june-backups/</code><span>oven backups, if you save them here</span></li>
-      </ul>
-      <p class="small muted">The last three appear once you've used the installer.</p>
-    </figure>
   </div>
 </section>
 
 <section id="boot">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Step 4</p>
+      <p class="eyebrow">Step 3</p>
       <h2>Start the laptop from the stick</h2>
       <p class="lead">Use the laptop that will run the installer, not the oven. Its own system and files are left alone: take the stick out and restart to go back to normal.</p>
     </div>
     <div class="setup-grid">
       <ol class="steps">
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Open the boot menu</h3><p class="jo-step-text">Plug the stick in, switch the laptop on and press its boot-menu key straight away. It's often F12, F11, F9, F2 or Esc, and usually shown briefly on screen. Pick the USB stick. If it's listed twice, pick the one marked UEFI. On an Intel Mac, hold Option while it starts. Macs with Apple chips (M1 and later) can't start from this stick.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Get past Secure Boot, if it stops you</h3><p class="jo-step-text">Many laptops have Secure Boot switched on. If you see a blue <strong>Verification failed</strong> or MokManager screen the first time, do one of these:</p>
-          <ul class="ig-list jo-step-text">
-            <li><strong>Enroll Ventoy's key</strong> (needs Secure Boot Support from step 2): choose <strong>Enroll key from disk</strong>, open <code>VTOYEFI</code>, pick <code>ENROLL_THIS_KEY_IN_MOKMANAGER.cer</code>, then <strong>Continue</strong>, <strong>Yes</strong> and <strong>Reboot</strong>. You only do this once per laptop.</li>
-            <li><strong>Or switch Secure Boot off</strong> in the laptop's firmware settings (BIOS/UEFI) and start again. You can switch it back on afterwards.</li>
-          </ul></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Two menus, one after the other</h3><p class="jo-step-text">First Ventoy's menu, which starts <code>june-local-live.iso</code> after 3 seconds. Then the June Local menu, which starts the graphical installer after a few seconds. Both are expected; you don't need to press anything. Choose <strong>text mode</strong> only if the graphical installer won't start.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Let the June Local menu start the installer</h3><p class="jo-step-text">It starts <strong>Install June Local - graphical</strong> after a few seconds, so you don't need to press anything. Choose <strong>text mode</strong> only if the graphical installer won't start. With a stick made with June USB, this is the only menu, and Secure Boot works as it is: there's no key to enroll.</p></div></li>
       </ol>
+      <div class="ig-menus">
+        <figure class="ig-screen" aria-label="June Local boot menu">
+          <div class="ig-screen-bar">June Local</div>
+          <ul>
+            <li class="sel">Install June Local - graphical (default)</li>
+            <li>Install June Local - text mode (basic UI)</li>
+          </ul>
+        </figure>
+        <p class="small muted">The June Local menu, simplified.</p>
+      </div>
+    </div>
+
+    <h3 class="ig-sub" id="boot-ventoy">Only for Ventoy sticks</h3>
+    <div class="setup-grid">
+      <div class="ig-flow">
+        <p><strong>Two menus, one after the other.</strong> First Ventoy's menu, which starts <code>june-local-live.iso</code> after 3 seconds. Then the June Local menu, as above. Both are expected; you don't need to press anything.</p>
+        <p><strong>Secure Boot can stop a Ventoy stick.</strong> Many laptops have Secure Boot switched on. If you see a blue <strong>Verification failed</strong> or MokManager screen the first time, do one of these:</p>
+        <ul class="ig-list">
+          <li><strong>Enroll Ventoy's key</strong> (needs Secure Boot Support when you <a href="#ventoy">install Ventoy</a>): choose <strong>Enroll key from disk</strong>, open <code>VTOYEFI</code>, pick <code>ENROLL_THIS_KEY_IN_MOKMANAGER.cer</code>, then <strong>Continue</strong>, <strong>Yes</strong> and <strong>Reboot</strong>. You only do this once per laptop.</li>
+          <li><strong>Or switch Secure Boot off</strong> in the laptop's firmware settings (BIOS/UEFI) and start again. You can switch it back on afterwards.</li>
+        </ul>
+      </div>
       <div class="ig-menus">
         <figure class="ig-screen" aria-label="Ventoy boot menu, simplified">
           <div class="ig-screen-bar">Ventoy</div>
@@ -310,14 +396,7 @@
           </ul>
           <p class="ig-screen-foot">Booting in 3 s…</p>
         </figure>
-        <figure class="ig-screen" aria-label="June Local boot menu">
-          <div class="ig-screen-bar">June Local</div>
-          <ul>
-            <li class="sel">Install June Local - graphical (default)</li>
-            <li>Install June Local - text mode (basic UI)</li>
-          </ul>
-        </figure>
-        <p class="small muted">Simplified. Your Ventoy version's colours and layout may differ.</p>
+        <p class="small muted">Ventoy's menu, simplified. Your Ventoy version's colours and layout may differ.</p>
       </div>
     </div>
     <p class="muted ig-measure" style="margin-top:var(--space-8)">The installer copies itself into the laptop's memory as it starts, so once it's running the stick can come out. That's useful if you want to save the backup to a different drive.</p>
@@ -430,7 +509,7 @@
       <div class="ig-flow">
         <h3 class="ig-h3">Back up the oven</h3>
         <ol class="mini-steps">
-          <li><span>Choose <strong>Back up the oven</strong>, then the drive. The stick you started from is listed as <strong>Ventoy (current boot USB)</strong> if it has room.</span></li>
+          <li><span>Choose <strong>Back up the oven</strong>, then the drive. The stick you started from is listed if it has room: as <strong>June USB (current boot USB)</strong> for a stick made with June USB, or <strong>Ventoy (current boot USB)</strong> for a Ventoy stick.</span></li>
           <li><span>Keep the folder (<code>june-backups</code>) and file name it suggests, or change them. Press <strong>Next: connect the oven</strong>.</span></li>
           <li><span>Put the oven in <a href="#recovery">recovery mode</a> and press <strong>Start backup</strong>. It takes 15 to 30 minutes.</span></li>
           <li><span>The installer saves the <code>.img</code> file with a <code>.sha256</code> checksum next to it. Unplug the drive safely, then the oven's power and USB cable.</span></li>
@@ -442,7 +521,7 @@
           <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-server"/></svg></span>
           <div class="jo-notice-body">
             <p class="jo-notice-title">Not enough room on the stick?</p>
-            <p class="jo-notice-text">The installer runs from the laptop's memory, so you can pull the Ventoy stick out once it's running and plug in a second drive. Press <strong>Rescan drives</strong> and pick it. Use exFAT, NTFS or ext4 with at least 8 GB free.</p>
+            <p class="jo-notice-text">The installer runs from the laptop's memory, so you can pull the USB stick out once it's running and plug in a second drive. Press <strong>Rescan drives</strong> and pick it. Use exFAT, NTFS or ext4 with at least 8 GB free.</p>
           </div>
         </div>
         <h3 class="ig-h3" style="margin-top:var(--space-6)">Restore a backup</h3>
@@ -455,7 +534,7 @@
       <div class="ig-shots">
         <figure class="ig-phone">
           <img src="img/restore-drive.webp" width="575" height="1053" alt="Installer screen: Where is the backup? A drive list with Music (USB) and Ventoy (current boot USB, 23.1 GB free) selected, Rescan drives, an optional folder, Find backups, and june_emmc_good.img, 7.8 GB, selected." loading="lazy">
-          <figcaption class="small muted">Picking the drive. The Ventoy stick is marked <strong>Boot USB</strong>.</figcaption>
+          <figcaption class="small muted">Picking the drive. Here the stick you started from, a Ventoy stick, is marked <strong>Boot USB</strong>.</figcaption>
         </figure>
         <figure class="ig-phone">
           <img src="img/restore-confirm.webp" width="575" height="490" alt="Restore confirmation: june_emmc_good.img selected, a warning that restoring replaces everything on the oven, and RESTORE typed in the confirmation box." loading="lazy">
@@ -501,19 +580,20 @@
     <div class="section-head">
       <p class="eyebrow">Help</p>
       <h2>If something goes wrong</h2>
-      <p class="lead">A failed job shows the reason with <strong>Try again</strong> and <strong>Back to start</strong>. Every job also writes a log to <code>june-logs/</code> on the Ventoy stick; include it if you ask for help.</p>
+      <p class="lead">A failed job shows the reason with <strong>Try again</strong> and <strong>Back to start</strong>. Every job also writes a log to <code>june-logs/</code> on the USB stick (on <strong>JUNE</strong>, or on the <strong>Ventoy</strong> drive of a Ventoy stick); include it if you ask for help.</p>
     </div>
     <div class="table-wrap">
       <table class="stack">
         <thead><tr><th scope="col">What you see</th><th scope="col">What to do</th></tr></thead>
         <tbody>
+          <tr><td class="file-name">June USB doesn't list the stick</td><td data-label="What to do" class="muted">Plug it in again. A stick under 16 GB is marked <strong>Can't use</strong>. SD cards and drives over 300 GB appear only with <strong>Show all drives</strong> on.</td></tr>
           <tr><td class="file-name">Ventoy doesn't list the image</td><td data-label="What to do" class="muted">Put it on the large <strong>Ventoy</strong> drive, not <code>VTOYEFI</code>. Check it ends in <code>.iso</code>, then plug the stick in again.</td></tr>
-          <tr><td class="file-name">Verification failed, or MokManager</td><td data-label="What to do" class="muted">Secure Boot. <a href="#boot">Enroll Ventoy's key or switch Secure Boot off</a>.</td></tr>
-          <tr><td class="file-name">“No bootable device”</td><td data-label="What to do" class="muted">Check the boot order, and try the other USB entry (UEFI or Legacy).</td></tr>
-          <tr><td class="file-name"><span class="mono">mkfs.vfat: command not found</span></td><td data-label="What to do" class="muted">On Linux, install <code>dosfstools</code> and <code>exfatprogs</code> and run <code>Ventoy2Disk.sh</code> again.</td></tr>
-          <tr><td class="file-name">The graphical installer falls back to text</td><td data-label="What to do" class="muted">Images built before 5 October 2026 could fail to start it. Copy the current image onto the stick, or use text mode.</td></tr>
+          <tr><td class="file-name">Verification failed, or MokManager</td><td data-label="What to do" class="muted">Secure Boot stopping a Ventoy stick. <a href="#boot-ventoy">Enroll Ventoy's key or switch Secure Boot off</a>. A stick made with June USB doesn't need this.</td></tr>
+          <tr><td class="file-name">“No bootable device”</td><td data-label="What to do" class="muted">Check the boot order, and pick the USB entry marked UEFI. With a Ventoy stick, you can also try the other USB entry.</td></tr>
+          <tr><td class="file-name"><span class="mono">mkfs.vfat: command not found</span></td><td data-label="What to do" class="muted">When you install Ventoy on Linux: install <code>dosfstools</code> and <code>exfatprogs</code> and run <code>Ventoy2Disk.sh</code> again.</td></tr>
+          <tr><td class="file-name">The graphical installer falls back to text</td><td data-label="What to do" class="muted">Images built before 5 October 2026 could fail to start it. Put the current image on the stick (in June USB, choose <strong>Update the installer</strong>), or use text mode.</td></tr>
           <tr><td class="file-name">“Waiting for the oven” never changes</td><td data-label="What to do" class="muted">Plug the cable into the laptop itself, not a hub, and check it carries data. Hold SW2 while switching the power on, and keep holding for 10 seconds.</td></tr>
-          <tr><td class="file-name">The stick isn't offered for the backup</td><td data-label="What to do" class="muted">Keep the name <strong>Ventoy</strong>, use exFAT or NTFS (not FAT32) and leave 8 GB free. Or use a second drive.</td></tr>
+          <tr><td class="file-name">The stick isn't offered for the backup</td><td data-label="What to do" class="muted">Leave 8 GB free on it. On a Ventoy stick, also keep the name <strong>Ventoy</strong> and use exFAT or NTFS (not FAT32). Or use a second drive.</td></tr>
           <tr><td class="file-name">A backup is marked <strong>Wrong size</strong></td><td data-label="What to do" class="muted">It's smaller than a full oven image (7.8 GB), so it isn't a complete backup: usually one that stopped part-way, or was copied to a FAT32 drive. Pick a complete one, or make a new backup.</td></tr>
           <tr><td class="file-name">A job stops part-way</td><td data-label="What to do" class="muted">Don't unplug the oven. Press <strong>Try again</strong>. If it fails again, save <code>june-logs/</code> and <a href="../#contact">get in touch</a>.</td></tr>
         </tbody>
@@ -539,7 +619,7 @@
           <ul class="ig-list jo-notice-text">
             <li>Unplug the oven during an install or restore</li>
             <li>Use FAT32 for the backup drive</li>
-            <li>Rename the Ventoy drive</li>
+            <li>Change JUNEBOOT, or rename the Ventoy drive</li>
             <li>Worry about the fans: running fast is normal</li>
           </ul>
         </div>

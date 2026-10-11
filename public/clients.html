@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clients for your Project July oven</title>
-<meta name="description" content="The Project July app for iPhone and Android, plus Home Assistant and web clients, for a June oven running Project July (June Local).">
+<title>Apps for your June oven — Project July</title>
+<meta name="description" content="The Project July app for iPhone and Android, plus Home Assistant and the web browser, for a June oven running Project July (June Local).">
 <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://project-july.org/clients">
@@ -15,8 +15,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Project July">
 <meta property="og:url" content="https://project-july.org/clients">
-<meta property="og:title" content="Clients for your Project July oven">
-<meta property="og:description" content="The Project July app for iPhone and Android, plus Home Assistant and web clients, for a June oven running Project July (June Local).">
+<meta property="og:title" content="Apps for your June oven — Project July">
+<meta property="og:description" content="The Project July app for iPhone and Android, plus Home Assistant and the web browser, for a June oven running Project July (June Local).">
 <meta property="og:image" content="https://project-july.org/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -58,7 +58,7 @@
     <nav class="nav" aria-label="Site">
       <a href="/#how">How it works</a>
       <a href="/setup/">Setup</a>
-      <a href="/clients" aria-current="page">Clients</a>
+      <a href="/clients" aria-current="page">Apps</a>
       <a href="/#downloads">Downloads</a>
       <a href="/#faq">FAQ</a>
     </nav>
@@ -69,174 +69,211 @@
 <section class="setup-hero">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Compatible clients</p>
-      <h1 class="setup-title">Clients for your Project July oven</h1>
-      <p class="lead">Every way to control a June oven running Project July (June Local). June's cloud is gone, so each of these talks to the oven directly on your home network.</p>
-      <p class="muted">For your phone, we recommend the <strong>Project July app</strong>, on <a href="/android/">Android</a> and <a href="/ios/">iPhone</a>. Home Assistant users can add the integration and its <a href="/clients/ha-card/">dashboard card</a>. Searching for “Project July” also finds them.</p>
+      <p class="eyebrow">Apps</p>
+      <h1 class="setup-title">Ways to control your oven</h1>
+      <p class="lead">Everything here talks to your oven directly on your home network. No June cloud, no account.</p>
     </div>
 
-    <ul class="client-jump" aria-label="Clients on this page">
-      <li><a href="#android"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Android</a></li>
-      <li><a href="#apple"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>iPhone</a></li>
-      <li><a href="#home-assistant"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg>Home Assistant</a></li>
-      <li><a href="#dashboard-card"><svg class="icon" aria-hidden="true"><use href="#i-oven"/></svg>Dashboard card</a></li>
-      <li><a href="#web"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg>Web browser</a></li>
+    <ul class="cl-pick" aria-label="Apps on this page">
+      <li><a href="#app">
+        <span class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+        <span class="cl-pick-body"><b>On your phone</b><span>The Project July app, for Android and iPhone.</span><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Recommended</span></span>
+      </a></li>
+      <li><a href="#home-assistant">
+        <span class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg></span>
+        <span class="cl-pick-body"><b>On your dashboard</b><span>Home Assistant, with a card drawn like the oven&rsquo;s glass.</span><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Beta</span></span>
+      </a></li>
+      <li><a href="#web">
+        <span class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg></span>
+        <span class="cl-pick-body"><b>In a browser</b><span>A status page on the oven itself. Nothing to install.</span><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Stable</span></span>
+      </a></li>
     </ul>
+  </div>
+</section>
 
-    <div class="jo-notice jo-notice-info client-before">
-      <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-key"/></svg></span>
-      <div class="jo-notice-body">
-        <p class="jo-notice-title">Every client works with either install</p>
-        <p class="jo-notice-text">Certificates are optional. Any client can use the oven's plain port 80 or connect without checking the certificate, and commands are signed either way. To have it checked, after the custom install (<strong>Install with your own CA</strong>) give the client your home's <span class="mono">ca.crt</span>. <a href="/setup/#certificates">Certificates, explained</a>.</p>
+<!-- ============================ Project July app ============================ -->
+<section class="tint" id="app" aria-labelledby="app-title">
+  <div class="wrap">
+    <div class="cl-feature">
+      <div class="cl-feature-text">
+        <div class="section-head">
+          <p class="eyebrow">Recommended &middot; Android and iPhone</p>
+          <h2 id="app-title">The Project July app</h2>
+          <p class="lead">Our free, open-source app for June ovens. No root and no computer needed.</p>
+        </div>
+        <ul class="checklist">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Preheat, change the temperature and stop a cook</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Timers, with +1, +5 and +10 minutes</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>The live camera, right beside the temperature</span></li>
+        </ul>
+        <ul class="cl-facts">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg><span><b>Finds the oven</b>on your Wi&#8209;Fi, or type its address</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><span><b>Pairs once</b>type its 8-digit code on the oven&rsquo;s <strong>Connect</strong> screen</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><b>Certificate built in</b>nothing to set up after the standard install</span></li>
+        </ul>
       </div>
+      <figure class="cl-phone"><img src="/assets/app/cooking.webp" width="540" height="960" alt="The app while cooking: Demo oven with a red Stop button, 12:25 left, the add-time buttons and the live camera."></figure>
+    </div>
+
+    <div class="cl-platforms">
+      <!-- Closed beta: all three steps, in this order. Once the app is in open testing
+           or production, replace the steps and the note with only the store link. -->
+      <article class="get-app" id="android" aria-labelledby="android-title">
+        <div class="get-app-head">
+          <h3 id="android-title">Android</h3>
+          <p class="muted">In beta on Google Play, open to anyone. Use the same Google account that&rsquo;s on your phone for all three steps.</p>
+        </div>
+        <ol class="get-steps">
+          <li>
+            <span class="jo-step-num" aria-hidden="true">1</span>
+            <div class="get-step-body"><p class="jo-step-title">Join the beta group</p><p class="small muted">Also the place to ask questions.</p></div>
+            <a class="jo-btn jo-btn-primary" href="https://groups.google.com/g/prj-july-beta/about">Join group</a>
+          </li>
+          <li>
+            <span class="jo-step-num" aria-hidden="true">2</span>
+            <div class="get-step-body"><p class="jo-step-title">Become a tester</p><p class="small muted">On Google Play&rsquo;s testing page.</p></div>
+            <a class="jo-btn" href="https://play.google.com/apps/testing/org.projectjuly.oven">Become a tester</a>
+          </li>
+          <li>
+            <span class="jo-step-num" aria-hidden="true">3</span>
+            <div class="get-step-body"><p class="jo-step-title">Install the app</p><p class="small muted">From Google Play.</p></div>
+            <a class="jo-btn" href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">Install</a>
+          </li>
+        </ol>
+        <p class="get-app-note small"><strong>Google Play says &ldquo;Not found&rdquo;?</strong> Finish steps 1 and 2 first, then wait a few minutes.</p>
+        <p class="get-app-links small"><a href="/android/">About the Android app</a></p>
+      </article>
+
+      <article class="get-app" id="apple" aria-labelledby="apple-title">
+        <div class="get-app-head">
+          <h3 id="apple-title">iPhone</h3>
+          <p class="muted">In testing on TestFlight. There&rsquo;s no public link yet, so ask us for an invite.</p>
+        </div>
+        <ol class="get-steps">
+          <li>
+            <span class="jo-step-num" aria-hidden="true">1</span>
+            <div class="get-step-body"><p class="jo-step-title">Ask for an invite</p><p class="small muted">We&rsquo;ll email you a TestFlight invite.</p></div>
+            <a class="jo-btn jo-btn-primary" href="mailto:hello@project-july.org?subject=TestFlight%20invite">Email us</a>
+          </li>
+          <li>
+            <span class="jo-step-num" aria-hidden="true">2</span>
+            <div class="get-step-body"><p class="jo-step-title">Accept it in TestFlight</p><p class="small muted">Apple&rsquo;s free app for testing apps.</p></div>
+          </li>
+        </ol>
+        <p class="get-app-links small"><a href="/ios/">About the iPhone app</a></p>
+      </article>
+    </div>
+    <p class="cl-foot small muted"><a href="https://github.com/prj-july/project-july-app">Source code</a> &middot; <a href="/clients/privacy">Privacy policy</a> &middot; Updated <time datetime="2026-10-04">4 Oct 2026</time></p>
+  </div>
+</section>
+
+<!-- ============================ Home Assistant ============================ -->
+<section id="home-assistant" aria-labelledby="ha-title">
+  <div class="wrap">
+    <div class="cl-feature cl-feature-flip">
+      <div class="cl-feature-text">
+        <div class="section-head">
+          <p class="eyebrow">Home Assistant &middot; Beta</p>
+          <h2 id="ha-title">Your oven on your dashboard</h2>
+          <p class="lead">The June Oven integration adds the oven to Home Assistant, and brings the July Oven card with it.</p>
+        </div>
+        <ol class="steps">
+          <li class="jo-step">
+            <span class="jo-step-num" aria-hidden="true">1</span>
+            <div class="jo-step-body"><h3 class="jo-step-title">Install the integration</h3><p class="jo-step-text">From HACS as a custom repository, or copy it in by hand. Needs Home Assistant 2025.1 or newer.</p></div>
+          </li>
+          <li class="jo-step">
+            <span class="jo-step-num" aria-hidden="true">2</span>
+            <div class="jo-step-body"><h3 class="jo-step-title">Add your oven</h3><p class="jo-step-text">Enter its IP address or hostname, then type the 8-digit code on the oven&rsquo;s <strong>Connect</strong> screen.</p></div>
+          </li>
+          <li class="jo-step" id="dashboard-card">
+            <span class="jo-step-num" aria-hidden="true">3</span>
+            <div class="jo-step-body"><h3 class="jo-step-title">Add the July Oven card</h3><p class="jo-step-text">It comes with the integration. Search for &ldquo;July Oven&rdquo; in the card picker.</p></div>
+          </li>
+        </ol>
+        <div class="hero-actions">
+          <a class="jo-btn jo-btn-primary" href="https://github.com/prj-july/ha-june-oven#installation">Install from GitHub</a>
+          <a class="jo-btn" href="/clients/ha-card/">See the card guide<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <p class="small muted">Stuck? <a href="https://github.com/prj-july/ha-june-oven#troubleshooting">Troubleshooting</a> &middot; <a href="https://github.com/prj-july/ha-june-oven#project-july-local-server">Setup with Project July</a> &middot; <a href="https://github.com/prj-july/ha-june-oven#july-oven-dashboard-card">Card options</a></p>
+      </div>
+      <figure class="cl-shot">
+        <img src="/clients/ha-card/img/multi.png" width="1000" height="1008" loading="lazy" alt="The July Oven card with three ovens: Kitchen cooking with 12:30 left and the live camera, Garage preheating with its own Stop, and Studio off.">
+        <figcaption class="small muted">One card for every oven, with the live camera and a red Stop for each.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="tint">
+<!-- ============================ Also works ============================ -->
+<section class="tint" aria-labelledby="more-title">
   <div class="wrap">
-    <div class="client-grid">
-
-      <!-- ============================ Android ============================ -->
-      <article class="client" id="android" aria-labelledby="android-title">
-        <div class="client-head">
-          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-          <div>
-            <h2 id="android-title">Project July for Android</h2>
-            <p class="client-meta"><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Recommended</span><span>Beta on Google Play</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
-          </div>
+    <div class="section-head">
+      <p class="eyebrow">Also works</p>
+      <h2 id="more-title">For a quick check, or for tinkerers</h2>
+    </div>
+    <div class="cl-more">
+      <article class="cl-card" id="web" aria-labelledby="web-title">
+        <div class="cl-card-head">
+          <span class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg></span>
+          <div><h3 id="web-title">Web browser</h3><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Stable</span></div>
         </div>
-        <p>Our app for June ovens: preheat, change the temperature, timers with +1/+5/+10 minutes, the live camera and a one-tap Stop. It talks straight to your oven on your home Wi‑Fi, with no cloud and no account.</p>
-        <dl class="client-needs">
-          <dt>Download</dt><dd>In beta on Google Play, and anyone can join. Use the same Google account that&rsquo;s on your phone for all three steps: 1.&nbsp;<a href="https://groups.google.com/g/prj-july-beta/about">join the beta group</a>, 2.&nbsp;<a href="https://play.google.com/apps/testing/org.projectjuly.oven">become a tester</a>, 3.&nbsp;<a href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">install</a>. If Google Play says &ldquo;Not found&rdquo;, finish steps 1 and 2 first, then wait a few minutes. Questions are welcome in the group.</dd>
-          <dt>Oven address</dt><dd>The app finds the oven on your Wi‑Fi, or you type its address. No root or computer needed.</dd>
-          <dt>Certificate</dt><dd>Nothing to do. The app comes with the standard install's certificate, so <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span> connect over checked HTTPS. After the custom install, paste <span class="mono">ca.crt</span> under <strong>Home certificate</strong>. Otherwise it uses port 80.</dd>
-          <dt>Pairing</dt><dd>The app shows an eight-digit code; type it on the oven's <strong>Connect</strong> screen.</dd>
-        </dl>
-        <div class="client-actions">
-          <a class="jo-btn jo-btn-primary" href="https://groups.google.com/g/prj-july-beta/about">1. Join the beta group</a>
-          <a class="client-link" href="https://play.google.com/apps/testing/org.projectjuly.oven">2. Become a tester</a>
-          <a class="client-link" href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">3. Install</a>
-          <a class="client-link" href="/android/">About the app</a>
-          <a class="client-link" href="https://github.com/prj-july/project-july-app">Source code</a>
-          <a class="client-link" href="/clients/privacy">Privacy policy</a>
-        </div>
-      </article>
-
-      <!-- ============================ Apple ============================ -->
-      <article class="client" id="apple" aria-labelledby="apple-title">
-        <div class="client-head">
-          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-          <div>
-            <h2 id="apple-title">Project July for iPhone</h2>
-            <p class="client-meta"><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Recommended</span><span>TestFlight</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
-          </div>
-        </div>
-        <p>The same app for iPhone: preheat, change the temperature, timers with +1/+5/+10 minutes, the live camera and a one-tap Stop, over your home Wi‑Fi with no cloud and no account.</p>
-        <dl class="client-needs">
-          <dt>Download</dt><dd>In testing on TestFlight, with no public link yet. Email <a href="mailto:hello@project-july.org?subject=TestFlight%20invite">hello@project-july.org</a> for an invite, then accept it in Apple's free TestFlight app.</dd>
-          <dt>Oven address</dt><dd>The app finds the oven on your Wi‑Fi, or you type its address. No computer needed.</dd>
-          <dt>Certificate</dt><dd>Nothing to do. The app comes with the standard install's certificate, so <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span> connect over checked HTTPS. After the custom install, paste <span class="mono">ca.crt</span> under <strong>Home certificate</strong>. Otherwise it uses port 80.</dd>
-          <dt>Pairing</dt><dd>The app shows an eight-digit code; type it on the oven's <strong>Connect</strong> screen.</dd>
-        </dl>
-        <div class="client-actions">
-          <a class="jo-btn jo-btn-primary" href="mailto:hello@project-july.org?subject=TestFlight%20invite">Request TestFlight access</a>
-          <a class="client-link" href="/ios/">About the iPhone app</a>
-          <a class="client-link" href="https://github.com/prj-july/project-july-app">Source code</a>
-          <a class="client-link" href="/clients/privacy">Privacy policy</a>
-        </div>
-      </article>
-
-      <!-- ============================ Home Assistant ============================ -->
-      <article class="client" id="home-assistant" aria-labelledby="ha-title">
-        <div class="client-head">
-          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg></span>
-          <div>
-            <h2 id="ha-title">Home Assistant integration</h2>
-            <p class="client-meta"><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Beta</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
-          </div>
-        </div>
-        <p>Adds your June oven to Home Assistant: on/off and cook modes, target and current temperature, cook progress, preheat-ready and done sensors, food probe, and the interior camera on demand. Working on real ovens; it has no tagged release yet.</p>
-        <dl class="client-needs">
-          <dt>Install</dt><dd>Home Assistant 2025.1 or newer, and HACS (as a custom repository) or a manual copy.</dd>
-          <dt>Oven address</dt><dd>The oven's IP address or hostname. Enter <span class="mono">http://&lt;oven-ip&gt;:80</span> to use the plain port.</dd>
-          <dt>Certificate</dt><dd>Optional. Use port 80, or turn off <strong>Verify TLS certificate</strong>. To have it checked after the custom install, paste your home's <span class="mono">ca.crt</span> into <strong>CA certificate (PEM)</strong>, or later under <strong>Configure</strong>.</dd>
-          <dt>Pairing</dt><dd>You type an eight-digit code on the oven's <strong>Connect</strong> screen.</dd>
-        </dl>
-        <div class="client-actions">
-          <a class="jo-btn jo-btn-primary" href="https://github.com/prj-july/ha-june-oven#installation">Install from GitHub</a>
-          <a class="client-link" href="https://github.com/prj-july/ha-june-oven#project-july-local-server">Setup with Project July</a>
-          <a class="client-link" href="https://github.com/prj-july/ha-june-oven#troubleshooting">Troubleshooting</a>
-          <a class="client-link" href="/clients/ha-card/">Dashboard card guide</a>
-        </div>
-      </article>
-
-      <!-- ============================ Dashboard card ============================ -->
-      <article class="client" id="dashboard-card" aria-labelledby="card-title">
-        <div class="client-head">
-          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-oven"/></svg></span>
-          <div>
-            <h2 id="card-title">July Oven dashboard card</h2>
-            <p class="client-meta"><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Beta</span><span>Home Assistant</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
-          </div>
-        </div>
-        <p>A Home Assistant dashboard card styled after the oven's own glass screen: status, a one-tap Stop, add-time buttons, the camera, cook history, and the oven's cook modes when it's off. It handles several ovens on one card. The <a href="/clients/ha-card/">card guide</a> walks through every screen.</p>
-        <dl class="client-needs">
-          <dt>Install</dt><dd>Comes with the <a href="#home-assistant">Home Assistant integration</a>; there's nothing extra to install. Reload the browser tab once after updating.</dd>
-          <dt>Add it</dt><dd>Search for “July Oven” in the card picker, or in YAML: <code>type: custom:july-oven-card</code>.</dd>
-        </dl>
-        <div class="client-actions">
-          <a class="jo-btn jo-btn-primary" href="/clients/ha-card/">Card guide</a>
-          <a class="client-link" href="https://github.com/prj-july/ha-june-oven#july-oven-dashboard-card">Options on GitHub</a>
-        </div>
-      </article>
-
-      <!-- ============================ Web ============================ -->
-      <article class="client" id="web" aria-labelledby="web-title">
-        <div class="client-head">
-          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg></span>
-          <div>
-            <h2 id="web-title">Web browser</h2>
-            <p class="client-meta"><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Stable</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
-          </div>
-        </div>
-        <p>Every oven running June Local serves a status page. It's the quickest way to check the oven is up after an install. It shows status only; use one of the apps or Home Assistant to cook.</p>
-        <dl class="client-needs">
-          <dt>Install</dt><dd>Nothing to install, with either install. Any browser on the same network as the oven.</dd>
-          <dt>Address</dt><dd>Open <code>http://&lt;oven-ip&gt;/local</code>, using your oven's IP address.</dd>
-        </dl>
+        <p class="muted">Every oven on Project July serves a status page. It&rsquo;s the quickest way to check the oven is up after an install. Status only: use the app or Home Assistant to cook.</p>
+        <p class="cl-addr"><span class="small muted">Open, from any device on your network</span><code>http://&lt;oven-ip&gt;/local</code></p>
         <details class="client-more">
-          <summary>For advanced users</summary>
-          <p class="small muted"><code>http://&lt;oven-ip&gt;/local/status</code> returns the same as JSON, for scripts and monitoring: <code>{"ok": true, "mode": "local", "server": "june-local", …}</code>. The oven's API and WebSocket are on <code>https://&lt;oven-ip&gt;</code> (port 443) and <code>http://&lt;oven-ip&gt;</code> (port 80), with the same routes June's cloud used.</p>
+          <summary>For scripts and monitoring</summary>
+          <p class="small muted"><code>/local/status</code> returns the same as JSON: <code>{"ok": true, "mode": "local", "server": "june-local", …}</code>. The oven&rsquo;s API and WebSocket are on port 443 (<code>https://</code>) and port 80 (<code>http://</code>), with the same routes June&rsquo;s cloud used.</p>
         </details>
       </article>
 
-      <!-- ============================ Original June app ============================ -->
-      <article class="client" id="june-app" aria-labelledby="june-app-title">
-        <div class="client-head">
-          <span class="client-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-          <div>
-            <h2 id="june-app-title">June's original app, rebuilt (Android)</h2>
-            <p class="client-meta"><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>For tinkerers</span><span>Updated <time datetime="2026-10-04">4 Oct 2026</time></span></p>
-          </div>
+      <article class="cl-card" id="june-app" aria-labelledby="june-app-title">
+        <div class="cl-card-head">
+          <span class="pillar-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+          <div><h3 id="june-app-title">June&rsquo;s original app, rebuilt</h3><span class="jo-pill jo-pill-offline"><span class="jo-pill-dot" aria-hidden="true"></span>Android &middot; needs root</span></div>
         </div>
-        <p>June's own Android app, rebuilt to talk to June Local instead of June's servers. Most people should use <a href="#android">Project July for Android</a>; this one needs root to point it at your oven.</p>
-        <dl class="client-needs">
-          <dt>Download</dt><dd>It comes with the installer: open <strong>Phone setup</strong> and tap <strong>Download the companion app</strong>, or scan the code it shows.</dd>
-          <dt>Certificate</dt><dd>Nothing to do after the standard install. After the custom install, install <span class="mono">ca.crt</span> on the phone under Settings › Security › Encryption &amp; credentials › Install a certificate › CA certificate.</dd>
-          <dt>Endpoint</dt><dd>Root, or an ADB shell with root:<br><code class="client-cmd">adb shell setprop persist.june.local_endpoint &lt;oven-address&gt;</code></dd>
-        </dl>
+        <p class="muted">June&rsquo;s own Android app, pointed at your oven instead of June&rsquo;s servers. Most people should use the <a href="#android">Project July app</a> instead.</p>
+        <details class="client-more">
+          <summary>How to set it up</summary>
+          <ol class="mini-steps">
+            <li><span>Get it from the installer: open <strong>Phone setup</strong> and tap <strong>Download the companion app</strong>, or scan the code it shows.</span></li>
+            <li><span>With root, or an ADB shell with root, point it at your oven:<br><code class="client-cmd">adb shell setprop persist.june.local_endpoint &lt;oven-address&gt;</code></span></li>
+            <li><span>After the custom install only: add <span class="mono">ca.crt</span> under Settings &rsaquo; Security &rsaquo; Encryption &amp; credentials &rsaquo; Install a certificate &rsaquo; CA certificate.</span></li>
+          </ol>
+        </details>
       </article>
-
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="prose">
-      <h2>Not installed yet?</h2>
-      <p class="muted">Every client needs the oven running Project July first. The <a href="/setup/">setup guide</a> walks through the install in 3D, and its <a href="/setup/#certificates">certificates section</a> covers what to do with your home's certificate. Questions? Email <a href="mailto:hello@project-july.org">hello@project-july.org</a>.</p>
+<!-- ============================ Certificates and setup ============================ -->
+<section id="certificates" aria-labelledby="cert-title">
+  <div class="wrap cl-bottom">
+    <div class="jo-notice jo-notice-info cl-cert">
+      <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-key"/></svg></span>
+      <div class="jo-notice-body">
+        <h2 class="jo-notice-title" id="cert-title">Certificates are optional</h2>
+        <p class="jo-notice-text">Every client works with either install, and commands are signed either way. After the standard install there&rsquo;s nothing to do. After the custom install (<strong>Install with your own CA</strong>), give a client your home&rsquo;s <span class="mono">ca.crt</span> if you want the connection checked.</p>
+        <details class="client-more">
+          <summary>Where each client takes it</summary>
+          <dl class="client-needs">
+            <dt>Project July app</dt><dd>Paste it under <strong>Home certificate</strong>. Without it, the app uses port 80.</dd>
+            <dt>Home Assistant</dt><dd>Paste it into <strong>CA certificate (PEM)</strong>, now or later under <strong>Configure</strong>. Or use <span class="mono">http://&lt;oven-ip&gt;:80</span>, or turn off <strong>Verify TLS certificate</strong>.</dd>
+            <dt>June&rsquo;s app</dt><dd>Install it on the phone as a CA certificate (step 3 in its setup above).</dd>
+          </dl>
+        </details>
+        <p class="small"><a href="/setup/#certificates">Certificates, explained</a></p>
+      </div>
+    </div>
+
+    <div class="cl-cta">
+      <div>
+        <h2>Not installed yet?</h2>
+        <p class="muted">Every client needs the oven running Project July first. The setup guide walks through it in 3D.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="jo-btn jo-btn-primary" href="/setup/">Open the setup guide</a>
+        <a class="jo-btn jo-btn-quiet" href="mailto:hello@project-july.org">Email a question</a>
+      </div>
     </div>
   </div>
 </section>

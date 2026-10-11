@@ -42,11 +42,18 @@ rendered from `player.html?poster` with headless Chrome at 1280×720.
 - `/setup/` is the short version: the 3D walkthrough, the USB stick, the four steps and the
   certificate step after the install. A section after the four steps links into the installer
   guide, which covers the rest.
-- `/installer/` is the full installer guide: Ventoy, booting, every screen, backup and restore,
-  and troubleshooting. Its screenshots are in `public/installer/img/`. The dark desktop ones
+- `/installer/` is the full installer guide: making the USB stick with the June USB app (Windows
+  and Mac), with Ventoy as the other way (and the one for Linux), booting, every screen, backup and
+  restore, and troubleshooting. Its screenshots are in `public/installer/img/`. The dark desktop ones
   (`oven-found`, `custom-options`, `success-laptop`, `backup-drive`) are crops of the installer's
   mock-mode captures in `installer/website-assets/installer-mockups/png/` (version 0.5), converted
-  to WebP with ffmpeg; the rest are photos and phone screenshots of real runs. The sticky section
+  to WebP with ffmpeg. The `june-usb-*` ones are the June USB app on Windows, from the installer
+  repo's `website-assets/screenshots/june-usb/`: cropped to 1024 px wide without the window's title
+  bar and app header (which showed a test build's name), and with the empty space at the bottom
+  trimmed, then converted the same way, for example
+  `ffmpeg -i 03-confirm-erase.png -vf "crop=1024:509:1:101" -c:v libwebp -quality 82 public/installer/img/june-usb-confirm-erase.webp`
+  (`02-choose-stick.png` has no title bar: `crop=1024:630:1:70`; `05-writing.png`: `crop=1024:429:1:101`;
+  `06-done.png`: `crop=1024:489:1:101`). The rest are photos and phone screenshots of real runs. The sticky section
   bar under its header is filled in by the script at the end of the page; when you add, remove or
   rename a section, update the bar's links (and the "On this page" list) to match.
 - `/clients` (`public/clients.html`) lists every way to control the oven (Home Assistant, the

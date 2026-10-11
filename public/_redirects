@@ -2,3 +2,7 @@
 /card /clients/ha-card/ 301
 /card/ /clients/ha-card/ 301
 /card/* /clients/ha-card/:splat 301
+
+# Friendlier address for the apps page (the page itself stays at /clients).
+/apps /clients 301
+/apps/ /clients 301

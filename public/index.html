@@ -68,7 +68,7 @@
     <nav class="nav" aria-label="Site">
       <a href="#how">How it works</a>
       <a href="setup/">Setup</a>
-      <a href="/clients">Clients</a>
+      <a href="/clients">Apps</a>
       <a href="#downloads">Downloads</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -297,11 +297,45 @@
           <span class="jo-pill jo-pill-cooking"><span class="jo-pill-dot" aria-hidden="true"></span>Free</span>
           <span class="jo-pill jo-pill-cooking"><span class="jo-pill-dot" aria-hidden="true"></span>Open source</span>
         </div>
-        <p class="muted"><strong>Get Project July for Android.</strong> It&rsquo;s in beta on Google Play. Use the same Google account that&rsquo;s on your phone for all three steps: 1.&nbsp;<a href="https://groups.google.com/g/prj-july-beta/about">join the beta group</a>, 2.&nbsp;<a href="https://play.google.com/apps/testing/org.projectjuly.oven">become a tester</a>, 3.&nbsp;<a href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">install</a>. If Google Play says &ldquo;Not found&rdquo;, finish steps 1 and 2 first, then wait a few minutes. The group is also the place to ask questions about the app. <a href="android/">More about the app</a>. On iPhone, it's on TestFlight by invite (<a href="ios/">how to ask</a>). <a href="/clients/privacy">Privacy policy</a>.</p>
-        <p><a class="jo-btn jo-btn-primary" href="https://groups.google.com/g/prj-july-beta/about">1. Join the beta group</a> <a class="jo-btn jo-btn-quiet" href="https://play.google.com/apps/testing/org.projectjuly.oven">2. Become a tester</a> <a class="jo-btn jo-btn-quiet" href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">3. Install</a></p>
+        <!-- Closed beta: all three steps, in this order. Once the app is in open testing
+             or production, replace the steps and the note with only the store link. -->
+        <div class="get-app">
+          <div class="get-app-head">
+            <h3>Get it on Android</h3>
+            <p class="muted">It&rsquo;s in beta on Google Play. Use the same Google account that&rsquo;s on your phone for all three steps.</p>
+          </div>
+          <ol class="get-steps">
+            <li>
+              <span class="jo-step-num" aria-hidden="true">1</span>
+              <div class="get-step-body">
+                <p class="jo-step-title">Join the beta group</p>
+                <p class="small muted">On Google Groups. It&rsquo;s also the place to ask questions about the app.</p>
+              </div>
+              <a class="jo-btn jo-btn-primary" href="https://groups.google.com/g/prj-july-beta/about">Join group</a>
+            </li>
+            <li>
+              <span class="jo-step-num" aria-hidden="true">2</span>
+              <div class="get-step-body">
+                <p class="jo-step-title">Become a tester</p>
+                <p class="small muted">On Google Play&rsquo;s testing page.</p>
+              </div>
+              <a class="jo-btn" href="https://play.google.com/apps/testing/org.projectjuly.oven">Become a tester</a>
+            </li>
+            <li>
+              <span class="jo-step-num" aria-hidden="true">3</span>
+              <div class="get-step-body">
+                <p class="jo-step-title">Install the app</p>
+                <p class="small muted">From Google Play.</p>
+              </div>
+              <a class="jo-btn" href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">Install</a>
+            </li>
+          </ol>
+          <p class="get-app-note small"><strong>Google Play says &ldquo;Not found&rdquo;?</strong> Finish steps 1 and 2 first, then wait a few minutes.</p>
+          <p class="get-app-links small"><a href="android/">More about the Android app</a><a href="/clients/privacy">Privacy policy</a></p>
+          <p class="small muted">On iPhone, it&rsquo;s on TestFlight by invite (<a href="ios/">how to ask</a>).</p>
+        </div>
         <p class="muted">The app is open source under the MIT License, for iPhone and Android alike. <a href="https://github.com/prj-july/project-july-app">Read the code on GitHub</a>.</p>
-        <p class="muted">Use Home Assistant? The <a href="https://github.com/prj-july/ha-june-oven">June Oven integration</a> brings the same controls and a matching dashboard card to your dashboards. <a href="/clients/ha-card/">See the card guide</a>.</p>
-        <p class="muted">Every way to control the oven, and what each one needs, is on the <a href="/clients">clients page</a>.</p>
+        <p class="muted">Every way to control the oven, and what each one needs, is on the <a href="/clients">apps page</a>.</p>
       </div>
 
       <figure class="app-figure">
@@ -344,6 +378,52 @@
         </div>
         <figcaption class="figure-cap">Illustration of the app, with the same real camera recording</figcaption>
       </figure>
+    </div>
+
+    <!-- Home Assistant card showcase: screenshots come from the card guide, each tile opens its section. -->
+    <div class="ha-show" id="ha-card">
+      <div class="ha-show-head">
+        <div class="ha-show-intro">
+          <p class="eyebrow">Use Home Assistant?</p>
+          <h3>The July Oven card</h3>
+          <p class="muted">The <a href="https://github.com/prj-july/ha-june-oven">June Oven integration</a> puts your oven on your Home Assistant dashboard, with a card drawn like the oven&rsquo;s own glass. Local, like the app, and happy to run alongside it.</p>
+        </div>
+        <div class="ha-show-ctas">
+          <a class="jo-btn jo-btn-primary" href="clients/ha-card/">See the card guide<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <ul class="ha-tiles">
+        <li class="ha-tile ha-tile-wide">
+          <a href="clients/ha-card/#sizes">
+            <span class="ha-shot"><img src="clients/ha-card/img/wall-probe.png" width="2064" height="1008" loading="lazy" alt="Wall tablet layout: food at 131 degrees on its way to 145, Roast at 350 °F, a red Stop button, the live camera and a graph of oven and food temperature."></span>
+            <span class="ha-cap"><b>Made for the wall tablet</b>Huge numbers, the live camera and a running graph of oven and food, readable from across the kitchen.</span>
+          </a>
+        </li>
+        <li class="ha-tile">
+          <a href="clients/ha-card/#home">
+            <span class="ha-shot"><img src="clients/ha-card/img/home.png" width="1000" height="752" loading="lazy" alt="Home screen: a big clock above glowing tiles for Bake, Roast, Broil, Air fry, Toast, Grill, Pizza and Reheat."></span>
+            <span class="ha-cap"><b>Looks like the oven</b>Mode tiles glow where each heating element sits. Hover Air fry and its fan spins up.</span>
+          </a>
+        </li>
+        <li class="ha-tile">
+          <a href="clients/ha-card/#history">
+            <span class="ha-shot"><img src="clients/ha-card/img/history-detail.png" width="1000" height="1008" loading="lazy" alt="One past cook: Roast at 4:55 PM, its last camera picture and a graph of oven and food temperature over 52 minutes."></span>
+            <span class="ha-cap"><b>Every cook, kept</b>The last picture, the whole temperature curve, and a CSV export when you want it.</span>
+          </a>
+        </li>
+        <li class="ha-tile">
+          <a href="clients/ha-card/#ovens">
+            <span class="ha-shot"><img src="clients/ha-card/img/multi.png" width="1000" height="1008" loading="lazy" alt="One card with three ovens: Kitchen cooking with 12:30 left, Garage preheating with its own Stop, and Studio off."></span>
+            <span class="ha-cap"><b>Every oven, one card</b>Two ovens on at once? Each gets its own red Stop, named so you hit the right one.</span>
+          </a>
+        </li>
+        <li class="ha-tile">
+          <a href="clients/ha-card/#camera">
+            <span class="ha-shot"><picture><source srcset="clients/ha-card/img/cooking.png" media="(prefers-reduced-motion: reduce)"><img src="clients/ha-card/img/camera.gif" width="700" height="526" loading="lazy" alt="Tapping the small camera picture opens a big live window over the card."></picture></span>
+            <span class="ha-cap"><b>A window into the oven</b>Tap the picture for a big live view. On Project July it can even peek in while the oven&rsquo;s off.</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -418,7 +498,7 @@
               <ul>
                 <li>Installer 0.5: new screens, a name for each oven (<span class="mono">june</span>, <span class="mono">june2</span> or <span class="mono">june3</span>), and an option to keep June Local after a factory reset.</li>
                 <li>The Project July app for Android is <a href="/android/">in beta on Google Play</a>, and anyone can join: <a href="https://groups.google.com/g/prj-july-beta/about">join the beta group</a>, <a href="https://play.google.com/apps/testing/org.projectjuly.oven">become a tester</a>, then <a href="https://play.google.com/store/apps/details?id=org.projectjuly.oven">install</a>. The <a href="/ios/">iPhone version</a> is on TestFlight.</li>
-                <li>New guides for the <a href="/installer/">USB installer</a> and the <a href="/clients/ha-card/">July Oven card</a>, and a <a href="/clients">clients page</a> with every way to control the oven.</li>
+                <li>New guides for the <a href="/installer/">USB installer</a> and the <a href="/clients/ha-card/">July Oven card</a>, and a <a href="/clients">apps page</a> with every way to control the oven.</li>
               </ul>
             </li>
             <li>
@@ -474,11 +554,11 @@
           <div class="jo-notice-body">
             <p class="jo-notice-title">Before you begin</p>
             <ul class="checklist jo-notice-text" style="margin-top:var(--space-2)">
-              <li>A micro-USB cable that carries data (not a charge-only cable)</li>
-              <li>A laptop</li>
-              <li>A USB stick of 16 GB or more (32 GB is better), to start the laptop from. The June USB app makes it for you (<a href="installer/#stick">how to make it</a>)</li>
-              <li>A screwdriver</li>
-              <li>About one hour</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>A micro-USB cable that carries data (not a charge-only cable)</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>A laptop</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>A USB stick of 16 GB or more (32 GB is better), to start the laptop from. The June USB app makes it for you (<a href="installer/#stick">how to make it</a>)</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>A screwdriver</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>About one hour</span></li>
             </ul>
           </div>
         </div>

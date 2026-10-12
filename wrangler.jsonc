@@ -13,7 +13,11 @@
   // Attaches project-july.org on deploy (the zone must be active on Cloudflare).
   "routes": [
     { "pattern": "project-july.org", "custom_domain": true }
-  ]
+  ],
+
+  // Pull request and other branch builds run `npx wrangler preview`, which needs this block.
+  // It stays empty: the site has no bindings, and production routes must not go in here.
+  "previews": {}
 
   // Downloads (APKs, binaries, guides) will live in a separate R2 bucket served on its own
   // custom domain (e.g. downloads.project-july.org), so the site needs no R2 binding.

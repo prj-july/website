@@ -363,8 +363,8 @@
     </div>
     <div class="setup-grid">
       <ol class="steps">
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Open the boot menu</h3><p class="jo-step-text">Plug the stick in, switch the laptop on and press its boot-menu key straight away. It's often F12, F11, F9, F2 or Esc, and usually shown briefly on screen. Pick the USB stick. If it's listed twice, pick the one marked UEFI. On an Intel Mac, hold Option while it starts. Macs with Apple chips (M1 and later) can't start from this stick.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Let the June Local menu start the installer</h3><p class="jo-step-text">It starts <strong>Install June Local - graphical</strong> after a few seconds, so you don't need to press anything. Choose <strong>text mode</strong> only if the graphical installer won't start. With a stick made with June USB, this is the only menu, and Secure Boot works as it is: there's no key to enroll.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Open the boot menu</h3><p class="jo-step-text">Plug the stick in, switch the laptop on and press its boot-menu key straight away. It's often F12, F11, F9, F2 or Esc, and usually shown briefly on screen. Pick the USB stick. If it's listed twice, pick the one marked UEFI. On a Surface, hold Volume Down while it starts instead. On an Intel Mac, hold Option. Macs with Apple chips (M1 and later) and Windows laptops with ARM processors, such as the Surface Pro 9 with 5G or the Surface Pro X, can't start from this stick.</p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Let the June Local menu start the installer</h3><p class="jo-step-text">It starts <strong>Install June Local - graphical</strong> after a few seconds, so you don't need to press anything. Choose <strong>text mode</strong> only if the graphical installer won't start. With a stick made with June USB, this is the only menu, and Secure Boot works as it is: there's no key to enroll. A Surface needs <a href="#boot-surface">one setting changed</a> first.</p></div></li>
       </ol>
       <div class="ig-menus">
         <figure class="ig-screen" aria-label="June Local boot menu">
@@ -376,6 +376,18 @@
         </figure>
         <p class="small muted">The June Local menu, simplified.</p>
       </div>
+    </div>
+
+    <h3 class="ig-sub" id="boot-surface">Surface and other Secured-core laptops</h3>
+    <div class="ig-flow">
+      <p>The installer starts with Secure Boot on, through a loader signed by Microsoft that almost every laptop accepts. Laptops sold as <strong>Secured-core PCs</strong>, including the Surface Pro 8 and later and the Surface Laptop 4 and later, come set to start only Windows: they skip the stick or say it isn't bootable. Allow it once, on a Surface like this:</p>
+      <ol class="ig-list">
+        <li>Shut it down. Hold <strong>Volume Up</strong> and press the power button until the Surface UEFI screen appears.</li>
+        <li>Choose <strong>Security › Secure Boot › Change configuration</strong>, pick <strong>Microsoft &amp; 3rd party CA</strong> and press <strong>OK</strong>. Secure Boot stays on.</li>
+        <li>Choose <strong>Exit › Restart now</strong> and hold <strong>Volume Down</strong> while it starts, until the June Local menu appears.</li>
+      </ol>
+      <p>Other Secured-core laptops, such as several Lenovo ThinkPads from 2022 on, have the same switch in their firmware settings, often called <strong>Allow Microsoft 3rd Party UEFI CA</strong>. Windows starts normally either way, and you can switch it back when you're done. This applies to Ventoy sticks too.</p>
+      <p>A Surface Pro 9 <strong>with 5G</strong>, and every Surface Pro X, has an ARM processor instead of an Intel one. It can't start the installer, however the stick is made; use another laptop.</p>
     </div>
 
     <h3 class="ig-sub" id="boot-ventoy">Only for Ventoy sticks</h3>
@@ -589,6 +601,7 @@
           <tr><td class="file-name">June USB doesn't list the stick</td><td data-label="What to do" class="muted">Plug it in again. A stick under 16 GB is marked <strong>Can't use</strong>. SD cards and drives over 300 GB appear only with <strong>Show all drives</strong> on.</td></tr>
           <tr><td class="file-name">Ventoy doesn't list the image</td><td data-label="What to do" class="muted">Put it on the large <strong>Ventoy</strong> drive, not <code>VTOYEFI</code>. Check it ends in <code>.iso</code>, then plug the stick in again.</td></tr>
           <tr><td class="file-name">Verification failed, or MokManager</td><td data-label="What to do" class="muted">Secure Boot stopping a Ventoy stick. <a href="#boot-ventoy">Enroll Ventoy's key or switch Secure Boot off</a>. A stick made with June USB doesn't need this.</td></tr>
+          <tr><td class="file-name">A Surface says the stick isn't bootable, or starts Windows</td><td data-label="What to do" class="muted">Set Secure Boot to <strong>Microsoft &amp; 3rd party CA</strong>: see <a href="#boot-surface">Surface and other Secured-core laptops</a>. A Surface Pro 9 with 5G or a Surface Pro X can't start the installer.</td></tr>
           <tr><td class="file-name">“No bootable device”</td><td data-label="What to do" class="muted">Check the boot order, and pick the USB entry marked UEFI. With a Ventoy stick, you can also try the other USB entry.</td></tr>
           <tr><td class="file-name"><span class="mono">mkfs.vfat: command not found</span></td><td data-label="What to do" class="muted">When you install Ventoy on Linux: install <code>dosfstools</code> and <code>exfatprogs</code> and run <code>Ventoy2Disk.sh</code> again.</td></tr>
           <tr><td class="file-name">The graphical installer falls back to text</td><td data-label="What to do" class="muted">Images built before 5 October 2026 could fail to start it. Put the current image on the stick (in June USB, choose <strong>Update the installer</strong>), or use text mode.</td></tr>

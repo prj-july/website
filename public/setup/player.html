@@ -2492,8 +2492,22 @@
     } else pinEl.hidden = true;
     if (!REC) requestAnimationFrame(tick);
   }
-  if (!REC) requestAnimationFrame(tick);
-  loadEl.remove();
+  // Build the shaders a few materials at a time before the first frame. Done in one go it is a
+  // single long task that freezes the page, and the home page around the embedded player with it.
+  const pause = () => window.scheduler && scheduler.yield ? scheduler.yield() : new Promise(r => setTimeout(r, 0));
+  async function warmUp() {
+    const meshes = [];
+    scene.traverse(o => { if (o.isMesh && o.visible) meshes.push(o); });
+    meshes.forEach(m => { m.visible = false; });
+    let t0 = performance.now();
+    for (const m of meshes) {
+      m.visible = true;
+      renderer.compile(scene, camera);
+      if (performance.now() - t0 > 25) { await pause(); t0 = performance.now(); }
+    }
+  }
+  if (REC) loadEl.remove();
+  else warmUp().catch(() => {}).then(() => { loadEl.remove(); requestAnimationFrame(tick); });
   if (REC) {
     const recEnd = $('recEnd');
     window.__rec = {

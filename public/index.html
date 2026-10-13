@@ -69,6 +69,7 @@
       <a href="#how">How it works</a>
       <a href="setup/">Setup</a>
       <a href="/clients">Apps</a>
+      <a href="https://recipes.project-july.org/">Recipes</a>
       <a href="#downloads">Downloads</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -554,8 +555,22 @@
     <div class="dl-grid">
       <div class="walkthrough" id="walkthrough">
         <div class="wt-frame">
-          <iframe src="setup/player.html" title="3D walkthrough of the oven setup" loading="lazy" allow="fullscreen"></iframe>
-        </div>
+          <iframe data-src="setup/player.html" title="3D walkthrough of the oven setup" allow="fullscreen"></iframe>        </div>
+        <script>
+          // The 3D player is heavy to start, and it runs on this page's main thread. Browsers begin a
+          // lazy iframe well before it's in view, which made taps elsewhere on the page wait for it,
+          // so load it only once it's nearly on screen.
+          (function () {
+            var f = document.querySelector('#walkthrough iframe[data-src]');
+            if (!f) return;
+            var load = function () { f.src = f.getAttribute('data-src'); f.removeAttribute('data-src'); };
+            if (!('IntersectionObserver' in window)) return load();
+            var io = new IntersectionObserver(function (es) {
+              if (es[0].isIntersecting) { io.disconnect(); load(); }
+            }, { rootMargin: '150px 0px' });
+            io.observe(f);
+          })();
+        </script>
         <p class="small muted">Every step on a 3D model of the June oven, including the micro-USB plug. It plays when you scroll to it. Drag to look around, or <a href="setup/">open it full screen</a>.</p>
       </div>
 
@@ -702,7 +717,7 @@
         </div>
       </div>
     </div>
-    <p class="muted policy-link">What the Project July app stores, and the one update check that leaves your home network: <a href="/clients/privacy">read the privacy policy</a>.</p>
+    <p class="muted policy-link">What the Project July app stores, the few requests that leave your home network, and what our websites measure: <a href="/clients/privacy">read the privacy policy</a>.</p>
   </div>
 </section>
 
@@ -738,7 +753,7 @@
       <details>
         <!-- DRAFT -->
         <summary>Will I lose my recipes?</summary>
-        <p class="answer">Cook programs and controls you use from the phone keep working locally. Anything that only ever lived on June's servers can't be brought back by this project.</p>
+        <p class="answer">Cook programs and controls you use from the phone keep working locally, and June's preset library is back on the oven. The recipes in June's app lived on June's servers, so owners are rebuilding them together in the <a href="https://recipes.project-july.org/">recipe wiki</a>: every recipe June published has a page there, ready for anyone who cooked it to write it up.</p>
       </details>
       <details>
         <summary>What happens after a factory reset?</summary>
@@ -794,6 +809,7 @@
       <a href="/clients/privacy">Privacy policy</a>
       <a href="installer/">Installer guide</a>
       <a href="/clients/ha-card/">HA card guide</a>
+      <a href="https://recipes.project-july.org/">Recipes</a>
       <a href="#contact">Contact</a>
       <a href="mailto:hello@project-july.org">hello@project-july.org</a>
     </nav>

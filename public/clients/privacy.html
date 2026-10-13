@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy policy — Project July</title>
-<meta name="description" content="Privacy policy for the Project July app for Android and iOS: what stays on your phone, what goes to your oven, and the one update check that leaves your home network.">
+<meta name="description" content="Privacy policy for the Project July app for Android and iOS: what stays on your phone, what goes to your oven, and the few requests that leave your home network: an update check, and recipes when you open them.">
 <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://project-july.org/clients/privacy">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Project July">
 <meta property="og:url" content="https://project-july.org/clients/privacy">
 <meta property="og:title" content="Privacy policy: Project July for Android and iOS">
-<meta property="og:description" content="No account, no ads, no analytics. Your oven, camera and cooking data stay on your home network; the only outside request is an update check to Expo.">
+<meta property="og:description" content="No account, no ads, no analytics. Your oven, camera and cooking data stay on your home network. Outside it, the app only checks for updates and, when you open Recipes, loads recipes.">
 <meta property="og:image" content="https://project-july.org/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -53,6 +53,7 @@
       <a href="/#how">How it works</a>
       <a href="/setup/">Setup</a>
       <a href="/clients">Apps</a>
+      <a href="https://recipes.project-july.org/">Recipes</a>
       <a href="/#downloads">Downloads</a>
       <a href="/#faq">FAQ</a>
     </nav>
@@ -67,16 +68,16 @@
     <div class="section-head">
       <p class="eyebrow">Privacy policy</p>
       <h1 class="setup-title">Privacy Policy: Project July for Android and iOS</h1>
-      <p class="muted">Effective <time datetime="2026-10-07">October 7, 2026</time></p>
+      <p class="muted">Effective <time datetime="2026-10-12">October 12, 2026</time></p>
     </div>
 
-    <p>Project July is an independent, community-made app for controlling a June oven over your home network. This policy covers the <strong>Project July</strong> app for Android and iOS (<span class="mono">org.projectjuly.oven</span>) and explains what it does with your information. "We" means the Project July developers. The app is open source, so you can check this policy against the code <a href="https://github.com/prj-july/project-july-app">on GitHub</a>.</p>
+    <p>Project July is an independent, community-made app for controlling a June oven over your home network. This policy covers the <strong>Project July</strong> app for Android and iOS (<span class="mono">org.projectjuly.oven</span>) and explains what it does with your information. "We" means the Project July developers. The app is open source, so you can check this policy against the code <a href="https://github.com/prj-july/project-july-app">on GitHub</a>. Our websites are covered at the end, under <a href="#websites">Our websites</a>.</p>
 
     <div class="jo-notice jo-notice-success" role="note">
       <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
       <div class="jo-notice-body">
         <p class="jo-notice-title">In short</p>
-        <p class="jo-notice-text">No account, no ads, no analytics and no tracking. Your oven, camera and cooking data stay on your home network, and we don't collect them. The only request the app makes outside your home is an update check, which sends a random install ID to Expo, the update service.</p>
+        <p class="jo-notice-text">No account, no ads, no analytics and no tracking. Your oven, camera and cooking data stay on your home network, and we don't collect them. Outside your home, the app makes an update check, which sends a random install ID to Expo, the update service, and, only when you open Recipes, loads recipes and their photos. Those recipe requests carry no ID and nothing about you or your oven.</p>
       </div>
     </div>
 
@@ -106,6 +107,15 @@
       <li><strong>Share</strong> opens your phone's share menu, and the picture goes wherever you send it. A temporary copy sits in the app's cache for the share menu.</li>
     </ul>
 
+    <h2 id="recipes">Recipes</h2>
+    <p>Recipes come from the community recipe wiki, June Recipes, at <a href="https://recipes.project-july.org/">recipes.project-july.org</a>. The app loads them only when you open Recipes:</p>
+    <ul>
+      <li>The recipe list and the recipes you open come from recipes.project-july.org, our recipe site, which Cloudflare hosts for us.</li>
+      <li>Most photos are June's own and load from June's image server (<span class="mono">recipe-media.juneoven.com</span>).</li>
+    </ul>
+    <p>These requests ask for a recipe or a picture and nothing more: no install ID, no account, and nothing about your oven, your cooking or your settings. Like any internet request, they reveal your IP address to Cloudflare and, for photos, to June's image server. Cloudflare keeps a log of the requests to the recipe site, including the IP address and the page or picture asked for, for up to 7 days. We analyze these logs only to identify and fix issues. The ingredients you tick off stay on the screen and aren't saved.</p>
+    <p>When you press Start on a recipe step, the app opens the same review as any cook, and what you start goes only to your oven, as above.</p>
+
     <h2 id="updates">App updates (Expo)</h2>
     <p>When the app starts, it checks for updates with Expo (650 Industries, Inc.), the service that delivers updates to the app. That check sends:</p>
     <ul>
@@ -117,7 +127,7 @@
 
     <h2 id="permissions">Permissions</h2>
     <ul>
-      <li><strong>Network access and network state:</strong> to reach your oven, to check the phone is on Wi-Fi before searching, and to check for updates</li>
+      <li><strong>Network access and network state:</strong> to reach your oven, to check the phone is on Wi-Fi before searching, to check for updates, and to load recipes when you open them</li>
       <li><strong>Local network</strong> (iOS): to find and talk to the oven on your home network</li>
       <li><strong>Add to photos:</strong> asked only when you tap Save. Android 10 and later need no permission for this; on Android 9 and earlier it's storage write access.</li>
       <li><strong>Vibration:</strong> small taps of feedback when you press buttons</li>
@@ -127,12 +137,21 @@
     <h2 id="dont">What we don't do</h2>
     <ul>
       <li>No accounts, sign-in or sign-up</li>
-      <li>No analytics, advertising, crash reporting or tracking</li>
-      <li>We don't sell your data, and we don't collect your oven, cooking or camera data at all. The only data that goes to another company is the update check above, sent to Expo, which runs the update service for us.</li>
+      <li>No analytics, advertising, crash reporting or tracking in the app</li>
+      <li>We don't sell your data, and we don't collect your oven, cooking or camera data at all. The only data that goes to another company is the update check above, sent to Expo, which runs the update service for us, and the recipe requests above when you open Recipes.</li>
     </ul>
 
     <h2 id="stores">App stores</h2>
     <p>Google Play, the Apple App Store and TestFlight may collect information when you download or use apps, such as installs and crash reports. They do this under their own privacy policies, not this one.</p>
+
+    <h2 id="websites">Our websites</h2>
+    <p>Cloudflare hosts our websites, <a href="https://project-july.org/">project-july.org</a> and the recipe wiki at <a href="https://recipes.project-july.org/">recipes.project-july.org</a>. When you visit them:</p>
+    <ul>
+      <li><strong>Cloudflare Web Analytics</strong> measures each page visit: the page, the site you came from, your browser, device type and country, and how fast the page loaded and responded to taps and clicks. It uses no cookies and no ID that follows you between visits or to other sites.</li>
+      <li><strong>Request logs:</strong> Cloudflare keeps a log of the requests to the recipe wiki, including the IP address and the page asked for, for up to 7 days.</li>
+      <li>The recipe wiki keeps what you choose to contribute (edits, photos and the name you give) and, to slow down spam, a scrambled code made from your IP address that changes every day. Its <a href="https://recipes.project-july.org/help">help page</a> explains this in full.</li>
+    </ul>
+    <p>We analyze these logs and measurements to identify and fix issues, such as pages that break or are slow to respond, and for nothing else. We don't use them for advertising, we don't sell them, and we don't try to tell who you are. Cloudflare handles them under its own <a href="https://www.cloudflare.com/privacypolicy/">privacy policy</a>.</p>
 
     <h2 id="delete">Deleting your data</h2>
     <ul>
@@ -145,7 +164,7 @@
     <p>Project July isn't directed at children under 13 and doesn't knowingly collect anything from them.</p>
 
     <h2 id="changes">Changes</h2>
-    <p>If the app starts handling data differently, we'll update this page and the date at the top before that version is released.</p>
+    <p>If the app or our websites start handling data differently, we'll update this page and the date at the top before the change goes out.</p>
 
     <h2 id="contact">Contact</h2>
     <p>Questions? Email <a href="mailto:hello@project-july.org">hello@project-july.org</a>.</p>
@@ -166,6 +185,7 @@
       <a href="/clients/privacy" aria-current="page">Privacy policy</a>
       <a href="/installer/">Installer guide</a>
       <a href="/clients/ha-card/">HA card guide</a>
+      <a href="https://recipes.project-july.org/">Recipes</a>
       <a href="/#contact">Contact</a>
       <a href="mailto:hello@project-july.org">hello@project-july.org</a>
     </nav>

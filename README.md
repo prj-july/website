@@ -6,6 +6,8 @@ Static Assets.
 
 - `public/`: the site (`index.html`, `css/`, `assets/`)
 - `wrangler.jsonc`: Cloudflare config
+- `recipes/`: June Recipes, the recipe wiki at recipes.project-july.org, a separate small site
+  with its own Worker and database (see [its README](recipes/README.md))
 
 ```sh
 npx wrangler dev      # preview locally
@@ -96,6 +98,13 @@ Home Assistant FAQ, the setup page's next steps, the app pages and every footer.
 the site's design system. Its screenshots and GIFs are rendered from the card's test page in
 `prj-july/ha-june-oven` (`tests/card/index.html`); the same guide, in Markdown, is in that repo's
 `docs/card-guide/`.
+
+## Recipes
+
+The recipe wiki is its own site, June Recipes, at recipes.project-july.org, built from
+`recipes/` and deployed from there (`cd recipes && npx wrangler deploy`); see
+[recipes/README.md](recipes/README.md). This site only links to it, and `public/_redirects` sends
+old `/recipes` links (and the API under `/recipes/api/`) there.
 
 ## Videos
 

@@ -1,0 +1,58 @@
+// June Recipes: the community recipe wiki at recipes.project-july.org, its own small site.
+// The Worker (src/worker.js) renders every page from D1; public/ holds its stylesheet and icons,
+// which are served before the Worker runs. See README.md in this folder.
+// Run from this folder: `npx wrangler dev` to preview, `npx wrangler deploy` to publish.
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "project-july-recipes",
+  "compatibility_date": "2026-09-26",
+  "main": "src/worker.js",
+
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+
+  // The pages and their full edit history (src/worker.js reads it as env.DB).
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "project-july-recipes",
+      "database_id": "d9e29283-5ef4-4c77-a231-ed9aa38a9aa5",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // Photos people upload: private; the site shows one only once a moderator approves it.
+  "r2_buckets": [
+    { "binding": "UPLOADS", "bucket_name": "june-recipe-uploads" }
+  ],
+
+  // Workers Logs and Issues, as set in the dashboard. Invocation logs keep a record of each
+  // request (the page and the visitor's network details) for up to 7 days; the privacy policy
+  // and the help page say so. Turn invocation_logs off to keep only errors.
+  "observability": {
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "redact_query_string": false,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    },
+    "traces": {
+      "enabled": false,
+      "head_sampling_rate": 1,
+      "persist": true
+    },
+    "issues": {
+      "enabled": true
+    }
+  },
+
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "recipes.project-july.org", "custom_domain": true }
+  ]
+}

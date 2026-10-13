@@ -6,3 +6,8 @@
 # Friendlier address for the apps page (the page itself stays at /clients).
 /apps /clients 301
 /apps/ /clients 301
+
+# The recipe wiki is its own site now (recipes/ in this repo); keep old links and the API working.
+/recipes https://recipes.project-july.org/ 301
+/recipes/ https://recipes.project-july.org/ 301
+/recipes/* https://recipes.project-july.org/:splat 301

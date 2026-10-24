@@ -474,7 +474,15 @@
         <div>
           <h3 style="font-size:20px;line-height:28px;font-family:var(--font-sans);margin-bottom:var(--space-4)">Latest updates</h3>
           <!-- Add a new dated line at the top each time something is verified. -->
-          <ol class="updates" reversed start="14">
+          <ol class="updates" reversed start="15">
+            <li>
+              <time datetime="2026-10-25">25 Oct 2026</time>
+              <b>June USB 1.2</b>
+              <ul>
+                <li>Fixes the Mac app stopping at the last step, “Writing the boot code”, with “inappropriate ioctl for device” after the copy had finished.</li>
+                <li><a href="/installer/#download">Download it</a> again for Windows or Mac. Sticks made with the earlier Mac app still start on UEFI computers; run June USB 1.2 and choose <strong>Update the installer</strong> to add legacy BIOS boot.</li>
+              </ul>
+            </li>
             <li>
               <time datetime="2026-10-11">11 Oct 2026</time>
               <b>Installer 0.7</b>

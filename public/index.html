@@ -465,8 +465,8 @@
           <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-oven"/></svg><h3>Supported ovens</h3></div>
           <ul class="compat">
             <li><span><strong>June Oven, 2nd gen</strong><small>Tested and working</small></span><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></li>
-            <li><span><strong>June Oven, 1st gen</strong><small>Should work, not tested yet</small></span><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Untested</span></li>
-            <li><span><strong>June Oven, 3rd gen</strong><small>Blocked by hardware limits</small></span><span class="jo-pill jo-pill-fault"><span class="jo-pill-dot" aria-hidden="true"></span>Blocked</span></li>
+            <li><span><strong>June Oven, 1st gen</strong><small>Should work; our first test unit just arrived</small></span><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Testing</span></li>
+            <li><span><strong>June Oven, 3rd gen</strong><small>Different hardware; only a read-only boot screen so far</small></span><span class="jo-pill jo-pill-fault"><span class="jo-pill-dot" aria-hidden="true"></span>Blocked</span></li>
           </ul>
           <!-- TODO: list the tested firmware version(s). -->
           <p class="small">Have a 1st-gen oven and happy to help test? <a href="#contact">Get in touch</a>.</p>
@@ -479,6 +479,7 @@
               <time datetime="2026-10-24">24 Oct 2026</time>
               <b>Installer 0.8</b>
               <ul>
+                <li>Back up your oven before you install. On 0.7 and older, don't factory reset: it can leave the oven disconnected. If that already happened, installing 0.8 recovers it.</li>
                 <li>A factory reset no longer leaves the oven disconnected: June Local restores the oven's identity on the next start. Pair the phone and Home Assistant again afterwards. Thanks to Brooks for the detailed report.</li>
                 <li>Two clear ways to connect. <strong>Connect by IP</strong> (recommended) creates your home's own CA and a certificate that includes the oven's IP, with no hostname or DNS. <strong>Connect by name</strong> uses the project CA, and the new JuneDns helper advertises <span class="mono">june.local</span>, <span class="mono">june2.local</span> or <span class="mono">june3.local</span>.</li>
                 <li>Every paired phone and Home Assistant stays paired after a restart, and the <span class="mono">/local</span> status page explains identity and certificate problems and how to fix them.</li>
@@ -750,7 +751,7 @@
     <div class="faq">
       <details>
         <summary>Which June ovens does it work with?</summary>
-        <p class="answer">The 2nd-gen June Oven is tested and working. The 1st gen should work but hasn't been tested yet. If you have one and would like to help test, <a href="#contact">get in touch</a>. The 3rd gen is blocked by hardware limits. <a href="#status">See the compatibility list</a>.</p>
+        <p class="answer">The 2nd-gen June Oven is tested and working. The 1st gen should work, and our first 1st-gen test oven has just arrived. The 3rd gen runs on different hardware: we've tried a few methods, but so far we only get a read-only boot screen, so there's no install for it yet. <a href="#status">See the compatibility list</a>.</p>
       </details>
       <details>
         <summary>Do I need to buy a server or leave a computer on?</summary>

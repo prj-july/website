@@ -455,7 +455,7 @@
             <tr><td class="file-name">Per-home certificates</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Each home gets its own security keys. Phone and Home Assistant pairing verified on 3 October.</td></tr>
             <tr><td class="file-name">Recipes and presets</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">June's preset library is back on the oven, so Proof and Slow Cook work again.</td></tr>
             <tr><td class="file-name">Find the oven by name</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">With <strong>Connect by name</strong>, the oven advertises <span class="mono">june.local</span>, or <span class="mono">june2.local</span> and <span class="mono">june3.local</span> for more ovens. Networks that block multicast need a local DNS entry, or <strong>Connect by IP</strong>.</td></tr>
-            <tr><td class="file-name">Guided installer</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Beta</span></td><td data-label="Notes" class="muted">Version 0.9.0 is out for beta testing: <a href="https://downloads.project-july.org/installer/latest">download it</a>. A few <a href="/setup/">guided steps</a>: start a laptop from USB, connect the oven, and the installer does the rest.</td></tr>
+            <tr><td class="file-name">Guided installer</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Beta</span></td><td data-label="Notes" class="muted">Version 0.9.1 is out for beta testing: <a href="https://downloads.project-july.org/installer/latest">download it</a>. A few <a href="/setup/">guided steps</a>: start a laptop from USB, connect the oven, and the installer does the rest.</td></tr>
           </tbody>
         </table>
       </div>
@@ -477,12 +477,13 @@
           <ol class="updates" reversed start="18">
             <li>
               <time datetime="2026-10-25">25 Oct 2026</time>
-              <b>Installer 0.9.0</b>
+              <b>Installer 0.9.1</b>
               <ul>
+                <li><strong>0.9.0 is withdrawn: don't install it.</strong> Its cooking app build was missing files and made the oven restart in a loop. If you installed it, restore your backup or install 0.9.1. Thanks to Brooks for the precise report.</li>
                 <li>Wireless updates for the oven. After this install, the oven can fetch new versions of its cooking app over your normal internet connection, with no cables and no ADB. Each update is signed with the project's offline key and checked before it is installed, and a failed update rolls back to the previous version.</li>
                 <li>Start updates from <strong>Software updates</strong> on the oven's <span class="mono">https://&lt;oven-ip&gt;/local</span> page, with the update token the installer saves on the USB stick (<span class="mono">june-logs/update-token.txt</span>). Controls only work over HTTPS.</li>
-                <li>Includes the food detection Chef build: remote cook starts are no longer blocked when the oven detects food inside.</li>
-                <li>The updater comes from Phunctional, the largest community contribution so far. Thank you. <a href="https://github.com/prj-july/installer/blob/main/RELEASE_NOTES.md">Release notes</a></li>
+                <li>Every app build is now checked for missing files before it can ship or be offered as an update. Backups and restores show a "finishing" step at 100% instead of "0 s left".</li>
+                <li>The updater comes from Gene (Phunctional), the largest community contribution so far. Thank you. <a href="https://github.com/prj-july/installer/blob/main/RELEASE_NOTES.md">Release notes</a></li>
               </ul>
             </li>
             <li>
@@ -681,8 +682,8 @@
             </tr>
             <tr>
               <td><a class="file-name" href="https://downloads.project-july.org/installer/latest">Installer USB image</a></td>
-              <td data-label="What it's for" class="muted">Version 0.9.0 (beta), build <code>20261024-2321-92e76458</code>, <code>june-local-live.iso</code>, about 1.4 GB. <a href="https://github.com/prj-july/installer/blob/main/RELEASE_NOTES.md">Release notes</a>. June USB downloads it for you; you only need it yourself for a <a href="installer/#ventoy">Ventoy USB stick</a>.</td>
-              <td data-label="SHA-256"><code class="checksum">1db073270cadf6d8cd9f2b49480882ccd3dea2212f28ae8055f1698314ccbe98</code></td>
+              <td data-label="What it's for" class="muted">Version 0.9.1 (beta), build <code>20261025-1411-b827be42</code>, <code>june-local-live.iso</code>, about 1.4 GB. <a href="https://github.com/prj-july/installer/blob/main/RELEASE_NOTES.md">Release notes</a>. June USB downloads it for you; you only need it yourself for a <a href="installer/#ventoy">Ventoy USB stick</a>.</td>
+              <td data-label="SHA-256"><code class="checksum">5f6397e51a2d7ce006364818f0302b5e8cd833ab47019c45d0f3d0d1d25bfe94</code></td>
             </tr>
             <tr>
               <td class="file-name">On-oven runbook</td>

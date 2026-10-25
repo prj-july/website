@@ -88,8 +88,8 @@
     <div class="jo-notice early-access" role="note" aria-label="Beta">
       <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
       <div class="jo-notice-body">
-        <p class="jo-notice-title"><span class="early-tag">Beta · version 0.7</span> Ready for testers, not for everyone yet</p>
-        <p class="jo-notice-text">Installer 0.7 is out for beta testing. We're collecting feedback from testers and fixing what they find, so tell us how it went at <a href="mailto:hello@project-july.org">hello@project-july.org</a>. If you're less comfortable with technical steps, please hold off until more people have tested it.</p>
+        <p class="jo-notice-title"><span class="early-tag">Beta · version 0.8</span> Ready for testers, not for everyone yet</p>
+        <p class="jo-notice-text">Installer 0.8 is out for beta testing. We're collecting feedback from testers and fixing what they find, so tell us how it went at <a href="mailto:hello@project-july.org">hello@project-july.org</a>. If you're less comfortable with technical steps, please hold off until more people have tested it.</p>
         <p class="jo-notice-text"><strong>Whoever you are, make a backup first.</strong> It takes 15 to 30 minutes, and the installer can restore the oven from it if anything goes wrong. <a href="../installer/#backup">How to back up and restore</a></p>
       </div>
     </div>
@@ -132,7 +132,7 @@
       <ol class="steps">
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">1</span><div class="jo-step-body"><h3 class="jo-step-title">Unplug the oven, lay it on its side and take out the 7 screws</h3><p class="jo-step-text">Unplug it from the wall first. Lay it down on its left side, bottom plate facing you, and take out the seven screws: four in the corners, one in the middle and two on the cord housing. Lift the plate off and rest its edge on the shelf. The power cord stays attached to the plate.</p></div></li>
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">2</span><div class="jo-step-body"><h3 class="jo-step-title">Plug in the micro-USB cable</h3><p class="jo-step-text">The port is on the edge of the board. Hold the plug with its flat side facing out, ease it in straight and press gently until it clicks.</p></div></li>
-        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from the USB stick and choose Install</h3><p class="jo-step-text">Plug the other end of the cable into the laptop and <a href="#usb-stick">start it from the USB stick</a>. The June Local menu starts the installer by itself. Pick <strong>Install June Local</strong>, keep the oven name <code>june</code> (or <code>june2</code>, <code>june3</code> for another oven), then press <strong>Next: connect the oven</strong>. It then asks you to put the oven in recovery mode. <a href="#installer-guide">What the installer shows</a></p></div></li>
+        <li class="jo-step"><span class="jo-step-num" aria-hidden="true">3</span><div class="jo-step-body"><h3 class="jo-step-title">Start the laptop from the USB stick and choose Install</h3><p class="jo-step-text">Plug the other end of the cable into the laptop and <a href="#usb-stick">start it from the USB stick</a>. The June Local menu starts the installer by itself. Pick <strong>Connect by IP</strong>, type the oven's IP address (reserve it for the oven in your router), then press <strong>Next: connect the oven</strong>. Prefer <code>june.local</code>? Pick <strong>Connect by name</strong> instead. It then asks you to put the oven in recovery mode. <a href="#installer-guide">What the installer shows</a></p></div></li>
         <li class="jo-step"><span class="jo-step-num" aria-hidden="true">4</span><div class="jo-step-body"><h3 class="jo-step-title">Hold SW2 while you plug the oven back in, then press Install</h3><p class="jo-step-text">Find <strong>SW2</strong>: the silver switch with a blue cap, next to the heatsink (<a href="#sw2">see the photo</a>). Press and hold it, plug the oven back into the wall, and keep holding for about 10 seconds. When the laptop says the oven is found, let go and press <strong>Install June Local</strong>. The installer does the rest in about two minutes.</p></div></li>
       </ol>
     </div>
@@ -185,8 +185,8 @@
     </div>
     <div class="setup-shots">
       <figure class="ig-photo">
-        <img src="../installer/img/home-laptop.webp" width="1270" height="402" alt="The installer's home screen on a laptop: five tiles for Install June Local, Install with your own CA, Back up the oven, Restore a backup, and More." loading="lazy">
-        <figcaption class="small muted">The first screen. Pick <strong>Install June Local</strong>.</figcaption>
+        <img src="../installer/img/home-laptop.webp" width="1270" height="650" alt="The installer's home screen: five tiles for Connect by IP (recommended), Connect by name (june.local), Back up the oven, Restore a backup, and More." loading="lazy">
+        <figcaption class="small muted">The first screen. Pick <strong>Connect by IP</strong>.</figcaption>
       </figure>
       <figure class="ig-photo">
         <img src="../installer/img/progress-laptop.webp" width="1280" height="568" alt="The installer at work on the laptop: a progress bar with time left, the step tracker on the right and the live log open." loading="lazy">
@@ -201,29 +201,29 @@
     <div class="section-head">
       <p class="eyebrow">After the install</p>
       <h2>Your oven's certificate</h2>
-      <p class="lead">Phones and Home Assistant can check the oven's certificate, so they know they're talking to your oven. That's optional, with either install.</p>
+      <p class="lead">Phones and Home Assistant can check the oven's certificate, so they know they're talking to your oven. That's optional, with either way of connecting. The oven serves its CA certificate at <span class="mono">http://&lt;oven-ip&gt;/local/ca.crt</span>.</p>
     </div>
     <div class="jo-notice jo-notice-info cert-optional">
       <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
       <div class="jo-notice-body">
-        <p class="jo-notice-title">Skip certificates entirely, with either install</p>
+        <p class="jo-notice-title">Skip certificates entirely, either way</p>
         <p class="jo-notice-text">Every client can connect on the oven's plain port 80, which isn't encrypted, or keep HTTPS and turn off certificate checking, which is encrypted but can't tell your oven from an impostor on your network. Either way, commands are still signed and the oven only obeys devices it has paired with.</p>
         <p class="jo-notice-text">The <strong>Project July app</strong> falls back to port 80 by itself when it can't check the certificate, or turn on <strong>Connect without checking the certificate</strong> in its settings. In <strong>Home Assistant</strong>, enter <span class="mono">http://&lt;oven-ip&gt;:80</span> as the address, or turn off <strong>Verify TLS certificate</strong>.</p>
       </div>
     </div>
     <div class="cards">
       <div class="card">
-        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><h3>Install June Local (standard)</h3></div>
-        <p>Keeps June's own certificate setup, so there's nothing to download. The certificate covers June's server names and <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span>, but not the oven's IP address or a name of your own; for those, choose the custom install.</p>
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><h3>Connect by name (june.local)</h3></div>
+        <p>Uses the project CA. The certificate covers June's server names and <span class="mono">june.local</span>, <span class="mono">june2.local</span> and <span class="mono">june3.local</span>, but not the oven's IP address; for that, choose Connect by IP. The JuneDns helper on the oven advertises the name; if your network blocks multicast, add a local DNS entry for it.</p>
         <ul class="checklist">
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Project July app:</strong> nothing to do. It comes with the standard install's certificate, so it connects over checked HTTPS when you use <span class="mono">june.local</span>, <span class="mono">june2.local</span> or <span class="mono">june3.local</span>, or the DNS names below. By IP address, it uses port 80.</span></li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Home Assistant and other clients:</strong> use port 80 or skip the check, as above.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Project July app:</strong> nothing to do. It comes with the project CA, so it connects over checked HTTPS when you use <span class="mono">june.local</span>, <span class="mono">june2.local</span> or <span class="mono">june3.local</span>, or the DNS names below. By IP address, it uses port 80.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Home Assistant and other clients:</strong> give them the project CA from <span class="mono">http://&lt;oven-ip&gt;/local/ca.crt</span>, or use port 80 or skip the check, as above.</span></li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Optional: point <span class="mono">api.junelife.com</span> and <span class="mono">messaging.junelife.com</span> at the oven's IP in your router's DNS or a hosts file. Then even clients that check certificates accept it.</span></li>
         </ul>
       </div>
       <div class="card">
-        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Install with your own CA (custom)</h3></div>
-        <p>Makes a certificate authority just for your home, and a certificate for the oven's IP address and name. A name of your own also has to be added to your own DNS. When the install finishes, open <strong>Phone setup</strong> in the installer and download your home's CA certificate, <span class="mono">ca.crt</span>. Keep a copy for every new phone.</p>
+        <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Connect by IP (recommended)</h3></div>
+        <p>Makes a certificate authority just for your home, and a certificate that includes the oven's IP address (and a hostname, if you gave one). When the install finishes, download your home's CA certificate, <span class="mono">ca.crt</span>, from the code on the success screen or <strong>Phone setup</strong>, or later from <span class="mono">http://&lt;oven-ip&gt;/local/ca.crt</span>. It's also in <span class="mono">june-certs/</span> on the stick. Keep a copy for every new phone.</p>
         <ul class="checklist">
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Project July app:</strong> paste it, or pick the file, under <strong>Home certificate</strong> when you set up the app, or later in <strong>Settings › Connection</strong>. Nothing to install on the phone itself.</span></li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Home Assistant:</strong> paste it into <strong>CA certificate (PEM)</strong>, or later under <strong>Configure</strong>.</span></li>

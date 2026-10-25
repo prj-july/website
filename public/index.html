@@ -91,8 +91,8 @@
           <a class="jo-btn jo-btn-secondary" href="#how">How it works</a>
         </div>
         <div class="hero-note">
-          <span class="jo-pill"><span class="jo-pill-dot" aria-hidden="true"></span>Community project · beta 0.7</span>
-          <span class="small muted">Status as of <time datetime="2026-10-11">11 October 2026</time></span>
+          <span class="jo-pill"><span class="jo-pill-dot" aria-hidden="true"></span>Community project · beta 0.8</span>
+          <span class="small muted">Status as of <time datetime="2026-10-24">24 October 2026</time></span>
         </div>
       </div>
 
@@ -454,8 +454,8 @@
             <tr><td class="file-name">Disk and log limits</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Storage use is capped and old logs are rotated out.</td></tr>
             <tr><td class="file-name">Per-home certificates</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Each home gets its own security keys. Phone and Home Assistant pairing verified on 3 October.</td></tr>
             <tr><td class="file-name">Recipes and presets</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">June's preset library is back on the oven, so Proof and Slow Cook work again.</td></tr>
-            <tr><td class="file-name">Find the oven by name</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">Reach it at <span class="mono">june.local</span>, or <span class="mono">june2.local</span> and <span class="mono">june3.local</span> for more ovens, picked during install. Any other name needs your own CA.</td></tr>
-            <tr><td class="file-name">Guided installer</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Beta</span></td><td data-label="Notes" class="muted">Version 0.7 is out for beta testing: <a href="https://downloads.project-july.org/installer/latest">download it</a>. A few <a href="/setup/">guided steps</a>: start a laptop from USB, connect the oven, and the installer does the rest.</td></tr>
+            <tr><td class="file-name">Find the oven by name</td><td><span class="jo-pill jo-pill-ready"><span class="jo-pill-dot" aria-hidden="true"></span>Working</span></td><td data-label="Notes" class="muted">With <strong>Connect by name</strong>, the oven advertises <span class="mono">june.local</span>, or <span class="mono">june2.local</span> and <span class="mono">june3.local</span> for more ovens. Networks that block multicast need a local DNS entry, or <strong>Connect by IP</strong>.</td></tr>
+            <tr><td class="file-name">Guided installer</td><td><span class="jo-pill jo-pill-heat"><span class="jo-pill-dot" aria-hidden="true"></span>Beta</span></td><td data-label="Notes" class="muted">Version 0.8 is out for beta testing: <a href="https://downloads.project-july.org/installer/latest">download it</a>. A few <a href="/setup/">guided steps</a>: start a laptop from USB, connect the oven, and the installer does the rest.</td></tr>
           </tbody>
         </table>
       </div>
@@ -474,7 +474,17 @@
         <div>
           <h3 style="font-size:20px;line-height:28px;font-family:var(--font-sans);margin-bottom:var(--space-4)">Latest updates</h3>
           <!-- Add a new dated line at the top each time something is verified. -->
-          <ol class="updates" reversed start="15">
+          <ol class="updates" reversed start="16">
+            <li>
+              <time datetime="2026-10-24">24 Oct 2026</time>
+              <b>Installer 0.8</b>
+              <ul>
+                <li>A factory reset no longer leaves the oven disconnected: June Local restores the oven's identity on the next start. Pair the phone and Home Assistant again afterwards. Thanks to Brooks for the detailed report.</li>
+                <li>Two clear ways to connect. <strong>Connect by IP</strong> (recommended) creates your home's own CA and a certificate that includes the oven's IP, with no hostname or DNS. <strong>Connect by name</strong> uses the project CA, and the new JuneDns helper advertises <span class="mono">june.local</span>, <span class="mono">june2.local</span> or <span class="mono">june3.local</span>.</li>
+                <li>Every paired phone and Home Assistant stays paired after a restart, and the <span class="mono">/local</span> status page explains identity and certificate problems and how to fix them.</li>
+                <li><a href="https://downloads.project-july.org/installer/latest">Download it</a> from <a href="#downloads">Downloads</a> and check its <a href="/installer/#download">SHA-256 checksum</a>, or let June USB download it. <a href="https://github.com/prj-july/installer/blob/main/RELEASE_NOTES.md">Release notes</a></li>
+              </ul>
+            </li>
             <li>
               <time datetime="2026-10-25">25 Oct 2026</time>
               <b>June USB 1.2</b>
@@ -620,7 +630,7 @@
     <div class="section-head">
       <p class="eyebrow">Downloads</p>
       <h2>The installer and files</h2>
-      <p class="lead">Installer 0.7 is out for beta testing. June USB makes the USB stick for you, and the installer guide shows every screen.</p>
+      <p class="lead">Installer 0.8 is out for beta testing. June USB makes the USB stick for you, and the installer guide shows every screen.</p>
       <div class="hero-actions">
         <a class="jo-btn jo-btn-primary" href="installer/">Open the installer guide<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
@@ -650,8 +660,8 @@
             </tr>
             <tr>
               <td><a class="file-name" href="https://downloads.project-july.org/installer/latest">Installer USB image</a></td>
-              <td data-label="What it's for" class="muted">Version 0.7 (beta), <code>june-local-live.iso</code>, about 1.4 GB. June USB downloads it for you; you only need it yourself for a <a href="installer/#ventoy">Ventoy USB stick</a>.</td>
-              <td data-label="SHA-256"><code class="checksum">ac0a86673b7cc7c15d73f7109066baf1a43f7f1f1767555b20d2dacef59438c5</code></td>
+              <td data-label="What it's for" class="muted">Version 0.8 (beta), build <code>20261024-1602-b5ca5293</code>, <code>june-local-live.iso</code>, about 1.4 GB. <a href="https://github.com/prj-july/installer/blob/main/RELEASE_NOTES.md">Release notes</a>. June USB downloads it for you; you only need it yourself for a <a href="installer/#ventoy">Ventoy USB stick</a>.</td>
+              <td data-label="SHA-256"><code class="checksum">19378a2b9d75339d82655c8cf032b2d5caead5da71968563a5d94f7a45f824f3</code></td>
             </tr>
             <tr>
               <td class="file-name">On-oven runbook</td>
@@ -709,7 +719,7 @@
       </div>
       <div class="card">
         <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Your keys, your oven</h3></div>
-        <p>The oven and phone use the same secure pairing as before, so only your phones can control your oven. Pairing a new device happens entirely at home. Per-home certificates are on the way.</p>
+        <p>The oven and phone use the same secure pairing as before, so only your phones can control your oven. Pairing a new device happens entirely at home, and <strong>Connect by IP</strong> gives your home its own certificate authority.</p>
       </div>
       <div class="card">
         <div class="card-head"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><h3>Open source</h3></div>
@@ -721,7 +731,7 @@
         <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
         <div class="jo-notice-body">
           <p class="jo-notice-title">Where things stand</p>
-          <p class="jo-notice-text">Project July is an early community project. It isn't made or supported by June or Weber. Setup is a one-time job: seven screws, one micro-USB cable and one button. Installer 0.7 is out for beta testing. The code for the app and the oven is public on GitHub. We'll keep the status list above up to date.</p>
+          <p class="jo-notice-text">Project July is an early community project. It isn't made or supported by June or Weber. Setup is a one-time job: seven screws, one micro-USB cable and one button. Installer 0.8 is out for beta testing. The code for the app and the oven is public on GitHub. We'll keep the status list above up to date.</p>
         </div>
       </div>
     </div>

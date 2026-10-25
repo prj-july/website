@@ -110,7 +110,7 @@
         <ul class="cl-facts">
           <li><svg class="icon" aria-hidden="true"><use href="#i-wifi"/></svg><span><b>Finds the oven</b>on your Wi&#8209;Fi, or type its address</span></li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><span><b>Pairs once</b>type its 8-digit code on the oven&rsquo;s <strong>Connect</strong> screen</span></li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><b>Certificate built in</b>nothing to set up after the standard install</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><b>Certificate built in</b>nothing to set up with Connect by name</span></li>
         </ul>
       </div>
       <figure class="cl-phone"><img src="/assets/app/cooking.webp" width="540" height="960" alt="The app while cooking: Demo oven with a red Stop button, 12:25 left, the add-time buttons and the live camera."></figure>
@@ -240,7 +240,7 @@
           <ol class="mini-steps">
             <li><span>Get it from the installer: open <strong>Phone setup</strong> and tap <strong>Download the companion app</strong>, or scan the code it shows.</span></li>
             <li><span>With root, or an ADB shell with root, point it at your oven:<br><code class="client-cmd">adb shell setprop persist.june.local_endpoint &lt;oven-address&gt;</code></span></li>
-            <li><span>After the custom install only: add <span class="mono">ca.crt</span> under Settings &rsaquo; Security &rsaquo; Encryption &amp; credentials &rsaquo; Install a certificate &rsaquo; CA certificate.</span></li>
+            <li><span>Optional, for a checked connection: add <span class="mono">ca.crt</span> (from <span class="mono">http://&lt;oven-ip&gt;/local/ca.crt</span>) under Settings &rsaquo; Security &rsaquo; Encryption &amp; credentials &rsaquo; Install a certificate &rsaquo; CA certificate.</span></li>
           </ol>
         </details>
       </article>
@@ -255,7 +255,7 @@
       <span class="jo-notice-mark"><svg aria-hidden="true"><use href="#i-key"/></svg></span>
       <div class="jo-notice-body">
         <h2 class="jo-notice-title" id="cert-title">Certificates are optional</h2>
-        <p class="jo-notice-text">Every client works with either install, and commands are signed either way. After the standard install there&rsquo;s nothing to do. After the custom install (<strong>Install with your own CA</strong>), give a client your home&rsquo;s <span class="mono">ca.crt</span> if you want the connection checked.</p>
+        <p class="jo-notice-text">Every client works with either way of connecting, and commands are signed either way. With <strong>Connect by name</strong>, the Project July app has the certificate built in. With <strong>Connect by IP</strong>, give a client your home&rsquo;s <span class="mono">ca.crt</span> if you want the connection checked; the oven serves it at <span class="mono">http://&lt;oven-ip&gt;/local/ca.crt</span>.</p>
         <details class="client-more">
           <summary>Where each client takes it</summary>
           <dl class="client-needs">

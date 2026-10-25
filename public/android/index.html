@@ -120,8 +120,8 @@
     <div class="two" style="margin-top:28px">
       <div class="prose">
         <h3>Secure connection</h3>
-        <p>Every command is signed by your phone, and the oven only obeys phones it has paired with. The app also comes with the standard install's certificate, so with <code>june.local</code>, <code>june2.local</code> or <code>june3.local</code> the connection is encrypted and checked with nothing to set up.</p>
-        <p>After a custom install, add your home's certificate, <code>ca.crt</code> from the installer, under <b>Home certificate</b> when you set up, or later in <b>Settings › Connection</b>. If the app can't check the certificate, for example when you type the IP address after a standard install, it uses the oven's plain port 80 and says so.</p>
+        <p>Every command is signed by your phone, and the oven only obeys phones it has paired with. The app also comes with the project CA, so after <b>Connect by name</b>, with <code>june.local</code>, <code>june2.local</code> or <code>june3.local</code> the connection is encrypted and checked with nothing to set up.</p>
+        <p>After <b>Connect by IP</b>, add your home's certificate, <code>ca.crt</code> from the installer or <code>http://&lt;oven-ip&gt;/local/ca.crt</code>, under <b>Home certificate</b> when you set up, or later in <b>Settings › Connection</b>. If the app can't check the certificate, for example when you type the IP address after Connect by name, it uses the oven's plain port 80 and says so.</p>
       </div>
       <div class="prose">
         <h3>Several ovens</h3>
@@ -218,7 +218,7 @@
         </ul>
       </div></details>
       <details class="glass"><summary>It says it's using the plain port</summary><div>
-        <p>The app couldn't check the oven's certificate. Commands are still signed and only paired phones are obeyed, but the link isn't encrypted. After a standard install, use <code>june.local</code> (or <code>june2.local</code>, <code>june3.local</code>) as the address instead of the IP. After a custom install, add <code>ca.crt</code> under <b>Settings › Connection › Home certificate</b>. Then check the connection again.</p>
+        <p>The app couldn't check the oven's certificate. Commands are still signed and only paired phones are obeyed, but the link isn't encrypted. After Connect by name, use <code>june.local</code> (or <code>june2.local</code>, <code>june3.local</code>) as the address instead of the IP. After Connect by IP, add <code>ca.crt</code> under <b>Settings › Connection › Home certificate</b>. Then check the connection again.</p>
       </div></details>
       <details class="glass"><summary>The Play Store says I'm not a tester</summary><div>
         <p>Join <a href="https://groups.google.com/g/prj-july-beta/about">the beta group</a> with the Google account your phone uses, wait a few minutes, then open the <a href="https://play.google.com/apps/testing/org.projectjuly.oven">testing page</a> again and select <b>Become a tester</b>. If you have several Google accounts on the phone, switch to that one in the Play Store.</p>

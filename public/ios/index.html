@@ -86,7 +86,7 @@
     </ol>
     <div class="prose" style="margin-top:28px;max-width:46em">
       <h3>Encrypting the connection</h3>
-      <p>Commands are always signed by your phone, so the oven only obeys phones it has paired with. The app comes with the standard install's certificate, so with <code>june.local</code>, <code>june2.local</code> or <code>june3.local</code> the link is encrypted and checked with nothing to set up. After a custom install, add your home's certificate in the app (<b>Settings › Connection › Home certificate</b>), or install <code>ca.crt</code> on the iPhone: AirDrop or email it to yourself, install the profile, then turn it on under <b>Settings › General › About › Certificate Trust Settings</b>.</p>
+      <p>Commands are always signed by your phone, so the oven only obeys phones it has paired with. The app comes with the project CA, so after <b>Connect by name</b>, with <code>june.local</code>, <code>june2.local</code> or <code>june3.local</code> the link is encrypted and checked with nothing to set up. After <b>Connect by IP</b>, add your home's certificate (<code>ca.crt</code>, also at <code>http://&lt;oven-ip&gt;/local/ca.crt</code>) in the app (<b>Settings › Connection › Home certificate</b>), or install <code>ca.crt</code> on the iPhone: AirDrop or email it to yourself, install the profile, then turn it on under <b>Settings › General › About › Certificate Trust Settings</b>.</p>
     </div>
   </section>
 

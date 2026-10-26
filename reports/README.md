@@ -64,10 +64,14 @@ a code, and is forwarded with an `X-Project-July-Report` header carrying it.
 
 ## Reading reports
 
+`tools/reports.sh` wraps the wrangler commands (Git Bash on Windows works):
+
 ```sh
-npx wrangler d1 execute DB --remote --command "SELECT code, source, created_at, installer_version, oven_model, connection, problems, note FROM reports WHERE status = 'new' ORDER BY id DESC LIMIT 20"
-npx wrangler r2 object get june-bug-reports/oven/2026-10-26/JR-XXXXXX.json --remote --pipe
-npx wrangler d1 execute DB --remote --command "UPDATE reports SET status = 'fixed', triage_note = '0.9.2' WHERE code = 'JR-XXXXXX'"
+reports/tools/reports.sh list                  # newest reports still marked new
+reports/tools/reports.sh all                   # newest 50, any status
+reports/tools/reports.sh show JR-XXXXXX        # one report's full diagnostics
+reports/tools/reports.sh fixed JR-XXXXXX 0.9.2 # mark fixed, with a note
+reports/tools/reports.sh close JR-XXXXXX       # mark closed
 ```
 
 ## Sending one

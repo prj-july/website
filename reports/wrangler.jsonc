@@ -1,0 +1,39 @@
+// Project July bug reports: a write-only intake at reports.project-july.org. Ovens (from /local)
+// and the phone app POST a report here, and mail to the reports address can be routed here too.
+// Nothing is ever served back: there is no route that reads a report. See README.md in this folder.
+// Run from this folder: `npx wrangler dev` to preview, `npx wrangler deploy` to publish.
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "project-july-reports",
+  "compatibility_date": "2026-09-26",
+  "main": "src/worker.js",
+
+  // The triage summary of each report (src/worker.js writes it as env.DB).
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "project-july-reports",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // The full diagnostics and raw emails. Private: keep public access and r2.dev off.
+  "r2_buckets": [
+    { "binding": "REPORTS", "bucket_name": "june-bug-reports" }
+  ],
+
+  // Errors only. Invocation logs are off so request details (addresses, bodies) aren't kept.
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "invocation_logs": false }
+  },
+
+  // Branch previews get no bindings, so they can't write to the real database.
+  "previews": {},
+
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "reports.project-july.org", "custom_domain": true }
+  ]
+}

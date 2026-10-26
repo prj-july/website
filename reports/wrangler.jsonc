@@ -13,7 +13,7 @@
     {
       "binding": "DB",
       "database_name": "project-july-reports",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "471a18ec-a15e-4205-9228-18e3449d9a3c",
       "migrations_dir": "migrations"
     }
   ],

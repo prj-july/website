@@ -42,7 +42,7 @@ export default {
   async email(message, env) {
     const ipHash = await senderHash(env, `mail|${message.from}`);
     if (await limited(env, ipHash)) {
-      if (env.FORWARD_TO) await message.forward(env.FORWARD_TO);
+      await forwardCopy(message, env);
       return;
     }
     const code = newCode();
@@ -56,9 +56,21 @@ export default {
       .bind(code, new Date().toISOString(), clean(message.from, 200), clean(message.headers.get('subject'), 200),
         raw.byteLength <= MAX_EMAIL ? key : '', raw.byteLength, ipHash).run();
     // A copy still lands in the inbox, with the code so a reply can quote it.
-    if (env.FORWARD_TO) await message.forward(env.FORWARD_TO, new Headers({ 'X-Project-July-Report': code }));
+    await forwardCopy(message, env, code);
   },
 };
+
+// FORWARD_TO must be a verified destination address in Email Routing. If forwarding fails
+// (unverified, or an address this zone routes itself), the report is already saved, so log it
+// rather than bounce the sender's email.
+async function forwardCopy(message, env, code) {
+  if (!env.FORWARD_TO) return;
+  try {
+    await message.forward(env.FORWARD_TO, code ? new Headers({ 'X-Project-July-Report': code }) : undefined);
+  } catch (e) {
+    console.error('forward to FORWARD_TO failed', e && e.message || e);
+  }
+}
 
 async function intake(request, env) {
   const declared = Number(request.headers.get('content-length') || 0);

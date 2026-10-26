@@ -8,6 +8,8 @@ Static Assets.
 - `wrangler.jsonc`: Cloudflare config
 - `recipes/`: June Recipes, the recipe wiki at recipes.project-july.org, a separate small site
   with its own Worker and database (see [its README](recipes/README.md))
+- `reports/`: the write-only bug report intake at reports.project-july.org, for ovens, the
+  phone app and email (see [its README](reports/README.md))
 
 ```sh
 npx wrangler dev      # preview locally
